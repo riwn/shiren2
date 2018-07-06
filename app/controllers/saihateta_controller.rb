@@ -1,4 +1,5 @@
 class SaihatetaController < ApplicationController
-  def 1
+  layout "reveal"
+  def chapter1
   end
 end

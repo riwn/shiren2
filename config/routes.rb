@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/other" => "home#other"
   get "/ranking" => "home#ranking"
   get '/ta/saihateta' =>"ta#saihateta"
+  get "/ta/saihateta/chapter1" =>"saihateta#chapter1"
   get '/ta/storyta' =>"ta#storyta"
   get '/ta/onigashima' =>"ta#onigashima"
   get '/ta/karakuro' =>"ta#karakuro"

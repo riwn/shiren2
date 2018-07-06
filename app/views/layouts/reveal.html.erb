@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>slide</title>
+
+		<%= stylesheet_link_tag "reveal/reveal", :media => "all" %>
+		<%= stylesheet_link_tag "theme/black", :media => "all" %>
+
+		<!-- Theme used for syntax highlighting of code -->
+		<%= stylesheet_link_tag "reveal/zenburn", :media => "all" %>
+	</head>
+	<body>
+		<%= yield %>
+	</body>
+</html>
