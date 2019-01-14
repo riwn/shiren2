@@ -1,0 +1,20 @@
+<main>
+    <h1>Ranking</h1>
+    <%= button_to "申請", {controller: 'ranking', action: 'ranking'}, {method: :get} %>
+
+    <% @ranks.each do |rank| %>
+    <p><%= rank.name %>
+    <%= rank.dungeon %>
+    <%= 
+    if rank.result >= 3600 then
+        (rank.result.div(3600).to_s + "時間" + ((rank.result.modulo(3600)).div(60)).to_s + "分" + ((rank.result.modulo(3600)).modulo(60)).to_s + "秒")
+    else
+        ((rank.result.div(60)).to_s + "分" + (rank.result.modulo(60)).to_s + "秒")
+    end
+    %>
+    <%= rank.movie %>
+    <%= rank.resultdate %></p>
+    <% end %>
+
+    <% %>
+</main>

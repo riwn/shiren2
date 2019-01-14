@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SaControllerTest < ActionDispatch::IntegrationTest
+class RankTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

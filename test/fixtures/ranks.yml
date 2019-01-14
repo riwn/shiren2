@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  dungeon: MyText
+  result: 2019-01-14 21:29:28
+  movie: MyText
+  requestdate: 2019-01-14 21:29:28
+  resultdate: 2019-01-14
+
+two:
+  name: MyText
+  dungeon: MyText
+  result: 2019-01-14 21:29:28
+  movie: MyText
+  requestdate: 2019-01-14 21:29:28
+  resultdate: 2019-01-14

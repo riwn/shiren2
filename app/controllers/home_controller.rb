@@ -14,8 +14,4 @@ class HomeController < ApplicationController
     def other
 
     end
-
-    def ranking
-
-    end
 end

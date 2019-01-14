@@ -1,4 +1,5 @@
 class TaController < ApplicationController
+
   def saihateta
 
   end
