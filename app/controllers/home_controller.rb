@@ -6,12 +6,4 @@ class HomeController < ApplicationController
     def ta
 
     end
-
-    def sa
-
-    end
-
-    def other
-
-    end
 end

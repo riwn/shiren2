@@ -1,20 +1,28 @@
-<main>
+<div class="container">
     <h1>Ranking</h1>
-    <%= button_to "申請", {controller: 'ranking', action: 'ranking'}, {method: :get} %>
-
+    <%= button_to("申請","/ranking/requestrecord",method: :get) %>
+    <table border="1">
+        <tr>
+            <td>名前</td>
+            <td>ダンジョン</td>
+            <td>記録</td>
+            <td>URL</td>
+            <td>達成日</td>
+        </tr>
     <% @ranks.each do |rank| %>
-    <p><%= rank.name %>
-    <%= rank.dungeon %>
-    <%= 
-    if rank.result >= 3600 then
-        (rank.result.div(3600).to_s + "時間" + ((rank.result.modulo(3600)).div(60)).to_s + "分" + ((rank.result.modulo(3600)).modulo(60)).to_s + "秒")
-    else
-        ((rank.result.div(60)).to_s + "分" + (rank.result.modulo(60)).to_s + "秒")
-    end
-    %>
-    <%= rank.movie %>
-    <%= rank.resultdate %></p>
+        <tr>
+            <td><%= rank.name %></td>
+            <td><%= rank.dungeon %></td>
+            <td><%= 
+                if rank.result >= 3600 then
+                    (rank.result.div(3600).to_s + "時間" + ((rank.result.modulo(3600)).div(60)).to_s + "分" + ((rank.result.modulo(3600)).modulo(60)).to_s + "秒")
+                else
+                    ((rank.result.div(60)).to_s + "分" + (rank.result.modulo(60)).to_s + "秒")
+                end
+            %></td>
+            <td><%= rank.movie %></td>
+            <td><%= rank.resultdate %></td>
+        </tr>
     <% end %>
-
-    <% %>
-</main>
+    </table>
+</div>
