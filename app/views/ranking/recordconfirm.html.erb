@@ -1,0 +1,43 @@
+<div class="container">
+<p>以下の内容で登録してもよろしいですか？？</p>
+<%= form_for @rank ,url:{action:"create"} do |r| %>
+    <table border="1">
+        <tr>
+            <td>名前</td>
+            <td><%= @rank.name %></td>
+            <%= r.hidden_field :name %>
+        </tr>
+            <td>ダンジョン</td>
+            <td><%= @rank.dungeon %></td>
+            <%= r.hidden_field :dungeon %>
+        <tr>
+            <td>記録</td>
+            <td><%= 
+                if @rank.result >= 3600 then
+                    (@rank.result.div(3600).to_s + "時間" + ((@rank.result.modulo(3600)).div(60)).to_s + "分" + ((@rank.result.modulo(3600)).modulo(60)).to_s + "秒")
+                else
+                    ((@rank.result.div(60)).to_s + "分" + (@rank.result.modulo(60)).to_s + "秒")
+                end
+            %>
+            </td>
+            <%= r.hidden_field :result %>
+        </tr>
+        <tr>
+            <td>URL</td>
+            <td><%= @rank.movie %></td>
+            <%= r.hidden_field :movie %>
+        </tr>
+        <tr>
+            <td>達成日</td>
+            <td><%= @rank.resultdate %></td>
+            <%= r.hidden_field :resultdate %>
+        </tr>
+    </table>
+    <div class="actions">
+        <%= r.submit '投稿画面に戻る', name: 'back' %>
+    </div>
+    <div class="actions">
+        <%= r.submit '投稿する' %>
+    </div>
+    <% end %>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+<%= form_with(model: @rank,local: true,url:{action:'recordconfirm'}) do |r|%>
+    <table border="1">
+        <tr>
+            <td><%= r.label :name, "名前" %></td>
+            <td><%= r.text_field(:name,{:maxlength => 15,:size => 30}) %></td>
+        </tr>
+            <td><%= r.label :dungeon, "ダンジョン" %></td>
+            <td>
+                <%= r.radio_button(:dungeon,"最果てへの道99FTA", {:checked => true}) %>
+                <%= r.label :dungeon, "最果てへの道99FTA",value: "最果てへの道99FTA" %>
+                <%= r.radio_button(:dungeon,"カラクロTA") %>
+                <%= r.label :dungeon,"カラクロTA",value: "カラクロTA" %>
+                <%= r.radio_button(:dungeon,"女王グモ捕獲TA") %>
+                <%= r.label :dungeon,"女王グモ捕獲TA",value: "女王グモ捕獲TA" %>
+                <%= r.radio_button(:dungeon,"鬼ヶ島ありありTA") %>
+                <%= r.label :dungeon,"鬼ヶ島ありありTA",value: "鬼ヶ島ありありTA" %>
+                <%= r.radio_button(:dungeon,"ストーリーTA") %>
+                <%= r.label :dungeon,"ストーリーTA",value: "ストーリーTA" %>
+            </td>
+        <tr>
+            <td><%= r.label :result, "記録" %></td>
+            <td>
+            <%= number_field_tag("hour",0, in: 0...11, maxlength:2,size:2) %> 時間
+            <%= number_field_tag("minute",0, in: 0...60, maxlength:2,size:2) %> 分
+            <%= number_field_tag("second",0, in: 0...60, maxlength:2,size:2) %> 秒
+            </td>
+        </tr>
+        <tr>
+            <td><%= r.label :movie, "URL" %></td>
+            <td><%= r.text_field(:movie,{:size => 80}) %></td>
+        </tr>
+        <tr>
+            <td><%= r.label :resultdate, "達成日" %></td>
+            <td><%= r.date_field(:resultdate) %></td>
+        </tr>
+    </table>
+    <%= r.submit("申請") %>
+
+
+<% end %>
+</div>

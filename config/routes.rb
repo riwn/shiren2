@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get "/" => "home#top"
   get "/ta" => "home#ta"
   get "/ranking" => "ranking#ranking"
+  post "/ranking" => "ranking#create"
   get "/ta/chapter1" =>"saihateta#chapter1"
-  get "/ranking/requestrecord" => "ranking#requestrecord"
-  post "/ranking/requestrecord" => "ranking#requestrecord"
+  get "/ranking/newrecord" => "ranking#newrecord"
+  post "/ranking/newrecord" => "ranking#recordconfirm"
 end

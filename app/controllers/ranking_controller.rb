@@ -4,30 +4,32 @@ class RankingController < ApplicationController
         @ranks = Rank.all
     end
 
-    def requestrecord
-        if request.post? then
-            @dungeon
-            if  params["rb1"] == "saihate" then
-                @dungeon = "最果てへの道99FTA"
-            elsif params["rb1"] == "ido" then
-                @dungeon = "カラクロTA"
-            elsif params["rb1"] == "jinja" then
-                @dungeon = "女王グモ捕獲TA"
-            elsif params["rb1"] == "onigashima" then
-                @dungeon = "鬼ヶ島ありありTA"
-            else
-                @dungeon = "ストーリーTA"
-            end
-            @result = params["hours"].to_i * 3600 + params["minutes"].to_i* 60 + params["seconds"].to_i
-                        Rank.create(
-                name: params["recorder"],
-                dungeon: @dungeon,
-                result: @result,
-                movie: params["url"],
-                resultdate: params["recorddate"]
-                )
+    def create
+        @rank = Rank.new(rank_params)
+        
+        #@rank[:result]= params["hour"].to_i * 3600 + params["minute"].to_i * 60 + params["second"].to_i
+        if params[:back]
+            render 'newrecord'
+        elsif @rank.save && @rank[:resultdate].to_date <= Date.today then
             redirect_to "/ranking"
+        else        
+            render 'newrecord'
         end
+    end
+    
+    def newrecord
+        @rank = Rank.new
+    end
 
+    def recordconfirm
+        @rank = Rank.new(rank_params)
+        @rank[:result]= params["hour"].to_i * 3600 + params["minute"].to_i * 60 + params["second"].to_i
+        render :newrecord if @rank.invalid? || !(@rank[:resultdate].to_date <= Date.today)
+    end
+
+    private
+
+    def rank_params
+        params.require(:rank).permit(:name,:dungeon,:result,:movie,:resultdate)
     end
 end
