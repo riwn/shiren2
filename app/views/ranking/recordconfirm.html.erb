@@ -21,6 +21,9 @@
             %>
             </td>
             <%= r.hidden_field :result %>
+            <%= hidden_field_tag "hour", params["hour"] %>
+            <%= hidden_field_tag "minute", params["minute"] %>
+            <%= hidden_field_tag "second", params["second"] %>
         </tr>
         <tr>
             <td>URL</td>

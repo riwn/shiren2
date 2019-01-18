@@ -21,9 +21,9 @@
         <tr>
             <td><%= r.label :result, "記録" %></td>
             <td>
-            <%= number_field_tag("hour",0, in: 0...11, maxlength:2,size:2) %> 時間
-            <%= number_field_tag("minute",0, in: 0...60, maxlength:2,size:2) %> 分
-            <%= number_field_tag("second",0, in: 0...60, maxlength:2,size:2) %> 秒
+            <%= number_field_tag("hour",params["hour"], in: 0...11, maxlength:2,size:2) %> 時間
+            <%= number_field_tag("minute",params["minute"], in: 0...60, maxlength:2,size:2) %> 分
+            <%= number_field_tag("second",params["second"], in: 0...60, maxlength:2,size:2) %> 秒
             </td>
         </tr>
         <tr>

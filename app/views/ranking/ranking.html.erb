@@ -8,8 +8,9 @@
             <td>記録</td>
             <td>URL</td>
             <td>達成日</td>
+            <td>申請日</td>
         </tr>
-    <% @ranks.each do |rank| %>
+        <% @ranks.each do |rank| %>
         <tr>
             <td><%= rank.name %></td>
             <td><%= rank.dungeon %></td>
@@ -20,8 +21,9 @@
                     ((rank.result.div(60)).to_s + "分" + (rank.result.modulo(60)).to_s + "秒")
                 end
             %></td>
-            <td><%= rank.movie %></td>
-            <td><%= rank.resultdate %></td>
+            <td><%= link_to "動画", rank.movie %></td>
+            <td><%= rank.resultdate.year %>/<%= rank.resultdate.month %>/<%= rank.resultdate.day %></td>
+            <td><%= rank.created_at.year %>/<%= rank.created_at.month %>/<%= rank.created_at.day %></td>      
         </tr>
     <% end %>
     </table>
