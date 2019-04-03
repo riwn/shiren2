@@ -6,3 +6,30 @@
       <p>ランキング</p>
     </a>
   </div>
+<div class="container">
+      <div class = "amanoCity">
+    <div class = "fromL">
+    <div class="shirenwalk"></div>
+    </div>
+    </div>
+    </div>
+
+
+<script>
+  var catAnm = 0;
+  var leftPos = 0;
+  setInterval(function(){
+    $('.amanoCity .shirenwalk').css('background-position', catAnm + 'px top');
+    catAnm = catAnm - 160  > -1280 ? catAnm - 160 : 0;
+  },70);
+  $('.fromL div,.fromR div').show();
+    setInterval(function(){
+        leftPos = leftPos+1;
+        $('.shirenwalk').css({
+          'transform':'translate(' + leftPos + 'px,0px) rotateY(0deg)',
+          'transition':'',
+          'opacity':1
+        });
+    },30);
+</script>
+

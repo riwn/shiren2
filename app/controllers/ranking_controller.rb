@@ -7,16 +7,15 @@ class RankingController < ApplicationController
     def create
         @rank = Rank.new(rank_params)
         
-        #@rank[:result]= params["hour"].to_i * 3600 + params["minute"].to_i * 60 + params["second"].to_i
         if params[:back]
             render 'newrecord'
-        elsif @rank.save && @rank[:resultdate].to_date <= Date.today then
+        elsif @rank.save! then
             redirect_to "/ranking"
         else        
             render 'newrecord'
         end
     end
-    
+
     def newrecord
         @rank = Rank.new
     end
@@ -30,6 +29,6 @@ class RankingController < ApplicationController
     private
 
     def rank_params
-        params.require(:rank).permit(:name,:dungeon,:result,:movie,:resultdate)
+        params.require(:rank).permit(:name,:dungeon,:result,:movie,:resultdate,:recordimage)
     end
 end

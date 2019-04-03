@@ -9,6 +9,7 @@
 
   main{
     margin-top: 100px;
+    padding-bottom: 160px;
   }
   
   a {
@@ -76,6 +77,30 @@
     /* displayをnoneに指定してください */
     display:none;
   }
+
+/* line 1429, ../sass/common.scss */
+.amanoCity {
+  height: 98px;
+  background-repeat: repeat-x;
+  background-position: center 12px;
+  position: relative;
+}
+
+/* line 1453, ../sass/common.scss */
+.amanoCity .fromL div{
+  display: none;
+  left: 0;
+  overflow: hidden;
+}
+.amanoCity .shirenwalk {
+  position: absolute;
+  top: 57px;
+  width: 160px;
+  height: 720px;
+  background-image: url("/images/shiren_Walk.png");
+  background-repeat: repeat-x;
+  background-position: 160px top;
+}
 
   footer img {
     width: 125px;

@@ -31,6 +31,16 @@
             <%= r.hidden_field :movie %>
         </tr>
         <tr>
+            <td>画像</td>
+            <td><%=
+            if @rank.recordimage.file.nil? then
+                "なし"
+            else
+                image_tag @rank.recordimage.url
+            end %></td>
+            <%= r.hidden_field :recordimage %>
+        </tr>
+        <tr>
             <td>達成日</td>
             <td><%= @rank.resultdate %></td>
             <%= r.hidden_field :resultdate %>

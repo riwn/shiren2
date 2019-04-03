@@ -1,4 +1,9 @@
 <div class="container">
+<% @rank.errors.full_messages.each do |message| %>
+
+    <%= message %>
+
+<% end %>
 <%= form_with(model: @rank,local: true,url:{action:'recordconfirm'}) do |r|%>
     <table border="1">
         <tr>
@@ -29,6 +34,10 @@
         <tr>
             <td><%= r.label :movie, "URL" %></td>
             <td><%= r.text_field(:movie,{:size => 80}) %></td>
+        </tr>
+        <tr>
+            <td><%= r.label :recordimage, "画像" %></td>
+            <td><%= r.file_field :recordimage %></td>
         </tr>
         <tr>
             <td><%= r.label :resultdate, "達成日" %></td>

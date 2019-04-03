@@ -7,12 +7,17 @@
 		<title>slide</title>
 
 		<%= stylesheet_link_tag "reveal/reveal", :media => "all" %>
-		<%= stylesheet_link_tag "theme/black", :media => "all" %>
+		<%= stylesheet_link_tag "reveal/theme/league", :media => "all" %>
 
 		<!-- Theme used for syntax highlighting of code -->
 		<%= stylesheet_link_tag "reveal/zenburn", :media => "all" %>
 	</head>
 	<body>
 		<%= yield %>
+
+		<%= javascript_include_tag "revealjs/head.min.js" %>
+        <%= javascript_include_tag "revealjs/reveal.js" %>
+		<%= yield :footer %>
+
 	</body>
 </html>

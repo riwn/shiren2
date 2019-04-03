@@ -9,8 +9,11 @@
             <td>URL</td>
             <td>達成日</td>
             <td>申請日</td>
+            <td>画像</td>
+            
         </tr>
         <% @ranks.each do |rank| %>
+        <% if rank.permission != nil %>
         <tr>
             <td><%= rank.name %></td>
             <td><%= rank.dungeon %></td>
@@ -24,7 +27,14 @@
             <td><%= link_to "動画", rank.movie %></td>
             <td><%= rank.resultdate.year %>/<%= rank.resultdate.month %>/<%= rank.resultdate.day %></td>
             <td><%= rank.created_at.year %>/<%= rank.created_at.month %>/<%= rank.created_at.day %></td>      
+            <td><%=             
+            if rank.recordimage.file.nil? then
+                "なし"
+            else
+                image_tag rank.recordimage.url
+            end %></td>
         </tr>
+        <% end %>
     <% end %>
     </table>
 </div>
