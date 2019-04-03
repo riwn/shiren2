@@ -6,7 +6,7 @@ class RankingController < ApplicationController
 
     def create
         @rank = Rank.new(rank_params)
-        
+        @rank.recordimage.retrieve_from_cache! params[:cache][:image]
         if params[:back]
             render 'newrecord'
         elsif @rank.save! then

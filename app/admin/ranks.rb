@@ -11,5 +11,12 @@ ActiveAdmin.register Rank do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-permit_params :permission
+permit_params :permission, :recordimage_cache, :recordimage
+form do |f|
+    f.inputs do
+      f.input :permission
+    end
+    f.actions
+  end
+  
 end

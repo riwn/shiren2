@@ -1,6 +1,8 @@
 <div class="container">
 <p>以下の内容で登録してもよろしいですか？？</p>
 <%= form_for @rank ,url:{action:"create"} do |r| %>
+<%= hidden_field_tag :"cache[image]", @rank.recordimage.cache_name %>
+
     <table border="1">
         <tr>
             <td>名前</td>
@@ -39,6 +41,7 @@
                 image_tag @rank.recordimage.url
             end %></td>
             <%= r.hidden_field :recordimage %>
+            <%= r.hidden_field :recordimage_cache %>
         </tr>
         <tr>
             <td>達成日</td>
