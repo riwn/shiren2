@@ -24,6 +24,7 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_admin_flat_skin (0.1.2)
     activeadmin (1.4.3)
       arbre (>= 1.1.1)
       coffee-rails
@@ -252,6 +253,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  active_admin_flat_skin
   activeadmin
   bootsnap (>= 1.1.0)
   byebug
@@ -277,4 +279,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.16.1
+   2.0.1

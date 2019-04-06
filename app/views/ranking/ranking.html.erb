@@ -12,8 +12,8 @@
             <td>画像</td>
             
         </tr>
+    <% if @ranks != nil %>
         <% @ranks.each do |rank| %>
-        <% if rank.permission != nil %>
         <tr>
             <td><%= rank.name %></td>
             <td><%= rank.dungeon %></td>
@@ -24,17 +24,31 @@
                     ((rank.result.div(60)).to_s + "分" + (rank.result.modulo(60)).to_s + "秒")
                 end
             %></td>
-            <td><%= link_to "動画", rank.movie %></td>
+            <td>
+            <% if rank.movie == "" then %>
+            なし
+            <% else %>
+            <%= link_to "動画", rank.movie %>
+            <% end %>
+            </td>
             <td><%= rank.resultdate.year %>/<%= rank.resultdate.month %>/<%= rank.resultdate.day %></td>
             <td><%= rank.created_at.year %>/<%= rank.created_at.month %>/<%= rank.created_at.day %></td>      
-            <td>
-            <% if rank.recordimage == "" then %>
+            <td>なし
+            <!--<% if rank.recordimage == "" then %>
                 なし
             <% else %>
                <%= image_tag rank.recordimage.url %>
-            <% end %></td>
+            <% end %>--></td>
         </tr>
         <% end %>
     <% end %>
     </table>
+    <% if @archives != nil %>
+        <h4 class="font-italic">過去ログ</h4>
+        <ul style="list-style:none;">
+            <% @archives.each do |yyyymm, count| %>
+                <li><%= link_to ymconv(yyyymm, count.to_s), "/ranking/#{yyyymm}" %></li>
+            <% end %>
+        </ul>
+    <% end %>
 </div>

@@ -5,6 +5,7 @@
   body {
     margin: 0;
     font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+    background-color: #f1eee7;
   }
 
   main{
@@ -21,7 +22,7 @@
   }
   
   .container {
-    max-width: 1170px;
+    max-width: 1920px;
     width: 100%;
     padding: 0 15px;
     margin: 0 auto;
@@ -43,8 +44,11 @@
   .logo {
     line-height: 65px;
     padding: 0 25px;
-    color:white;
   }
+
+.logo path{
+  z-index:15;
+}
   
   .header-left {
     float: left;
@@ -79,27 +83,99 @@
   }
 
 /* line 1429, ../sass/common.scss */
-.amanoCity {
-  height: 98px;
-  background-repeat: repeat-x;
-  background-position: center 12px;
+.nataneVillage {
+  height: 150px;
   position: relative;
 }
 
+.nataneDungeon img{
+  width:128px;
+  position: absolute;
+  text-align:center;
+
+}
+
+.onigashima{
+  left:10%;
+  top:27px;
+}
+
+.story{
+  left:29%;
+  top:27px;
+}
+
+.mumyu{
+  left:47%;
+  top:37px;
+}
+
+.well{
+  left:63%;
+  top:65px;
+}
+
+.shrine{
+  left:78%;
+  top:40px;
+}
+.shrine2{
+  left:82%;
+  top:15px;
+}
+
+.nataneVillage hr{
+  border:none;
+  top:90px;
+  height:3px;
+  width:100%;
+  background-color: black;
+  position: absolute;
+}
+
 /* line 1453, ../sass/common.scss */
-.amanoCity .fromL div{
+.nataneVillage .fromL div{
   display: none;
   left: 0;
   overflow: hidden;
 }
-.amanoCity .shirenwalk {
+
+.nataneVillage .fromR div{
+  display: none;
+  left: 0;
+  overflow: hidden;
+}
+
+.nataneVillage .shirenwalk {
   position: absolute;
-  top: 57px;
-  width: 160px;
-  height: 720px;
+  top: 79px;
+  width: 21px;
+  height: 17px;
   background-image: url("/images/shiren_Walk.png");
-  background-repeat: repeat-x;
-  background-position: 160px top;
+  background-position: 21px top;
+}
+.fromL .mamlwalk {
+  position: absolute;
+  top: 83px;
+  width: 12px;
+  height: 12px;
+  background-image: url("/images/Maml_Walk.png");
+  background-position: 12px top;
+}
+.fromR .mamlwalk{
+  position: absolute;
+  top: 83px;
+  width: 12px;
+  height: 12px;
+  background-image: url("/images/Maml_WalkR.png");
+  background-position: 12px top;
+}
+
+.cloud{
+  background-image: url("/images/cloud.png");
+  width: 118px;
+  height: 89px;
+  position: absolute;
 }
 
   footer img {
@@ -112,10 +188,11 @@
   }
   
   footer {
-    position: fixed;
-    bottom: 0;
     width: 100%;
     padding-top: 30px;
     padding-bottom: 20px;
     background-color: rgb(85, 85, 85);
+    position: absolute;
+    position: fixed;
+    bottom: 0;
   }

@@ -68,3 +68,4 @@ gem "jquery-rails"
 # 管理画面
 gem 'activeadmin'
 gem 'devise'
+gem 'active_admin_flat_skin'
