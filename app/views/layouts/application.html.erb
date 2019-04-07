@@ -38,7 +38,7 @@
     <%= yield :mosttop %>
     <div class = "nataneVillage">
       <div class = "nataneDungeon">
-        <a href="https://www.inside-games.jp/article/2010/10/15/45072.html"><img class="fullmoon" src="/images/FullMoon.png"></a>
+        <a href="#"><img class="fullmoon" src="/images/FullMoon.png"></a>
           <%= link_to "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
           <%= image_tag "/images/Onigashima.png", { :class => "onigashima" } %>
           <% end %>
@@ -51,19 +51,23 @@
           <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
           <%= image_tag "/images/Well.png", { :class => "well" } %>
           <% end %>
+          <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
+          <%= image_tag "/images/Well2.png", { :class => "well2" } %>
+          <% end %>
           <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
           <%= image_tag "/images/Shrine.png", { :class => "shrine" } %>
           <% end %>
           <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
           <%= image_tag "/images/Shrine2.png", { :class => "shrine2" } %>
           <% end %>
+          <img src="/images/Road.png" class = "road">
       </div>
       <hr>
       <div class = "fromL">
         <div class="cloud cloudL1"></div>
         <div class="cloud cloudL2"></div>
         <div class="cloud cloudL3"></div>
-        <div class="shirenwalk shirenL1"></div>
+        <a href="/search"><div class="shirenwalk shirenL1"></div></a>
         <div class="mamlwalk mamlL1"></div>
       </div>
       <div class = "fromR">
@@ -87,7 +91,8 @@
     </footer>
     <script>
       Village_Walk();
-      var lineDrawing2 = anime({
+      var timeline = anime.timeline();
+        timeline.add({
         targets: '.lines path',
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutSine',
@@ -95,7 +100,7 @@
         delay: function(el, i) { return i * 250 },
         direction: 'alternate',
         loop: false
-      });
+  })
     </script>
   </body>
 </html>

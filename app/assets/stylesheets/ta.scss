@@ -8,3 +8,38 @@ Last Updated: 2010-09-17
 Author: Richard Clark - http://richclarkdesign.com 
 Twitter: @rich_clark
 */
+
+.slide-top .description p{
+    font-size: 47.65% ;
+    margin-top: 0;
+}
+
+.talk .descpeople1 .balloon{
+    box-shadow: 0 2px 10px rgba(154,184,193,0.3);
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    max-width: 68%;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 12px 20px;
+    color: #32485d;
+    font-size: 46%;
+    line-height: 1.6;
+}
+
+.talk .descpeople1 .balloon:after {
+    content: '';
+    position: absolute;
+    top: 19.5px;
+    border: 5px solid;
+    border-color: transparent transparent #fff #fff;
+    box-shadow: -2px 2px 2px rgba(154,184,193,0.15);
+    color: black;
+}
+
+.talk .descpeople1 .balloon p {
+  margin: 0;
+  padding: 0;
+}
+
