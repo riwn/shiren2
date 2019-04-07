@@ -1,3 +1,7 @@
+<% content_for :title do %>
+    記録申請
+<% end %>
+
 <div class="container">
 <% @rank.errors.full_messages.each do |message| %>
 
@@ -49,3 +53,8 @@
 
 <% end %>
 </div>
+
+<script>
+const natane = Document.getElementsByClassName("nataneVillage");
+natane.style.visibility ="hidden";
+</script>

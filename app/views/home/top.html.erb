@@ -1,8 +1,42 @@
+<% content_for :title do %>
+    風来のシレン2
+<% end %>
+
+<%= stylesheet_link_tag    'slicebox/slicebox' , :media => "all"%>
+<%= stylesheet_link_tag    'slicebox/custom' , :media => "all"%>
+<%= javascript_include_tag 'slicebox/modernizr.custom.46884'%>
+<%= javascript_include_tag 'slicebox/jquery.slicebox'%>
+<%= javascript_include_tag 'slicebox/noticeslide'%>
+
+
+
+<% content_for :mosttop do %>
+<div class="sliders">
+  <ul id="sb-slider" class="sb-slider">
+    <li><img src="images/1.png" title="キャプション1"></li>
+    <li><img src="images/1.png" title="キャプション1"></li>
+    <li><img src="images/1.png" title="キャプション1"></li>
+    <li><img src="images/1.png" title="キャプション1"></li>
+    <li><img src="images/1.png" title="キャプション1"></li>
+    <li><img src="images/1.png" title="キャプション1"></li>
+  </ul>
+  <div id="nav-arrows" class="nav-arrows"> 
+    <a href="#"> <p><%= fa_icon("chevron-right 5x") %></p> </a> 
+    <a href="#"> <p><%= fa_icon("chevron-left 5x") %></p> </a> 
+  </div>
+</div>
+<% end %>
+
 <div class="container">
   <a href="/ta">
     <p>タイムアタック</p>
   </a>
-  <a href="/ranking">
-    <p>ランキング</p>
-  </a>
+  <%= 
+  d = Date.today
+  yyyymm = d.year.to_s + ("%02d" % d.month).to_s
+  link_to "ランキング", "/ranking/#{yyyymm}" %>
 </div>
+
+<script>
+Slide_Notice();
+</script>

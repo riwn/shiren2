@@ -8,17 +8,14 @@ Rails.application.routes.draw do
   get "/ta" => "home#ta"
   get "/ta/chapter1" =>"saihateta#chapter1"
   get "/ta/chapter2" =>"saihateta#chapter1"
-
-  get "/ranking" => "ranking#ranking"
-  get "/ranking/saihate" => "ranking#saihate"
-  get "/ranking/shrine" => "ranking#shrine"
-  get "/ranking/story" => "ranking#story"
-  get "/ranking/onigashima" => "ranking#onigashima"
-  get "/ranking/well" => "ranking#well"
+  get "/ranking" => redirect {"/"}
   post "/ranking" => "ranking#create"
+
   get "/ranking/newrecord" => "ranking#newrecord"
   post "/ranking/newrecord" => "ranking#recordconfirm"
-  get  "/ranking/:yyyymm" =>"ranking#archives"
+
+  get "/ranking/:dungeon" => "ranking#dungeon"
+  get  "/ranking/:dungeon/:yyyymm" =>"ranking#dungeon"
 
 
 end

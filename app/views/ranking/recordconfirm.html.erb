@@ -1,3 +1,7 @@
+<% content_for :title do %>
+    記録確認
+<% end %>
+
 <div class="container">
 <p>以下の内容で登録してもよろしいですか？？</p>
 <%= form_for @rank ,url:{action:"create"} do |r| %>
@@ -57,3 +61,8 @@
     </div>
     <% end %>
 </div>
+
+<script>
+const natane = Document.getElementsByClassName("nataneVillage");
+natane.style.visibility ="hidden";
+</script>

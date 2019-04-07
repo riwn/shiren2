@@ -1,3 +1,13 @@
+<% content_for :title do %>
+    シレン2放送検索
+<% end %>
+
+<% content_for :mosttop do %>
+<div class="container">
+    <h1>シレン2放送検索</h1>
+</div>
+<% end %>
+
 <div class="container">
     <table class="searchresult" align="center" border="1" width= "50%">
         <% if @result != nil  %>
@@ -11,12 +21,11 @@
                 <p class="viewer"><%= fa_icon("eye") %> <%= data["viewCounter"] %></p>
             </td>
             </div>
-
         </tr>
         <% end %>
         <% end %>
         <% if @result2 != nil  %>
-            <% @result2.each do |data| %>A
+            <% @result2.each do |data| %>
                 <tr>
                     <td>
                     <div class="contents">

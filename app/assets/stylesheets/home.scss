@@ -5,7 +5,7 @@
   body {
     margin: 0;
     font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
-    background-color: #f1eee7;
+    background-color: #e9c298;
   }
 
   main{
@@ -94,6 +94,12 @@
   text-align:center;
 
 }
+.fullmoon{
+  left:10%;
+  top:35px;
+  width:30px !important;
+  z-index: 5;
+}
 
 .onigashima{
   left:10%;
@@ -176,6 +182,7 @@
   width: 118px;
   height: 89px;
   position: absolute;
+  z-index: 20;
 }
 
   footer img {
@@ -195,4 +202,5 @@
     position: absolute;
     position: fixed;
     bottom: 0;
+    z-index: 500;
   }

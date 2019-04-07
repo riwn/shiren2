@@ -1,65 +1,52 @@
 class RankingController < ApplicationController
 
+    def rankchoose(dungname)
+        #ダンジョンに応じたデータ取得
+        if dungname == "歴代TA"
+            return Rank.where(permission: 1)
+        end
+        return Rank.where(dungeon: dungname)
+    end
+
+    def getArchive(rankdata)
+        if rankdata!= nil
+            return rankdata.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
+        end
+        return nil
+    end
+
     def ranking
-        @ranks = Rank.where(permission: 1)
-        if @ranks!= nil
-            @archives = @ranks.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
-        end
+        @ranks = rankchoose("歴代TA")
+        @archives =getArchive(@ranks)
+        @rankingtitle = "歴代TAランキング"
     end
 
-    def onigashima
-        @ranks = Rank.where(dungeon: "鬼ヶ島ありありTA")
-        @ranksall = Rank.where(permission: 1)
-        if @ranksall!= nil
-            @archives = @ranksall.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
+    def dungeon
+        dungeonname = ""
+        if params[:dungeon] == "saihate"
+            dungeonname = "最果てへの道99FTA"
+        elsif params[:dungeon] == "well"
+            dungeonname = "カラクロTA"
+        elsif params[:dungeon] == "onigashima"
+            dungeonname = "鬼ヶ島ありありTA"
+        elsif params[:dungeon] == "shrine"
+            dungeonname = "女王グモ捕獲TA"
+        elsif params[:dungeon] == "story"
+            dungeonname = "ストーリーTA"
+        elsif params[:dungeon] == "all"
+            dungeonname = "歴代TA"
         end
-        render 'ranking'
-    end
 
-    def well
-        @ranks = Rank.where(dungeon: "カラクロTA")
-        @ranksall = Rank.where(permission: 1)
-        if @ranksall!= nil
-            @archives = @ranksall.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
+        @dungeonurl = params[:dungeon]
+        @ranks = rankchoose(dungeonname)
+        @archives =getArchive(@ranks)
+        if params[:yyyymm] != nil
+            @yyyymm = params[:yyyymm]
+            @ranks = @ranks.where("strftime('%Y%m', created_at) = '"+@yyyymm+"'")
+            @rankingtitle = "#{@yyyymm[0,4]}年#{@yyyymm[4,2]}月 #{dungeonname}ランキング"
+        else
+            @rankingtitle = dungeonname + " 歴代ランキング"
         end
-        render 'ranking'
-    end
-
-    def shrine
-        @ranks = Rank.where(dungeon: "女王グモ捕獲TA")
-        @ranksall = Rank.where(permission: 1)
-        if @ranksall!= nil
-            @archives = @ranksall.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
-        end
-        render 'ranking'
-    end
-
-    def story
-        @ranks = Rank.where(dungeon: "ストーリーTA")
-        @ranksall = Rank.where(permission: 1)
-        if @ranksall!= nil
-            @archives = @ranksall.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
-        end
-        render 'ranking'
-    end
-
-    def saihate
-        @ranks = Rank.where(dungeon: "最果てへの道99FTA")
-        @ranksall = Rank.where(permission: 1)
-        if @ranksall!= nil
-            @archives = @ranksall.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
-        end
-        render 'ranking'
-    end
-
-    def archives
-        @ranks= Rank.where(permission: 1)
-        if @ranks!= nil
-            @archives = @ranks.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
-        end
-        @yyyymm = params[:yyyymm]
-        @ranks = @ranks.where("strftime('%Y%m', created_at) = '"+@yyyymm+"'")
-        #@ranks = @ranks.make_archive
         render 'ranking'
     end
 
