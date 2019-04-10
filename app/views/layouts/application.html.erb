@@ -29,7 +29,7 @@
         <span class="fa fa-bars menu-icon"></span>
         <div class="header-right">
           <a href="/search">放送検索</a>
-          <a href="/ta">TA</a>
+          <a href="/ta">タイムアタック</a>
           <%= link_to "ランキング","/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %>
         </div>
       </div>
@@ -38,29 +38,29 @@
     <%= yield :mosttop %>
     <div class = "nataneVillage">
       <div class = "nataneDungeon">
-        <a href="#"><img class="fullmoon" src="/images/FullMoon.png"></a>
+        <a href="#"><img class="fullmoon" src="/images/nataneVillage/FullMoon.png"></a>
           <%= link_to "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/Onigashima.png", { :class => "onigashima" } %>
+          <%= image_tag "/images/nataneVillage/Onigashima.png", { :class => "onigashima" } %>
           <% end %>
           <%= link_to "/ranking/story/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/Story.png", { :class => "story" } %>
+          <%= image_tag "/images/nataneVillage/Story.png", { :class => "story" } %>
           <% end %>
           <%= link_to "/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/Mumyu.png", { :class => "mumyu" } %>
+          <%= image_tag "/images/nataneVillage/Mumyu.png", { :class => "mumyu" } %>
           <% end %>
           <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/Well.png", { :class => "well" } %>
+          <%= image_tag "/images/nataneVillage/Well.png", { :class => "well" } %>
           <% end %>
           <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/Well2.png", { :class => "well2" } %>
+          <%= image_tag "/images/nataneVillage/Well2.png", { :class => "well2" } %>
           <% end %>
           <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/Shrine.png", { :class => "shrine" } %>
+          <%= image_tag "/images/nataneVillage/Shrine.png", { :class => "shrine" } %>
           <% end %>
           <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/Shrine2.png", { :class => "shrine2" } %>
+          <%= image_tag "/images/nataneVillage/Shrine2.png", { :class => "shrine2" } %>
           <% end %>
-          <img src="/images/Road.png" class = "road">
+          <img src="/images/nataneVillage/Road.png" class = "road">
       </div>
       <hr>
       <div class = "fromL">
