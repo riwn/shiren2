@@ -1,0 +1,45 @@
+<% if ranks.offset_value.nil? %>
+<% @num = 0 %>
+<%else%>
+<% @num = ranks.offset_value %>
+<%end%>
+<% ranks.each do |rank| %>
+<% @num = @num + 1 %>
+<div class="border border-dark">
+    <div class="row m-0">
+        <div class="col-3 <%= RankColor(@num) %> border-bottom d-flex align-items-center">
+            <p class="h6 mx-auto">
+                <%= @num %>位
+            </p>
+        </div>
+        <div class="col-9 border-bottom d-flex align-items-center">
+            <p class="h5 p-3 mx-auto"><%= GetResultTime(rank.result) %></p>
+            <div class="float-right d-flex align-items-center">
+            </div>
+        </div>
+        <div class="col-12 d-flex align-items-center">
+            <p class="p-3 mx-auto">
+                <%= rank.created_at.year.to_s + "年" + rank.created_at.month.to_s + "月" + rank.created_at.day.to_s + "日" %>
+            </p>
+        </div>
+        <div class="col-6 d-flex align-items-center p-3">
+            <% if rank.movie != nil && rank.movie != "" then %>
+            <%= link_to rank.movie, target: "_blank",class: "mx-auto" do %>
+            <button type="button" class="btn btn-info rounded-pill mx-auto">動画</button>
+            <% end %>
+            <% else %>
+            <button type="button" class="btn btn-info rounded-pill mx-auto" disabled>動画</button>
+            <% end %>
+        </div>
+        <div class="col-6 d-flex align-items-center p-3">
+            <% if rank.recordimage.url != nil && rank.recordimage.url != "" then %>
+            <button type="button" class="btn btn-info rounded-pill mx-auto" data-toggle="modal"
+                data-target="#imageModal<%=dungeonname+@num.to_s%>">画像</button>
+            <%= render 'ranking/image_modal', {rank: rank,dungeonname:dungeonname,num: @num} %>
+            <% else %>
+            <button type="button" class="btn btn-info rounded-pill mx-auto" disabled>画像</button>
+            <% end %>
+        </div>
+    </div>
+</div>
+<% end %>

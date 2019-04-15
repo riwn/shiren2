@@ -6,7 +6,8 @@ ruby '2.4.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test]
+gem 'mysql2', group: :production
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -14,7 +15,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'duktape'
+#gem 'duktape'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -66,6 +67,26 @@ gem 'carrierwave'
 gem "jquery-rails"
 
 # 管理画面
-gem 'activeadmin'
+gem 'rails_admin', '~> 1.3'
 gem 'devise'
-gem 'active_admin_flat_skin'
+gem 'cancancan'
+
+#日本語化
+gem 'rails-i18n'
+
+#デザイン
+gem 'bootstrap', '~> 4.3.1'
+
+#ページネーション
+gem 'kaminari'
+
+#デバッグ用
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'ruby-debug-ide'
+  gem 'debase'
+end
+
+#WYSIWYGエディタ
+gem 'trix'

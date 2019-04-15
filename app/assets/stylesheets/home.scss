@@ -1,222 +1,220 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
-    background-color: #e9c298;
-  }
-
-  main{
-    margin-top: 100px;
-    padding-bottom: 160px;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  .clear {
-    clear: left;
-  }
-  
-  .container {
-    max-width: 1920px;
-    width: 100%;
-    padding: 0 15px;
-    margin: 0 auto;
-  }
-  
-  .fa {
-    margin-right: 5px;
-  }
-  
-  header {
-    height: 65px;
-    width: 100%;
-    background-color: rgba(34, 49, 52, 0.9);
-    position :fixed;
-    top: 0;
-    z-index: 10;
-  }
-  
-  .logo {
-    line-height: 65px;
-    padding: 0 25px;
-  }
-
-.logo path{
-  z-index:15;
+  box-sizing: border-box;
 }
-  
+
+
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo,
+    メイリオ, Osaka, "MS PGothic", arial, helvetica, sans-serif;
+  background-image: url("/images/headfoot/background_image.png");
+  background-repeat: repeat;
+}
+
+main {
+  margin-top: 94px;
+  padding-bottom: 160px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+header {
+  height: 65px;
+  width: 100%;
+  background-color: rgba(34, 49, 52, 0.9);
+  position: fixed;
+  top: 0;
+  z-index: 30;
+
   .header-left {
     float: left;
+
+    .logo {
+      line-height: 65px;
+      padding: 0 25px;
+
+      path {
+        z-index: 15;
+      }
+    }
   }
-  
+
   .header-right {
     float: right;
     margin-right: -25px;
-  }
-  
-  .header-right a {
-    line-height: 65px;
-    padding: 0 25px;
-    color: white;
-    display: block;
-    float: left;
-    transition: all 0.5s;
-  }
-  
-  .header-right a:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-  
-  /* menu-iconのCSSを貼り付けてください */
-  .menu-icon {
-    color: white;
-    float: right;
-    font-size: 25px;
-    padding: 21px 0;
-    /* displayをnoneに指定してください */
-    display:none;
-  }
 
-/* line 1429, ../sass/common.scss */
+    a {
+      line-height: 65px;
+      padding: 0 25px;
+      color: white;
+      display: block;
+      float: left;
+      transition: all 0.5s;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+}
+
+/* menu-iconのCSSを貼り付けてください */
+.menu-icon {
+  color: white;
+  float: right;
+  font-size: 25px;
+  padding: 21px 0;
+  /* displayをnoneに指定してください */
+  display: none;
+}
+
+//ナタネ村
 .nataneVillage {
   height: 180px;
   position: relative;
-}
+  background-image: url("/images/nataneVillage/natane_back.png");
+  margin-bottom: 20px;
 
-.nataneDungeon img{
-  width:128px;
-  position: absolute;
-  text-align:center;
-}
-.fullmoon{
-  left:10%;
-  top:60px;
-  width:30px !important;
-  z-index: 5;
-}
+  //ダンジョンの画像を描画
+  .nataneDungeon {
+    img {
+      width: 15vw;
+      position: absolute;
+      text-align: center;
+    }
 
-.onigashima{
-  left:10%;
-  top:40px;
-}
+    .fullmoon {
+      left: 10%;
+      bottom: 90px;
+      width: 5vw !important;
+      max-width: 30px;
+      z-index: 5;
+    }
 
-.story{
-  left:29%;
-  top:50px;
-}
+    .onigashima {
+      left: 10%;
+      bottom: 70px;
+      max-width: 128px;
+    }
 
-.mumyu{
-  left:47%;
-  top:67px;
-}
+    .story {
+      left: 29%;
+      bottom: 60px;
+      max-width: 128px;
+    }
 
-.well{
-  width:50px !important;
-  left:69%;
-  top:74px;
-}
+    .mumyu {
+      left: 47%;
+      bottom: 43px;
+      max-width: 128px;
+    }
 
-.well2{
-  width:80px !important;
-  left:63%;
-  top:87px;
-}
+    .well {
+      max-width: 50px !important;
+      left: 69%;
+      bottom: 56px;
+    }
 
-.shrine{
-  left:75%;
-  top:65px;
-  width:150px !important;
-}
-.shrine2{
-  left:82%;
-  top:45px;
-}
+    .well2 {
+      max-width: 80px !important;
+      left: 63%;
+      bottom: 43px;
+    }
 
-.road{
-  width:100% !important;
-  height:25%;
-  top:115px;
-  z-index: -10;
-}
+    .shrine {
+      left: 75%;
+      bottom: 32px;
+      max-width: 150px !important;
+      z-index: 3;
+    }
 
-.nataneVillage hr{
-  border:none;
-  top:90px;
-  height:3px;
-  width:100%;
-  background-color: black;
-  position: absolute;
-  display: none;
-}
+    .shrine2 {
+      left: 82%;
+      bottom: 70px;
+      max-width: 128px;
+    }
 
-/* line 1453, ../sass/common.scss */
-.nataneVillage .fromL div{
-  display: none;
-  left: 0;
-  overflow: hidden;
-}
-
-.nataneVillage .fromR div{
-  display: none;
-  left: 0;
-  overflow: hidden;
-}
-
-.nataneVillage .shirenwalk {
-  position: absolute;
-  top: 116px;
-  width: 21px;
-  height: 17px;
-  background-image: url("/images/nataneVillage/shiren_Walk.png");
-  background-position: 21px top;
-}
-.fromL .mamlwalk {
-  position: absolute;
-  top: 123px;
-  width: 12px;
-  height: 12px;
-  background-image: url("/images/nataneVillage/Maml_Walk.png");
-  background-position: 12px top;
-}
-.fromR .mamlwalk{
-  position: absolute;
-  top: 129px;
-  width: 12px;
-  height: 12px;
-  background-image: url("/images/nataneVillage/Maml_WalkR.png");
-  background-position: 12px top;
-}
-
-.cloud{
-  background-image: url("/images/nataneVillage/cloud.png");
-  width: 118px;
-  height: 89px;
-  position: absolute;
-  z-index: 20;
-}
-
-  footer img {
-    width: 125px;
+    .road {
+      width: 100% !important;
+      height: 25%;
+      top: 115px;
+      z-index: 0;
+    }
   }
-  
-  footer p {
+
+  //右方向に動く
+  .fromL {
+    div {
+      left: 0;
+      overflow: hidden;
+    }
+
+    .shirenwalk {
+      position: absolute;
+      top: 116px;
+      width: 21px;
+      height: 17px;
+      background-image: url("/images/nataneVillage/shiren_Walk.png");
+      background-position: 21px top;
+      z-index: 1;
+    }
+
+    .mamlwalk {
+      position: absolute;
+      top: 123px;
+      width: 12px;
+      height: 12px;
+      background-image: url("/images/nataneVillage/Maml_Walk.png");
+      background-position: 12px top;
+      z-index: 1;
+    }
+
+    .cloud {
+      background-image: url("/images/nataneVillage/cloud.png");
+      width: 118px;
+      height: 89px;
+      position: absolute;
+      z-index: 20;
+    }
+  }
+
+  //左方向に動く
+  .fromR {
+    div {
+      left: 0;
+      overflow: hidden;
+    }
+
+    .mamlwalk {
+      position: absolute;
+      top: 129px;
+      width: 12px;
+      height: 12px;
+      background-image: url("/images/nataneVillage/Maml_WalkR.png");
+      background-position: 12px top;
+    }
+  }
+}
+
+//フッター
+footer {
+  width: 100%;
+  height: 150px;
+  padding-top: 30px;
+  z-index: 30;
+
+  p {
     color: #b3aeb5;
     font-size: 12px;
   }
-  
-  footer {
-    width: 100%;
-    height: 150px;
-    padding-top: 30px;
-    padding-bottom: 20px;
-    background-color: rgb(85, 85, 85);
-    position: absolute;
-    position: fixed;
-    bottom: 0;
-    z-index: 500;
+
+  img {
+    width: 125px;
   }
+}

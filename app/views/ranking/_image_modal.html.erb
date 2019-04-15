@@ -1,0 +1,20 @@
+<% if rank.recordimage != nil && rank.recordimage != "" then %>
+<div class="modal fade" id="imageModal<%=dungeonname+@num.to_s%>" tabindex="-1" role="dialog"
+    aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h2>記録画像</h2>
+                </div>
+            </div>
+            <div class="modal-body">
+                <%= image_tag rank.recordimage.to_s,{:class => "img-fluid"} %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>

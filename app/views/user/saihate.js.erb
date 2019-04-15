@@ -1,0 +1,2 @@
+$('#saihate_ranking_lists').append("<%= escape_javascript(render 'user_ranking',{ranks: @myranks[0]}) %>");
+$("#view_saihate").replaceWith("<%= escape_javascript(link_to_next_page(@myranks[0], 'もっと見る', params: { type: :saihate }, remote: true, class: "btn btn-light w-100", id: 'view_saihate')) %>");

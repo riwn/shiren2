@@ -1,0 +1,40 @@
+<%# タブのタイトル %>
+<% content_for :title do %>
+クイズ
+<% end %>
+
+<!-- ページのタイトル(一番上) -->
+<% content_for :mosttop do %>
+<div class="container-fluid">
+  <h1>クイズ</h1>
+</div>
+<% end %>
+
+<div class="container-fluid">
+  <h2>初心者向け</h2>
+  <div class="question_group">
+    <div class="question">
+      <div class="question_title">1階で出ないもののけは？</div>
+      <div class="choices">
+        <div class="choice available" id = "answer1">
+          <div class="label">ケロぼうず</div>
+        </div>
+        <div class="choice available">
+          <div class="label">マムル</div>
+        </div>
+        <div class="choice available">
+          <div class="label">チンタラ</div>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+    </div>
+    <div class="question">
+    </div>
+  </div>
+
+  <h2>中級者向け</h2>
+
+</div>
+
+<%= javascript_include_tag "quiz"%>

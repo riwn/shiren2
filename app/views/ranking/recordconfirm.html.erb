@@ -1,68 +1,75 @@
 <% content_for :title do %>
-    記録確認
+記録確認
 <% end %>
 
-<div class="container">
-<p>以下の内容で登録してもよろしいですか？？</p>
-<%= form_for @rank ,url:{action:"create"} do |r| %>
-<%= hidden_field_tag :"cache[image]", @rank.recordimage.cache_name %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body bg-light">
+                    <div class="card-text">
+                        <p>以下の内容で登録してもよろしいですか？？</p>
+                        <%= form_for @rank ,url:{action:"create"} do |r| %>
+                        <%= hidden_field_tag :"cache[image]", @rank.recordimage.cache_name %>
 
-    <table border="1">
-        <tr>
-            <td>名前</td>
-            <td><%= @rank.name %></td>
-            <%= r.hidden_field :name %>
-        </tr>
-            <td>ダンジョン</td>
-            <td><%= @rank.dungeon %></td>
-            <%= r.hidden_field :dungeon %>
-        <tr>
-            <td>記録</td>
-            <td><%= 
-                if @rank.result >= 3600 then
-                    (@rank.result.div(3600).to_s + "時間" + ((@rank.result.modulo(3600)).div(60)).to_s + "分" + ((@rank.result.modulo(3600)).modulo(60)).to_s + "秒")
-                else
-                    ((@rank.result.div(60)).to_s + "分" + (@rank.result.modulo(60)).to_s + "秒")
-                end
-            %>
-            </td>
-            <%= r.hidden_field :result %>
-            <%= hidden_field_tag "hour", params["hour"] %>
-            <%= hidden_field_tag "minute", params["minute"] %>
-            <%= hidden_field_tag "second", params["second"] %>
-        </tr>
-        <tr>
-            <td>URL</td>
-            <td><%= @rank.movie %></td>
-            <%= r.hidden_field :movie %>
-        </tr>
-        <tr>
-            <td>画像</td>
-            <td><%=
-            if @rank.recordimage.file.nil? then
-                "なし"
-            else
-                image_tag @rank.recordimage.url
-            end %></td>
-            <%= r.hidden_field :recordimage %>
-            <%= r.hidden_field :recordimage_cache %>
-        </tr>
-        <tr>
-            <td>達成日</td>
-            <td><%= @rank.resultdate %></td>
-            <%= r.hidden_field :resultdate %>
-        </tr>
-    </table>
-    <div class="actions">
-        <%= r.submit '投稿画面に戻る', name: 'back' %>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>名前</td>
+                                <td><%= @rank.name %></td>
+                                <%= r.hidden_field :name %>
+                            </tr>
+                            <tr>
+                                <td>ダンジョン</td>
+                                <td><%= @rank.dungeon %></td>
+                                <%= r.hidden_field :dungeon %>
+                            </tr>
+                            <tr>
+                                <td>記録</td>
+                                <td><%=
+                                    if @rank.result >= 3600 then
+                                        (@rank.result.div(3600).to_s + "時間" + ((@rank.result.modulo(3600)).div(60)).to_s + "分" + ((@rank.result.modulo(3600)).modulo(60)).to_s + "秒")
+                                    else
+                                        ((@rank.result.div(60)).to_s + "分" + (@rank.result.modulo(60)).to_s + "秒")
+                                    end
+                                    %>
+                                </td>
+                                <%= r.hidden_field :result %>
+                                <%= hidden_field_tag "hour", params["hour"] %>
+                                <%= hidden_field_tag "minute", params["minute"] %>
+                                <%= hidden_field_tag "second", params["second"] %>
+                            </tr>
+                            <tr>
+                                <td>URL</td>
+                                <td><%= @rank.movie %></td>
+                                <%= r.hidden_field :movie %>
+                            </tr>
+                            <tr>
+                                <td>画像</td>
+                                <td>
+                                    <%if @rank.recordimage.file.nil? then%>
+                                    なし
+                                    <%else%>
+                                    <%= image_tag @rank.recordimage.url,{:class => "img-fluid"} %>
+                                    <%= hidden_field_tag :"cache[recordimage]", @rank.recordimage.cache_name %>
+                                    <%end %>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="actions">
+                            <%= r.submit '投稿画面に戻る', name: 'back' ,class: "btn btn-warning btn-lg float-left" %>
+                        </div>
+                        <div class="actions">
+                            <%= r.submit '投稿する' ,class: "btn btn-primary btn-lg float-right" %>
+                        </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="actions">
-        <%= r.submit '投稿する' %>
-    </div>
-    <% end %>
 </div>
 
 <script>
-const natane = Document.getElementsByClassName("nataneVillage");
-natane.style.visibility ="hidden";
+    //ナタネ村を非表示する
+    document.getElementById("nataneVillage").style.display = "none";
 </script>

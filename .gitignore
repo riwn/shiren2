@@ -7,6 +7,12 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore bundler gems.
+vendor/bundle
+
+# Ignore bundler gems.
+/.vscode
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -23,10 +29,10 @@
 /node_modules
 /yarn-error.log
 
-/public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-#test
+# Ignore Record Image
+/public/uploads

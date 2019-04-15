@@ -1,0 +1,2 @@
+$('#well_ranking_lists').append("<%= escape_javascript(render 'user_ranking',{ranks: @myranks[1]}) %>");
+$("#view_well").replaceWith("<%= escape_javascript(link_to_next_page(@myranks[1], 'もっと見る', params: { type: :well }, remote: true, class: "btn btn-light w-100", id: 'view_well')) %>");

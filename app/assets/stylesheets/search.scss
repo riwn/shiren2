@@ -1,28 +1,28 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.searchresult{
-    width:50%;
-}
-.contents{
-    position: relative;
-    text-align: left;
+.searchresult {
+  width: 50%;
 }
 
-.contents .liveicon{
-    width:30px;
-    height: auto;
-    position: absolute;
-
-}
-.contents .title{
-    padding-left: 40px;
-    text-align: center;
+.liveicon {
+  width: 50px;
+  height: auto;
 }
 
-.niconicoicon{
-    width:30px;
+.title {
+  padding-left: 40px;
+  text-align: center;
 }
-.youtubeicon{
-    color:red;
+
+.niconicoicon {
+  width: 30px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+.youtubeicon {
+  color: red;
+  padding-right: 40px;
+  margin-left: 40px;
 }

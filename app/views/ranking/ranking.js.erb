@@ -1,0 +1,2 @@
+$('#ranking_lists').append("<%= escape_javascript(render 'ranking_list',{ranks: @ranks}) %>");
+$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@ranks, 'もっと見る', remote: true, id: 'view_more')) %>");

@@ -1,0 +1,47 @@
+<% if ranks.offset_value.nil? %>
+<% @num = 0 %>
+<%else%>
+<% @num = ranks.offset_value %>
+<%end%>
+<% ranks.each do |rank| %>
+<% @num = @num + 1 %>
+
+<div class="border border-dark">
+    <div class="row m-0">
+        <div class="col-4 <%= RankColor(@num) %> border-bottom d-flex align-items-center">
+            <p class="h3 p-3 mx-auto">
+                <%= @num %>位
+            </p>
+        </div>
+        <div class="col-8 rankname border-bottom d-flex align-items-center">
+            <p class="h5 p-3 mx-auto">
+                <% if rank.user_id != nil then %>
+                <%= link_to rank.name, "/user/#{rank.user_id}"%>
+                <% else %>
+                <%= rank.name %>
+                <% end %>
+            </p>
+        </div>
+        <div class="col-12 d-flex align-items-center">
+            <p class="h3 p-3 mx-auto"><%= GetResultTime(rank.result) %></p>
+            <div class="float-right d-flex align-items-center">
+                <% if rank.movie != nil && rank.movie != "" then %>
+                <%= link_to rank.movie, target: "_blank" do %>
+                <button type="button" class="btn btn-info rounded-pill">動画</button>
+                <% end %>
+                <% else %>
+                <button type="button" class="btn btn-info rounded-pill" disabled>動画</button>
+                <% end %>
+
+                <% if rank.recordimage.url != nil && rank.recordimage.url != "" then %>
+                <button type="button" class="btn btn-info rounded-pill m-3" data-toggle="modal"
+                    data-target="#imageModal<%=dungeonname+@num.to_s%>">画像</button>
+                <%= render 'ranking/image_modal', {rank: rank,dungeonname:dungeonname,num: @num} %>
+                <% else %>
+                <button type="button" class="btn btn-info rounded-pill m-3" disabled>画像</button>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>

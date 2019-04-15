@@ -1,0 +1,50 @@
+// Place all the styles related to the quiz controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.question_group .question {
+  padding: 1em;
+  border: solid 2px #c52929;
+  border-radius: 0.8em;
+  background-color: #f1f1f1;
+  font-size: 1em;
+  // background-image: url(/assets/logo_repeat.png);
+  margin-bottom: 1.2em;
+}
+
+.question_group .question .question_title {
+  margin-bottom: 0.8em;
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 1.4em;
+  display: block;
+  white-space: pre-line;
+}
+
+.question_group .question .choices {
+  padding: 0.2em;
+}
+
+.question_group .question .choices .choice {
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0.8em 1.4em;
+  background-color: white;
+  border: solid 2px #c52929;
+  border-radius: 2em;
+  font-weight: bold;
+  font-size: 1em;
+  color: #c52929;
+  list-style-type: none;
+  display: flex;
+}
+
+// 正解
+.correct_choice {
+  background-color: #d4ffef;
+}
+
+// 不正解
+.incorrect_choice {
+  background-color: #ffd4d4;
+}

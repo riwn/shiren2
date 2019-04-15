@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      rank:
+        name: 名前
+        recordimage: 画像
+        movie: 動画
+        movie_or_image: 動画URL または 画像
