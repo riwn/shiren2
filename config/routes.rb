@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   get "/search" => "search#result"
   get "/ta" => "home#ta"
   get "/ta/chapter1" =>"saihateta#chapter1"
-  get "/ta/chapter2" =>"saihateta#chapter1"
+  get "/ta/chapter2" =>"saihateta#chapter2"
+  get "/ta/chapter3" =>"saihateta#chapter3"
+  get "/ta/chapter4" =>"saihateta#chapter4"
+  get "/ta/chapter5" =>"saihateta#chapter5"
+  get "/ta/chapter6" =>"saihateta#chapter6"
   get "/ranking" => redirect {"/"}
   post "/ranking" => "ranking#create"
 
@@ -17,5 +21,6 @@ Rails.application.routes.draw do
   get "/ranking/:dungeon" => "ranking#dungeon"
   get  "/ranking/:dungeon/:yyyymm" =>"ranking#dungeon"
 
+  get "/historys" => "historys#tournaments"
 
 end

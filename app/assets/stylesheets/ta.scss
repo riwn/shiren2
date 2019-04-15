@@ -9,53 +9,57 @@ Author: Richard Clark - http://richclarkdesign.com
 Twitter: @rich_clark
 */
 
-.slide-top .title{
+button:focus {
+  outline: none;
+}
+
+.slide-top .title {
   height: 20%;
 }
 
-.slide-top .top-description{
-  height:30%;
+.slide-top .top-description {
+  height: 30%;
 }
 
-.slide-top .top-figure{
-  height:50%;
+.slide-top .top-figure {
+  height: 50%;
 }
 
-.slide-top .top-description p{
-    font-size: 47.65% ;
-    margin-top: 0;
+.slide-top .top-description p {
+  font-size: 47.65%;
+  margin-top: 0;
 }
 
-.emphasis{
+.emphasis {
   color: rgb(9, 175, 224);
   font-weight: bold;
   padding: 0px 1px;
 }
 
-.talk{
-    display: block;
+.talk {
+  display: block;
 }
 
-.balloon-left{
-    display: inline-block;
+.balloon-left {
+  display: inline-block;
 }
 
-.balloon-right{
-    display: inline-block;
+.balloon-right {
+  display: inline-block;
 }
 
-.descpeople-left .balloon-left{
-    background-color: white;
-    position: relative;
-    padding: 20px;
-    margin:1% 3%;
-    text-align: center;
-    width:70%;
-    border-radius: 10px;
+.descpeople-left .balloon-left {
+  background-color: white;
+  position: relative;
+  padding: 20px;
+  margin: 1% 3%;
+  text-align: center;
+  width: 70%;
+  border-radius: 10px;
 }
 
 .descpeople-left .balloon-left:before {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 0;
@@ -71,21 +75,21 @@ Twitter: @rich_clark
   margin: 0;
   padding: 0;
   color: black;
-  font-size: 40% ;
+  font-size: 40%;
 }
 
-.descpeople-right .balloon-right{
-    background-color: white;
-    position: relative;
-    padding: 20px;
-    margin:1% 3%;
-    text-align: center; 
-    width:70%;
-    border-radius: 10px;
+.descpeople-right .balloon-right {
+  background-color: white;
+  position: relative;
+  padding: 20px;
+  margin: 1% 3%;
+  text-align: center;
+  width: 70%;
+  border-radius: 10px;
 }
 
 .descpeople-right .balloon-right:before {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 0;
@@ -101,52 +105,51 @@ Twitter: @rich_clark
   margin: 0;
   padding: 0;
   color: black;
-  font-size: 40% ;
- 
+  font-size: 40%;
 }
 
-.descpeople-left img{
-width: 50px;
-display: inline-block;
-vertical-align: middle;
-border:0px none !important;
-background: rgba(255, 255, 255, 0) !important;
-box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-}
-
-.descpeople-right img{
-width: 50px;
-display: inline-block;
-vertical-align: middle;
-border:0px none !important;
-background: rgba(255, 255, 255, 0) !important;
-box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-}
-
-.description-header{
-  display: block ;
-  height:40% !important;
-  width:100% !important;
-}
-
-.description-header .description-title{
-    display: inline-block;
-    margin-right:5%;
-    vertical-align: top;
-}
-
-.description-header .desc-description{
+.descpeople-left img {
+  width: 50px;
   display: inline-block;
-  text-align:start;
+  vertical-align: middle;
+  border: 0px none !important;
+  background: rgba(255, 255, 255, 0) !important;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+}
+
+.descpeople-right img {
+  width: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  border: 0px none !important;
+  background: rgba(255, 255, 255, 0) !important;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+}
+
+.description-header {
+  display: block;
+  height: 40% !important;
+  width: 100% !important;
+}
+
+.description-header .description-title {
+  display: inline-block;
+  margin-right: 5%;
+  vertical-align: top;
+}
+
+.description-header .desc-description {
+  display: inline-block;
+  text-align: start;
   width: 60%;
   font-size: 16px;
 }
 
-.desc-free{
+.desc-free {
   display: block !important;
-  height:60% !important;
+  height: 60% !important;
 }
 
-.desc-free img{
+.desc-free img {
   display: inline-block;
 }

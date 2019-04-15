@@ -22,30 +22,32 @@ class RankingController < ApplicationController
     end
 
     def dungeon
-        dungeonname = ""
+        @dungeonname = ""
         if params[:dungeon] == "saihate"
-            dungeonname = "最果てへの道99FTA"
+            @dungeonname = "最果てへの道99FTA"
         elsif params[:dungeon] == "well"
-            dungeonname = "カラクロTA"
+            @dungeonname = "カラクロTA"
         elsif params[:dungeon] == "onigashima"
-            dungeonname = "鬼ヶ島ありありTA"
+            @dungeonname = "鬼ヶ島ありありTA"
         elsif params[:dungeon] == "shrine"
-            dungeonname = "女王グモ捕獲TA"
+            @dungeonname = "女王グモ捕獲TA"
         elsif params[:dungeon] == "story"
-            dungeonname = "ストーリーTA"
+            @dungeonname = "ストーリーTA"
         elsif params[:dungeon] == "all"
-            dungeonname = "歴代TA"
+            @dungeonname = "歴代TA"
         end
 
         @dungeonurl = params[:dungeon]
-        @ranks = rankchoose(dungeonname)
+        @ranks = rankchoose(@dungeonname)
         @archives =getArchive(@ranks)
         if params[:yyyymm] != nil
-            @yyyymm = params[:yyyymm]
-            @ranks = @ranks.where("strftime('%Y%m', created_at) = '"+@yyyymm+"'")
-            @rankingtitle = "#{@yyyymm[0,4]}年#{@yyyymm[4,2]}月 #{dungeonname}ランキング"
+            if(params[:yyyymm]=~ /^[0-9]+$/)
+                @yyyymm = params[:yyyymm]
+                @ranks = @ranks.where("strftime('%Y%m', created_at) = '"+@yyyymm+"'")
+                @rankingtitle = "#{@yyyymm[0,4]}年#{@yyyymm[4,2]}月 #{@dungeonname}ランキング"
+            end
         else
-            @rankingtitle = dungeonname + " 歴代ランキング"
+            @rankingtitle = @dungeonname + " 歴代ランキング"
         end
         render 'ranking'
     end
@@ -59,7 +61,7 @@ class RankingController < ApplicationController
             render 'newrecord'
         elsif @rank.save! then
             redirect_to "/ranking"
-        else        
+        else
             render 'newrecord'
         end
     end

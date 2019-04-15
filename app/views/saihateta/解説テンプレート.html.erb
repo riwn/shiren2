@@ -1,0 +1,96 @@
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<div class="slide-chaptop">
+				<div class="chaptop-title">
+					<h5>会話のタイトル</h5>
+				</div>
+				<div class="talk">
+					<div class="descpeople-left">
+						<img src="/images/Riku.png">
+						<div class="balloon-left">
+							<p>
+								<span>会話1</span>
+							</p>
+						</div>
+					</div>
+					<div class="descpeople-right">
+						<div class="balloon-right">
+							<span>
+								<span>会話2<span class="emphasis">(強調)</span></span>
+							</span>
+						</div>
+						<img src="/images/Daruma.png">
+					</div>
+					<div class="descpeople-left">
+						<img src="/images/Riku.png">
+						<div class="balloon-left">
+							<p>
+							<span>会話3</span>
+							</p>
+						</div>
+					</div>
+					<div class="descpeople-right">
+						<div class="balloon-right">
+							<p>
+								<span></span>
+							</p>
+						</div>
+						<img src="/images/Daruma.png">
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="slide-description">
+				<div class="description-header">
+					<div class="description-title">
+						<h5>解説タイトル</h5>
+					</div>
+					<div class="desc-description">
+						<p>
+							<span>解説右上</span>
+						</p>
+					</div>
+				</div>
+				<div class="desc-free">
+					<img src="/images/1.png">
+					<p>画像入れる場所</p>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+		<%= content_for :footer do %>
+				<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: false,
+				center: true,
+				overview: false,
+				mouseWheel: true,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					//{ src: '/app/assets/javascripts/revealjs/classList.js', condition: function() { return !document.body.classList; } },
+					//{ src: '/app/assets/javascripts/revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					//{ src: '/app/assets/javascripts/revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					//{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					//{ src: 'revealjs/plugin/search/search.js', async: true },
+					//{ src: 'revealjs/plugin/zoom-js/zoom.js', async: true },
+					//{ src: 'revealjs/plugin/notes/notes.js', async: true }
+					//{ src: 'revealjs/plugin/markdown/marked.js' },
+					//{ src: 'revealjs/plugin/markdown/markdown.js' }
+					//{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+
+		</script>
+		<% end %>

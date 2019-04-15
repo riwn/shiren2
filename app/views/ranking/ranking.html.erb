@@ -4,13 +4,13 @@
 <% content_for :mosttop do %>
 
 <div class="container">
-    <h1><%= @rankingtitle %></h1>
+    <h1>シレン2総合番付</h1>
 </div>
 
 <% end %>
 
 <div class="container">
-    <%= button_to("申請","/ranking/newrecord",method: :get) %>
+    <h2><%= @rankingtitle %></h2>
     <table border="1">
         <tr>
             <td>名前</td>
@@ -20,14 +20,13 @@
             <td>達成日</td>
             <td>申請日</td>
             <td>画像</td>
-            
         </tr>
     <% if @ranks != nil %>
         <% @ranks.each do |rank| %>
         <tr>
             <td><%= rank.name %></td>
             <td><%= rank.dungeon %></td>
-            <td><%= 
+            <td><%=
                 if rank.result >= 3600 then
                     (rank.result.div(3600).to_s + "時間" + ((rank.result.modulo(3600)).div(60)).to_s + "分" + ((rank.result.modulo(3600)).modulo(60)).to_s + "秒")
                 else
@@ -53,6 +52,7 @@
         <% end %>
     <% end %>
     </table>
+    <%= button_to("申請","/ranking/newrecord",method: :get) %>
     <h4 class="font-italic">過去ログ</h4>
     <%= link_to "歴代ランキング", "/ranking/#{@dungeonurl}" %>
     <% if @archives != nil %>

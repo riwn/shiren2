@@ -1,86 +1,87 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
-    background-color: #e9c298;
-  }
-
-  main{
-    margin-top: 100px;
-    padding-bottom: 160px;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  .clear {
-    clear: left;
-  }
-  
-  .container {
-    max-width: 1920px;
-    width: 100%;
-    padding: 0 15px;
-    margin: 0 auto;
-  }
-  
-  .fa {
-    margin-right: 5px;
-  }
-  
-  header {
-    height: 65px;
-    width: 100%;
-    background-color: rgba(34, 49, 52, 0.9);
-    position :fixed;
-    top: 0;
-    z-index: 10;
-  }
-  
-  .logo {
-    line-height: 65px;
-    padding: 0 25px;
-  }
-
-.logo path{
-  z-index:15;
+  box-sizing: border-box;
 }
-  
-  .header-left {
-    float: left;
-  }
-  
-  .header-right {
-    float: right;
-    margin-right: -25px;
-  }
-  
-  .header-right a {
-    line-height: 65px;
-    padding: 0 25px;
-    color: white;
-    display: block;
-    float: left;
-    transition: all 0.5s;
-  }
-  
-  .header-right a:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-  
-  /* menu-iconのCSSを貼り付けてください */
-  .menu-icon {
-    color: white;
-    float: right;
-    font-size: 25px;
-    padding: 21px 0;
-    /* displayをnoneに指定してください */
-    display:none;
-  }
+
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo,
+    メイリオ, Osaka, "MS PGothic", arial, helvetica, sans-serif;
+  background-color: #e9c298;
+}
+
+main {
+  margin-top: 100px;
+  padding-bottom: 160px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.clear {
+  clear: left;
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+header {
+  height: 65px;
+  width: 100%;
+  background-color: rgba(34, 49, 52, 0.9);
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  line-height: 65px;
+  padding: 0 25px;
+}
+
+.logo path {
+  z-index: 15;
+}
+
+.header-left {
+  float: left;
+}
+
+.header-right {
+  float: right;
+  margin-right: -25px;
+}
+
+.header-right a {
+  line-height: 65px;
+  padding: 0 25px;
+  color: white;
+  display: block;
+  float: left;
+  transition: all 0.5s;
+}
+
+.header-right a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* menu-iconのCSSを貼り付けてください */
+.menu-icon {
+  color: white;
+  float: right;
+  font-size: 25px;
+  padding: 21px 0;
+  /* displayをnoneに指定してください */
+  display: none;
+}
 
 /* line 1429, ../sass/common.scss */
 .nataneVillage {
@@ -88,80 +89,80 @@
   position: relative;
 }
 
-.nataneDungeon img{
-  width:128px;
+.nataneDungeon img {
+  width: 128px;
   position: absolute;
-  text-align:center;
+  text-align: center;
 }
-.fullmoon{
-  left:10%;
-  top:60px;
-  width:30px !important;
+.fullmoon {
+  left: 10%;
+  top: 60px;
+  width: 30px !important;
   z-index: 5;
 }
 
-.onigashima{
-  left:10%;
-  top:40px;
+.onigashima {
+  left: 10%;
+  top: 40px;
 }
 
-.story{
-  left:29%;
-  top:50px;
+.story {
+  left: 29%;
+  top: 50px;
 }
 
-.mumyu{
-  left:47%;
-  top:67px;
+.mumyu {
+  left: 47%;
+  top: 67px;
 }
 
-.well{
-  width:50px !important;
-  left:69%;
-  top:74px;
+.well {
+  width: 50px !important;
+  left: 69%;
+  top: 74px;
 }
 
-.well2{
-  width:80px !important;
-  left:63%;
-  top:87px;
+.well2 {
+  width: 80px !important;
+  left: 63%;
+  top: 87px;
 }
 
-.shrine{
-  left:75%;
-  top:65px;
-  width:150px !important;
+.shrine {
+  left: 75%;
+  top: 65px;
+  width: 150px !important;
 }
-.shrine2{
-  left:82%;
-  top:45px;
+.shrine2 {
+  left: 82%;
+  top: 45px;
 }
 
-.road{
-  width:100% !important;
-  height:25%;
-  top:115px;
+.road {
+  width: 100% !important;
+  height: 25%;
+  top: 115px;
   z-index: -10;
 }
 
-.nataneVillage hr{
-  border:none;
-  top:90px;
-  height:3px;
-  width:100%;
+.nataneVillage hr {
+  border: none;
+  top: 90px;
+  height: 3px;
+  width: 100%;
   background-color: black;
   position: absolute;
   display: none;
 }
 
 /* line 1453, ../sass/common.scss */
-.nataneVillage .fromL div{
+.nataneVillage .fromL div {
   display: none;
   left: 0;
   overflow: hidden;
 }
 
-.nataneVillage .fromR div{
+.nataneVillage .fromR div {
   display: none;
   left: 0;
   overflow: hidden;
@@ -183,7 +184,7 @@
   background-image: url("/images/nataneVillage/Maml_Walk.png");
   background-position: 12px top;
 }
-.fromR .mamlwalk{
+.fromR .mamlwalk {
   position: absolute;
   top: 129px;
   width: 12px;
@@ -192,7 +193,7 @@
   background-position: 12px top;
 }
 
-.cloud{
+.cloud {
   background-image: url("/images/nataneVillage/cloud.png");
   width: 118px;
   height: 89px;
@@ -200,23 +201,23 @@
   z-index: 20;
 }
 
-  footer img {
-    width: 125px;
-  }
-  
-  footer p {
-    color: #b3aeb5;
-    font-size: 12px;
-  }
-  
-  footer {
-    width: 100%;
-    height: 150px;
-    padding-top: 30px;
-    padding-bottom: 20px;
-    background-color: rgb(85, 85, 85);
-    position: absolute;
-    position: fixed;
-    bottom: 0;
-    z-index: 500;
-  }
+footer img {
+  width: 125px;
+}
+
+footer p {
+  color: #b3aeb5;
+  font-size: 12px;
+}
+
+footer {
+  width: 100%;
+  height: 150px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  background-color: rgb(85, 85, 85);
+  position: absolute;
+  position: fixed;
+  bottom: 0;
+  z-index: 500;
+}

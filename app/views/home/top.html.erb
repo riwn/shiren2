@@ -11,16 +11,16 @@
 <% content_for :mosttop do %>
 <div class="sliders">
   <ul id="sb-slider" class="sb-slider">
-    <li><img src="images/1.png" title="キャプション1"></li>
-    <li><img src="images/1.png" title="キャプション1"></li>
-    <li><img src="images/1.png" title="キャプション1"></li>
-    <li><img src="images/1.png" title="キャプション1"></li>
-    <li><img src="images/1.png" title="キャプション1"></li>
-    <li><img src="images/1.png" title="キャプション1"></li>
+    <li><img src="images/top-notice/making.png" title="キャプション1"></li>
+    <li><img src="images/top-notice/making2.png" title="キャプション1"></li>
+    <li><img src="images/top-notice/making.png" title="キャプション1"></li>
+    <li><img src="images/top-notice/making2.png" title="キャプション1"></li>
+    <li><img src="images/top-notice/making.png" title="キャプション1"></li>
+    <li><img src="images/top-notice/making2.png" title="キャプション1"></li>
   </ul>
-  <div id="nav-arrows" class="nav-arrows"> 
-    <a href="#"> <p><%= fa_icon("chevron-right 5x") %></p> </a> 
-    <a href="#"> <p><%= fa_icon("chevron-left 5x") %></p> </a> 
+  <div id="nav-arrows" class="nav-arrows">
+    <a href="#"> <p><%= fa_icon("chevron-right 5x") %></p> </a>
+    <a href="#"> <p><%= fa_icon("chevron-left 5x") %></p> </a>
   </div>
 </div>
 <% end %>
@@ -29,7 +29,7 @@
   <a href="/ta">
     <p>タイムアタック</p>
   </a>
-  <%= 
+  <%=
   d = Date.today
   yyyymm = d.year.to_s + ("%02d" % d.month).to_s
   link_to "ランキング", "/ranking/#{yyyymm}" %>

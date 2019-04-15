@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_103027) do
+ActiveRecord::Schema.define(version: 2019_04_14_052138) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 2019_04_03_103027) do
     t.datetime "updated_at", null: false
     t.string "recordimage"
     t.integer "permission"
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.text "name"
+    t.text "eventdate"
+    t.text "organizer"
+    t.text "rule"
+    t.text "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

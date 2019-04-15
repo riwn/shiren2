@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  eventdate: MyText
+  organizer: MyText
+  rule: MyText
+  result: MyText
+
+two:
+  name: MyText
+  eventdate: MyText
+  organizer: MyText
+  rule: MyText
+  result: MyText
