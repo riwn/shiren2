@@ -18,7 +18,7 @@
             <%= r.hidden_field :dungeon %>
         <tr>
             <td>記録</td>
-            <td><%= 
+            <td><%=
                 if @rank.result >= 3600 then
                     (@rank.result.div(3600).to_s + "時間" + ((@rank.result.modulo(3600)).div(60)).to_s + "分" + ((@rank.result.modulo(3600)).modulo(60)).to_s + "秒")
                 else

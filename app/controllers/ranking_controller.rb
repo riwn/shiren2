@@ -18,7 +18,7 @@ class RankingController < ApplicationController
     def ranking
         @ranks = rankchoose("歴代TA")
         @archives =getArchive(@ranks)
-        @rankingtitle = "歴代TAランキング"
+        @datetitle = "歴代ランキング"
     end
 
     def dungeon
@@ -44,10 +44,10 @@ class RankingController < ApplicationController
             if(params[:yyyymm]=~ /^[0-9]+$/)
                 @yyyymm = params[:yyyymm]
                 @ranks = @ranks.where("strftime('%Y%m', created_at) = '"+@yyyymm+"'")
-                @rankingtitle = "#{@yyyymm[0,4]}年#{@yyyymm[4,2]}月 #{@dungeonname}ランキング"
+                @datetitle = "#{@yyyymm[0,4]}年#{@yyyymm[4,2]}月"
             end
         else
-            @rankingtitle = @dungeonname + " 歴代ランキング"
+            @datetitle = " 歴代ランキング"
         end
         render 'ranking'
     end

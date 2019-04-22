@@ -22,17 +22,20 @@
 			<nav class="menu-top">
 				<div class="profile"><img src="/images/top-notice/shiren2a.png" alt="Matthew Greenberg"/><span>大型地雷君</span></div>
 				<div class="icon-list">
-					<a href="#"><%= fa_icon("star") %></a>
-					<a href="#"><%= fa_icon("bell") %></a>
-					<a href="#"><%= fa_icon("envelope") %></a>
-					<a href="#"><%= fa_icon("comment") %></a>
+					<a href="/search">放送検索</a>
+          			<a href="/ta">タイムアタック</a>
+					<%= link_to "ランキング","/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %>
 				</div>
 			</nav>
 			<nav class="menu-side">
 				<a href="/ta/chapter1">1.最果て99FTAとは</a>
-				<a href="/ta/chapter2">2.最果てTAの基礎</a>
-				<a href="/ta/chapter3">3.レベリングについて</a>
-				<a href="/ta/chapter4">4.力上げについて</a>
+				<a href="/ta/chapter2">2.レベリング</a>
+				<a href="/ta/chapter3">3.レベリング</a>
+				<a href="/ta/chapter4">4.レベリング</a>
+				<a href="/ta/chapter5">5.根田安モンスター</a>
+				<a href="/ta/chapter4">6.レベリング</a>
+				<a href="/ta/chapter4">7.レベリング</a>
+				<a href="/ta/chapter4">8.レベリング</a>
 			</nav>
 		</div>
 		<button class="menu-button" id="open-button">Open Menu</button>

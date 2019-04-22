@@ -1,3 +1,38 @@
 // Place all the styles related to the ranking controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.dungeontitle {
+  position: relative;
+
+  h2 {
+    position: relative;
+    z-index: 10;
+    padding-top: 20px;
+    font-size: 4vmin;
+    max-width: 600px;
+    color: #000;
+    -webkit-text-stroke: 0.3px #fff;
+  }
+
+  svg {
+    position: absolute;
+    width: 35vmin;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto 0;
+  }
+}
+
+.rankingcontents {
+  .dungeontitle {
+    display: inline-block;
+  }
+
+  .rankingtable {
+    padding-left: 50px;
+    display: inline-block;
+  }
+}
