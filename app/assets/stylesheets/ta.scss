@@ -9,6 +9,8 @@ Author: Richard Clark - http://richclarkdesign.com
 Twitter: @rich_clark
 */
 
+$balloon-color: #f0e68c;
+
 //吹き出しのテキスト
 @mixin balloonText {
   margin: 0;
@@ -30,7 +32,7 @@ Twitter: @rich_clark
 //吹き出しのフォーマット
 @mixin balloonFormat {
   display: inline-block;
-  background-color: white;
+  background-color: $balloon-color;
   position: relative;
   padding: 20px;
   margin: 1% 3%;
@@ -43,9 +45,7 @@ Twitter: @rich_clark
     display: block;
     width: 0;
     height: 0;
-
     top: 20px;
-
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
   }
@@ -89,7 +89,7 @@ Twitter: @rich_clark
       @include balloonFormat;
       &::before {
         left: -15px;
-        border-right: 15px solid white;
+        border-right: 15px solid $balloon-color;
       }
       p {
         @include balloonText;
@@ -106,7 +106,7 @@ Twitter: @rich_clark
       @include balloonFormat;
       &::before {
         right: -15px;
-        border-left: 15px solid white;
+        border-left: 15px solid $balloon-color;
       }
       p {
         @include balloonText;
