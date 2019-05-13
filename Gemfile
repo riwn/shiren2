@@ -66,6 +66,9 @@ gem 'carrierwave'
 gem "jquery-rails"
 
 # 管理画面
-gem 'activeadmin'
+gem 'rails_admin', '~> 1.3'
 gem 'devise'
-gem 'active_admin_flat_skin'
+gem 'cancancan'
+
+#日本語化
+gem 'rails-i18n', '~> 5.1'

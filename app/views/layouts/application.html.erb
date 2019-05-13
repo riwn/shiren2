@@ -32,6 +32,11 @@
           <a href="/search">放送検索</a>
           <a href="/ta">タイムアタック</a>
           <%= link_to "ランキング","/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %>
+          <% if user_signed_in?%>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <% elsif %>
+          <%= link_to "ログイン",new_user_session_path %>
+          <% end %>
         </div>
       </div>
     </header>
