@@ -63,14 +63,19 @@
             <td>ダンジョン</td>
             <td>記録</td>
             <td>URL</td>
-            <td>達成日</td>
             <td>申請日</td>
             <td>画像</td>
         </tr>
     <% if @ranks != nil %>
         <% @ranks.each do |rank| %>
         <tr>
-            <td><%= rank.name %></td>
+            <td><%=
+                if rank.user_id != nil then
+                    link_to rank.name, "/user/#{rank.user_id}"
+                else
+                    rank.name
+                end
+            %></td>
             <td><%= rank.dungeon %></td>
             <td><%=
                 if rank.result >= 3600 then
@@ -86,7 +91,6 @@
             <%= link_to "動画", rank.movie %>
             <% end %>
             </td>
-            <td><%= rank.resultdate.year %>/<%= rank.resultdate.month %>/<%= rank.resultdate.day %></td>
             <td><%= rank.created_at.year %>/<%= rank.created_at.month %>/<%= rank.created_at.day %></td>
             <td>なし
             <!--<% if rank.recordimage == "" then %>

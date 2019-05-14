@@ -29,13 +29,13 @@
                 <tr>
                     <td>
                     <div class="contents">
-                        <%= 
+                        <%=
                         channel = getYoutubeChannelJson(data["snippet"]["channelId"])
                         image_tag(channel["items"][0]["snippet"]["thumbnails"]["default"]["url"], :class => "liveicon") %>
                         <p class="title" ><%= link_to "#{data["snippet"]["title"]}", "https://www.youtube.com/watch?v=#{data["id"]["videoId"]}" %></p>
                         <%= fa_icon("youtube 3x", class: "youtubeicon") %>
-                        <p class="viewer"><%= fa_icon("eye") %> 
-                        <%= 
+                        <p class="viewer"><%= fa_icon("eye") %>
+                        <%=
                         live = getYoutubeLiveJson(data["id"]["videoId"])
                         live["items"][0]["liveStreamingDetails"]["concurrentViewers"]%></p>
                     </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_13_154715) do
+ActiveRecord::Schema.define(version: 2019_05_14_115105) do
 
   create_table "items", force: :cascade do |t|
     t.text "name"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2019_05_13_154715) do
     t.text "dungeon"
     t.integer "result"
     t.text "movie"
-    t.date "resultdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "recordimage"

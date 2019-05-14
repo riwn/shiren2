@@ -9,8 +9,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application'%>
-    <%= javascript_include_tag "village/VillageWalk"%>
-    <%= javascript_include_tag "animejs/anime.min"%>
   </head>
 
   <body>
@@ -43,45 +41,7 @@
     </header>
     <main>
     <%= yield :mosttop %>
-    <div class = "nataneVillage">
-      <div class = "nataneDungeon">
-        <a href="#"><img class="fullmoon" src="/images/nataneVillage/FullMoon.png"></a>
-          <%= link_to "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/nataneVillage/Onigashima.png", { :class => "onigashima" } %>
-          <% end %>
-          <%= link_to "/ranking/story/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/nataneVillage/Story.png", { :class => "story" } %>
-          <% end %>
-          <%= link_to "/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/nataneVillage/Mumyu.png", { :class => "mumyu" } %>
-          <% end %>
-          <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/nataneVillage/Well.png", { :class => "well" } %>
-          <% end %>
-          <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/nataneVillage/Well2.png", { :class => "well2" } %>
-          <% end %>
-          <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/nataneVillage/Shrine.png", { :class => "shrine" } %>
-          <% end %>
-          <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-          <%= image_tag "/images/nataneVillage/Shrine2.png", { :class => "shrine2" } %>
-          <% end %>
-          <img src="/images/nataneVillage/Road.png" class = "road">
-      </div>
-      <div class = "fromL">
-        <div class="cloud cloudL1"></div>
-        <div class="cloud cloudL2"></div>
-        <div class="cloud cloudL3"></div>
-        <a href="/search"><div class="shirenwalk shirenL1"></div></a>
-        <div class="mamlwalk mamlL1"></div>
-      </div>
-      <div class = "fromR">
-        <div class="mamlwalk mamlR1"></div>
-      </div>
-    </div>
     <%= yield %>
-
     </main>
     <footer>
       <div class="container">
@@ -95,18 +55,5 @@
         <p>10万回遊べるRPG</p>
       </div>
     </footer>
-    <script>
-      Village_Walk();
-      var timeline = anime.timeline();
-        timeline.add({
-        targets: '.lines path',
-        strokeDashoffset: [anime.setDashoffset, 0],
-        easing: 'easeInOutSine',
-        duration: 20000,
-        delay: function(el, i) { return i * 250 },
-        direction: 'alternate',
-        loop: false
-  })
-    </script>
   </body>
 </html>

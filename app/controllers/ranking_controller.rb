@@ -97,13 +97,15 @@ class RankingController < ApplicationController
             @rank.name = current_user.name
             @rank.user_id = current_user.id
         end
+        render :layout => "novillage"
     end
 
     #確認画面へ行くときのデータ運びとバリデーション
     def recordconfirm
         @rank = Rank.new(rank_params)
         @rank[:result]= params["hour"].to_i * 3600 + params["minute"].to_i * 60 + params["second"].to_i
-        render :newrecord if @rank.invalid? || !(@rank[:resultdate].to_date <= Date.today)
+        render :newrecord if @rank.invalid?
+        render :layout => "novillage"
     end
 
     #申請後確認画面でOKを押したとき

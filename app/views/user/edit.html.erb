@@ -1,0 +1,33 @@
+<% content_for :title do %>
+    マイデータ編集
+<% end %>
+<% content_for :mosttop do %>
+
+<div class="container">
+    <h1><%= @user.name %>のデータ編集</h1>
+</div>
+
+<% end %>
+<div class="container">
+<%= form_tag("/user/#{@user.id}/update") do %>
+    <table border="1">
+        <tr>
+            <td>ニコニココミュ</td>
+            <td><textarea name="niconico"><%= @user.niconico %></textarea></td>
+        </tr>
+        <tr>
+            <td>Youtubeチャンネル</td>
+            <td><textarea name="youtube"><%= @user.youtube %></textarea></td>
+        </tr>
+        <tr>
+            <td>Twitchチャンネル</td>
+            <td><textarea name="twitch"><%= @user.twitch %></textarea></td>
+        </tr>
+        <tr>
+            <td>CaveTubeチャンネル</td>
+            <td><textarea name="cavetube"><%= @user.cavetube %></textarea></td>
+        </tr>
+    </table>
+    <input type="submit" value="編集">
+<% end %>
+</div>
