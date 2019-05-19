@@ -2,22 +2,6 @@ class RankingController < ApplicationController
 
     ######################################################メソッド########################################################
 
-    #データベースからダンジョンに応じたデータを取得
-    def rankchoose(dungname)
-        if dungname == "歴代TA"
-            return Rank.where(permission: 1)
-        end
-        return Rank.where(dungeon: dungname)
-    end
-
-    #アーカイブのデータを取得する
-    def getArchive(rankdata)
-        if rankdata!= nil
-            return rankdata.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
-        end
-        return nil
-    end
-
     #URLからダンジョンの名前を取得
     def getDungeonName(dungeonURLStr)
         if dungeonURLStr == "saihate"
@@ -30,8 +14,6 @@ class RankingController < ApplicationController
             return "女王グモ捕獲TA"
         elsif dungeonURLStr == "story"
             return "ストーリーTA"
-        elsif dungeonURLStr == "all"
-            return "歴代TA"
         else
             return ""
         end
@@ -49,11 +31,11 @@ class RankingController < ApplicationController
             redirect_to "/"
             return
         end
+
         #選択されたダンジョンの記録のみを抽出
-        @ranks = rankchoose(@dungeonname)
-        @ranks = @ranks.where(permission: true)
+        @ranks = Rank.RankDungeonChoose(@dungeonname)
         #アーカイブを取得(各日付と記録数を取得)
-        @archives =getArchive(@ranks)
+        @archives = @ranks.GetArchive
         if params[:yyyymm] != nil
             if(params[:yyyymm]=~ /^[0-9]+$/)
                 @yyyymm = params[:yyyymm]
@@ -76,7 +58,7 @@ class RankingController < ApplicationController
                     end
                     @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}01' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}02' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}12'")
                 end
-                @datetitle = "#{year}年#{season}ランキング"
+                @datetitle = "#{year}年#{season}"
             else
                 #数値以外が入れられているとき
                 redirect_to "/"
@@ -84,8 +66,9 @@ class RankingController < ApplicationController
             end
         #日付が選択されていないURLが入れられているとき
         else
-            @datetitle = " 歴代ランキング"
+            @datetitle = " 歴代"
         end
+        @ranks = @ranks.order(:result)
         render 'ranking'
     end
 

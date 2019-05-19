@@ -13,34 +13,45 @@
         <%= button_to("管理者画面","/admin",method: :get) %>
     <%end%>
 <h2>リンク</h2>
-<% if @user.niconico == "" %>
+<div class = "row">
+<div class="col-sm-2 text-center">
+<% if @user.niconico == "" || @user.niconico.nil?%>
 
 <% else %>
-<%= link_to @user.niconico, target: "_blank" do %>
-  <%= image_tag("/images/niconico.png",class: "niconicoicon") %>
+    <%= link_to @user.niconico, target: "_blank" do %>
+        <%= image_tag("/images/niconico.png",class: "niconicoicon") %>
+    <% end %>
 <% end %>
-<% end %>
-
-<% if @user.youtube == "" %>
-
-<% else %>
-<%= link_to fa_icon("youtube 3x", class: "youtubeicon"),@user.youtube  %>
-<% end %>
-<% if @user.twitch == "" %>
+</div>
+<div class="col-sm-2 text-center">
+<% if @user.youtube == "" || @user.youtube.nil?%>
 
 <% else %>
-<%= link_to fa_icon("twitch 3x", class: "twitchicon"),@user.twitch  %>
+        <%= link_to fa_icon("youtube 3x", class: "youtubeicon"),@user.youtube  %>
 <% end %>
-<% if @user.cavetube == "" %>
+</div>
+<div class="col-sm-2 text-center">
+<% if @user.twitch == "" || @user.twitch.nil?%>
 
 <% else %>
-<%= link_to @user.cavetube, target: "_blank" do %>
-  <%= image_tag("/images/cavetube.png",class: "cavetubeicon") %>
+    <%= link_to fa_icon("twitch 3x", class: "twitchicon"),@user.twitch  %>
 <% end %>
+</div>
+<div class="col-sm-2 text-center">
+<% if @user.cavetube == "" || @user.cavetube.nil?%>
+
+<% else %>
+        <%= link_to @user.cavetube, target: "_blank" do %>
+        <%= image_tag("/images/cavetube.png",class: "cavetubeicon") %>
+<% end %>
+</div>
+</div>
 <% end %>
 
-    <% if current_user.id == @uid.to_i %>
-        <%= button_to("マイデータ編集","/user/#{@uid}/edit",method: :get) %>
+    <% if current_user.try(:id) %>
+        <% if current_user.id == @uid.to_i %>
+            <%= button_to("マイデータ編集","/user/#{@uid}/edit",method: :get) %>
+        <%end%>
     <%end%>
     <% if @user.ranks.count != 0 %>
     <h2>記録</h2>

@@ -1,10 +1,10 @@
 <% content_for :title do %>
-    <%=@rankingtitle%>
+    <%="#{@datetitle} #{@dungeonname}ランキング"%>
 <% end %>
 <% content_for :mosttop do %>
 
 <div class="container">
-    <h1><%= @datetitle %></h1>
+    <h1><%= "#{@datetitle}ランキング" %></h1>
 </div>
 
 <% end %>
@@ -105,11 +105,10 @@
     </div>
     </div>
     <%= button_to("申請","/ranking/newrecord",method: :get) %>
-    <h4 class="font-italic">過去ログ</h4>
-    <%= link_to "歴代ランキング", "/ranking/#{@dungeonurl}" %>
+    <h4 class="font-italic"><%= @dungeonname %>過去ランキング</h4>
     <% if @archives != nil %>
-
         <ul style="list-style:none;">
+            <li><%= link_to "歴代ランキング", "/ranking/#{@dungeonurl}" %></li>
             <% @archives.each do |yyyymm, count| %>
                 <li><%= link_to ymconv(yyyymm, count.to_s), "/ranking/#{@dungeonurl}/#{yyyymm}" %></li>
             <% end %>

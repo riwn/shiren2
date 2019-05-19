@@ -5,4 +5,14 @@ class Rank < ApplicationRecord
     validates :name, presence: true
     validates :result, presence: true
     validates :dungeon, presence: true
+
+    #アーカイブのデータを取得する
+    def self.GetArchive
+        self.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
+    end
+
+    #データベースからダンジョンに応じたデータを取得
+    def self.RankDungeonChoose(dungname)
+        return Rank.where(dungeon: dungname).where(permission: true)
+    end
 end
