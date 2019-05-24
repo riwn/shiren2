@@ -2,7 +2,6 @@ function Village_Walk() {
   var shiren_cat = 0;
   var maml_cat = 0;
 
-  $('.fromL div,.fromR div').show();
   setInterval(function () {
     $('.nataneVillage .shirenwalk').css('background-position', shiren_cat + 'px top');
     shiren_cat = shiren_cat - 21 > -167 ? shiren_cat - 21 : 0;
@@ -11,8 +10,6 @@ function Village_Walk() {
     $('.nataneVillage .mamlwalk').css('background-position', maml_cat + 'px top');
     maml_cat = maml_cat - 12 > -60 ? maml_cat - 12 : 0;
   }, 150);
-  $('.fromL div,.fromR div').show();
-
   Move_Left(".shirenL1", 90);
   Move_Left(".mamlL1", 120);
   Move_Left(".cloudL1", 200);
@@ -28,8 +25,7 @@ function Move_Left(obj, time) {
   setInterval(function () {
     if (leftPos > ctPos) {
       leftPos = -60;
-    }
-    else {
+    } else {
       leftPos = leftPos + 1;
       $(obj).css({
         'transform': 'translate(' + leftPos + 'px,0px) rotateY(0deg)',
@@ -47,8 +43,7 @@ function Move_Right(obj, time) {
   setInterval(function () {
     if (rightPos < -50) {
       rightPos = ctPos;
-    }
-    else {
+    } else {
       rightPos = rightPos - 1;
       $(obj).css({
         'transform': 'translate(' + rightPos + 'px,0px) rotateY(0deg)',

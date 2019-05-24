@@ -1,11 +1,11 @@
 <% content_for :title do %>
-    記録確認
+記録確認
 <% end %>
 
-<div class="container">
-<p>以下の内容で登録してもよろしいですか？？</p>
-<%= form_for @rank ,url:{action:"create"} do |r| %>
-<%= hidden_field_tag :"cache[image]", @rank.recordimage.cache_name %>
+<div class="container-fluid">
+    <p>以下の内容で登録してもよろしいですか？？</p>
+    <%= form_for @rank ,url:{action:"create"} do |r| %>
+    <%= hidden_field_tag :"cache[image]", @rank.recordimage.cache_name %>
 
     <table border="1">
         <tr>
@@ -13,9 +13,9 @@
             <td><%= @rank.name %></td>
             <%= r.hidden_field :name %>
         </tr>
-            <td>ダンジョン</td>
-            <td><%= @rank.dungeon %></td>
-            <%= r.hidden_field :dungeon %>
+        <td>ダンジョン</td>
+        <td><%= @rank.dungeon %></td>
+        <%= r.hidden_field :dungeon %>
         <tr>
             <td>記録</td>
             <td><%=
@@ -58,6 +58,6 @@
 </div>
 
 <script>
-const natane = Document.getElementsByClassName("nataneVillage");
-natane.style.visibility ="hidden";
+    //ナタネ村を非表示する
+    document.getElementById("nataneVillage").style.display = "none";
 </script>

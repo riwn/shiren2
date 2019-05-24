@@ -1,5 +1,4 @@
 class UserController < ApplicationController
-    layout "novillage"
     def profile
         @uid = params[:id]
         @user = User.find_by_id(@uid)

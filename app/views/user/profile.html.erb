@@ -1,61 +1,61 @@
 <% content_for :title do %>
-    <%=@title%>
+<%=@title%>
 <% end %>
 <% content_for :mosttop do %>
 
-<div class="container">
+<div class="container-fluid">
     <h1><%= @title %></h1>
 </div>
 
 <% end %>
-<div class="container">
+<div class="container-fluid">
     <% if current_user.try(:admin?) && current_user.id == @uid.to_i %>
-        <%= button_to("管理者画面","/admin",method: :get) %>
+    <%= button_to("管理者画面","/admin",method: :get) %>
     <%end%>
-<h2>リンク</h2>
-<div class = "row">
-<div class="col-sm-2 text-center">
-<% if @user.niconico == "" || @user.niconico.nil?%>
+    <h2>リンク</h2>
+    <div class="row">
+        <div class="col-sm-2 text-center">
+            <% if @user.niconico == "" || @user.niconico.nil?%>
 
-<% else %>
-    <%= link_to @user.niconico, target: "_blank" do %>
-        <%= image_tag("/images/niconico.png",class: "niconicoicon") %>
+            <% else %>
+            <%= link_to @user.niconico, target: "_blank" do %>
+            <%= image_tag("/images/niconico.png",class: "niconicoicon") %>
+            <% end %>
+            <% end %>
+        </div>
+        <div class="col-sm-2 text-center">
+            <% if @user.youtube == "" || @user.youtube.nil?%>
+
+            <% else %>
+            <%= link_to fa_icon("youtube 3x", class: "youtubeicon"),@user.youtube  %>
+            <% end %>
+        </div>
+        <div class="col-sm-2 text-center">
+            <% if @user.twitch == "" || @user.twitch.nil?%>
+
+            <% else %>
+            <%= link_to fa_icon("twitch 3x", class: "twitchicon"),@user.twitch  %>
+            <% end %>
+        </div>
+        <div class="col-sm-2 text-center">
+            <% if @user.cavetube == "" || @user.cavetube.nil?%>
+
+            <% else %>
+            <%= link_to @user.cavetube, target: "_blank" do %>
+            <%= image_tag("/images/cavetube.png",class: "cavetubeicon") %>
+            <% end %>
+        </div>
+    </div>
     <% end %>
-<% end %>
-</div>
-<div class="col-sm-2 text-center">
-<% if @user.youtube == "" || @user.youtube.nil?%>
-
-<% else %>
-        <%= link_to fa_icon("youtube 3x", class: "youtubeicon"),@user.youtube  %>
-<% end %>
-</div>
-<div class="col-sm-2 text-center">
-<% if @user.twitch == "" || @user.twitch.nil?%>
-
-<% else %>
-    <%= link_to fa_icon("twitch 3x", class: "twitchicon"),@user.twitch  %>
-<% end %>
-</div>
-<div class="col-sm-2 text-center">
-<% if @user.cavetube == "" || @user.cavetube.nil?%>
-
-<% else %>
-        <%= link_to @user.cavetube, target: "_blank" do %>
-        <%= image_tag("/images/cavetube.png",class: "cavetubeicon") %>
-<% end %>
-</div>
-</div>
-<% end %>
 
     <% if current_user.try(:id) %>
-        <% if current_user.id == @uid.to_i %>
-            <%= button_to("マイデータ編集","/user/#{@uid}/edit",method: :get) %>
-        <%end%>
+    <% if current_user.id == @uid.to_i %>
+    <%= button_to("マイデータ編集","/user/#{@uid}/edit",method: :get) %>
+    <%end%>
     <%end%>
     <% if @user.ranks.count != 0 %>
     <h2>記録</h2>
-        <table border="1">
+    <table border="1">
         <tr>
             <td>ダンジョン</td>
             <td>記録</td>
@@ -74,19 +74,20 @@
                 end
             %></td>
             <td>
-            <% if rank.movie == "" then %>
-            なし
-            <% else %>
-            <%= link_to "動画", rank.movie %>
-            <% end %>
+                <% if rank.movie == "" then %>
+                なし
+                <% else %>
+                <%= link_to "動画", rank.movie %>
+                <% end %>
             </td>
             <td><%= rank.created_at.year %>/<%= rank.created_at.month %>/<%= rank.created_at.day %></td>
             <td>なし
-            <!--<% if rank.recordimage == "" then %>
+                <!--<% if rank.recordimage == "" then %>
                 なし
             <% else %>
                <%= image_tag rank.recordimage.url %>
-            <% end %>--></td>
+            <% end %>-->
+            </td>
         </tr>
         <% end %>
     </table>
@@ -94,3 +95,10 @@
     <h2>記録はありません</h2>
     <% end %>
 </div>
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<script>
+    //ナタネ村を非表示する
+    document.getElementById("nataneVillage").style.display = "none";
+</script>

@@ -1,5 +1,5 @@
 <% content_for :title do %>
-    風来のシレン2
+風来のシレン2
 <% end %>
 
 <%= stylesheet_link_tag    'slicebox/slicebox' , :media => "all"%>
@@ -19,13 +19,17 @@
     <li><img src="images/top-notice/making2.png" title="キャプション1"></li>
   </ul>
   <div id="nav-arrows" class="nav-arrows">
-    <a href="#"> <p><%= fa_icon("chevron-right 5x") %></p> </a>
-    <a href="#"> <p><%= fa_icon("chevron-left 5x") %></p> </a>
+    <a href="#">
+      <p><%= fa_icon("chevron-right 5x") %></p>
+    </a>
+    <a href="#">
+      <p><%= fa_icon("chevron-left 5x") %></p>
+    </a>
   </div>
 </div>
 <% end %>
 
-<div class="container">
+<div class="container-fluid">
   <a href="/ta">
     <p>タイムアタック</p>
   </a>
@@ -36,5 +40,5 @@
 </div>
 
 <script>
-Slide_Notice();
+  Slide_Notice();
 </script>
