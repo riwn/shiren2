@@ -38,3 +38,13 @@
   list-style-type: none;
   display: flex;
 }
+
+// 正解
+.correct_choice {
+  background-color: #d4ffef;
+}
+
+// 不正解
+.incorrect_choice {
+  background-color: #ffd4d4;
+}
