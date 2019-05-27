@@ -1,5 +1,8 @@
 class RankingController < ApplicationController
 
+    require 'net/http'
+    require 'net/https'
+    require 'uri'
     ######################################################メソッド########################################################
 
     #URLからダンジョンの名前を取得
@@ -17,6 +20,68 @@ class RankingController < ApplicationController
         else
             return ""
         end
+    end
+
+    def SendDiscordWebHook(rank)
+        #PostまたはGet先のURL
+        uri = URI("https://discordapp.com/api/webhooks/582545571777085440/l9fDV34Sogsje__V1Nz-lt5W4LaHoIy109iQyGguh4LgLm_OAaxkd36-xb_eYnosn-tR")
+        #Net::HTTPのインスタンスを生成
+        http = Net::HTTP.new(uri.host, uri.port)
+
+        #ssl(https)を利用する場合はtrueに
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+        req = Net::HTTP::Post.new(uri.path)
+
+        #リクエストヘッダ
+        req['Content-Type'] = 'application/json'
+
+        #送りたいデータを格納
+        topurl = "http://localhost:3000"
+        botname = "記録通知くん"
+        boticon = "https://cdn.discordapp.com/icons/565179762084151296/dcc15d11a9cbbd059d5ad8875953bb91.png?size=128"
+        auther = {"name": rank.name}
+        if rank.user_id != nil
+            auther["url"] = "#{topurl}/user/#{rank.user_id}"
+        end
+        auther["icon_url"] = boticon
+
+        if rank.result >= 3600 then
+            time = rank.result.div(3600).to_s + "時間" + ((rank.result.modulo(3600)).div(60)).to_s + "分" + ((rank.result.modulo(3600)).modulo(60)).to_s + "秒"
+        else
+            time =(rank.result.div(60)).to_s + "分" + (rank.result.modulo(60)).to_s + "秒"
+        end
+        message = "新しい記録が申請されました！"
+        sendjson = {
+            'username': botname,
+            "avatar_url": boticon,
+            'content': message,
+            "embeds": [
+            {
+                "url": "#{topurl}/admin",
+                "color": 5620992,
+                "author": auther,
+                "fields": [
+                    {
+                        "name": "ダンジョン",
+                        "value": rank.dungeon,
+                    },
+                    {
+                        "name": "記録",
+                        "value": time,
+                    }
+                ]
+            }]
+            }
+        req.body = sendjson.to_json
+
+        #レスポンスデータの受け取り
+        result = http.request(req)
+
+        #デバッグ
+        puts result
+        puts req
     end
 
     ######################################################メソッド終わり######################################################
@@ -101,6 +166,7 @@ class RankingController < ApplicationController
         if params[:back]
             render 'newrecord'
         elsif @rank.save! then
+            SendDiscordWebHook(@rank)
             redirect_to "/"
         else
             render 'newrecord'
