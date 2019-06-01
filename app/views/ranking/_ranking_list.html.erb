@@ -1,0 +1,35 @@
+<% @ranks.each do |rank| %>
+<tr>
+    <td>
+        <%=
+        if rank.user_id != nil then
+            link_to rank.name, "/user/#{rank.user_id}"
+        else
+            rank.name
+        end
+        %></td>
+    <td><%= rank.dungeon %></td>
+    <td><%=
+            if rank.result >= 3600 then
+                (rank.result.div(3600).to_s + "時間" + ((rank.result.modulo(3600)).div(60)).to_s + "分" + ((rank.result.modulo(3600)).modulo(60)).to_s + "秒")
+            else
+                ((rank.result.div(60)).to_s + "分" + (rank.result.modulo(60)).to_s + "秒")
+            end
+        %></td>
+    <td>
+        <% if rank.movie == "" then %>
+        なし
+        <% else %>
+        <%= link_to "動画", rank.movie %>
+        <% end %>
+    </td>
+    <td><%= rank.created_at.year %>/<%= rank.created_at.month %>/<%= rank.created_at.day %></td>
+    <td>なし
+        <!--<% if rank.recordimage == "" then %>
+                なし
+            <% else %>
+               <%= image_tag rank.recordimage.url %>
+            <% end %>-->
+    </td>
+</tr>
+<% end %>

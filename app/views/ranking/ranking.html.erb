@@ -10,9 +10,8 @@
 <% end %>
 
 <div class="container-fluid">
-    <div class="rankingcontents">
-        <div class="dungeontitle">
-            <h2><%= @dungeonname %></h2>
+    <div class="row">
+        <div class="col-sm-3 text-center center-block dungeontitle">
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="820px" height="300px" viewBox="0 0 8200 3000"
                 preserveAspectRatio="xMidYMid meet">
                 <g id="layer101" fill="#1fa425" stroke="none">
@@ -78,10 +77,22 @@
                     <path
                         d="M5966 1605 c-19 -14 -19 -15 0 -20 10 -4 26 -10 34 -15 19 -9 51 11 42 27 -12 19 -56 24 -76 8z" />
                     <path d="M4329 1524 c-14 -17 20 -26 73 -20 43 4 61 14 52 27 -8 14 -112 8 -125 -7z" />
+                    <text x="300" y="2000" fill="black">
+                        <%= @dungeonname %>
+                    </text>
                 </g>
             </svg>
+            <h4 class="font-italic">過去ランキング</h4>
+            <% if @archives != nil %>
+            <ul style="list-style:none;">
+                <li><%= link_to "歴代ランキング", "/ranking/#{@dungeonurl}" %></li>
+                <% @archives.each do |yyyymm, count| %>
+                <li><%= link_to ymconv(yyyymm, count.to_s), "/ranking/#{@dungeonurl}/#{yyyymm}" %></li>
+                <% end %>
+            </ul>
+            <% end %>
         </div>
-        <div class="rankingtable">
+        <div class="col-sm-9 text-center">
             <table border="1">
                 <tr>
                     <td>名前</td>
@@ -92,52 +103,12 @@
                     <td>画像</td>
                 </tr>
                 <% if @ranks != nil %>
-                <% @ranks.each do |rank| %>
+                <div id="ranking_lists"><%= render 'ranking_list' %></div>
                 <tr>
-                    <td><%=
-                if rank.user_id != nil then
-                    link_to rank.name, "/user/#{rank.user_id}"
-                else
-                    rank.name
-                end
-            %></td>
-                    <td><%= rank.dungeon %></td>
-                    <td><%=
-                if rank.result >= 3600 then
-                    (rank.result.div(3600).to_s + "時間" + ((rank.result.modulo(3600)).div(60)).to_s + "分" + ((rank.result.modulo(3600)).modulo(60)).to_s + "秒")
-                else
-                    ((rank.result.div(60)).to_s + "分" + (rank.result.modulo(60)).to_s + "秒")
-                end
-            %></td>
-                    <td>
-                        <% if rank.movie == "" then %>
-                        なし
-                        <% else %>
-                        <%= link_to "動画", rank.movie %>
-                        <% end %>
-                    </td>
-                    <td><%= rank.created_at.year %>/<%= rank.created_at.month %>/<%= rank.created_at.day %></td>
-                    <td>なし
-                        <!--<% if rank.recordimage == "" then %>
-                なし
-            <% else %>
-               <%= image_tag rank.recordimage.url %>
-            <% end %>-->
-                    </td>
+                    <div class="more"><%= link_to_next_page @ranks, 'もっと見る', remote: true, id: 'view_more' %></div>
                 </tr>
-                <% end %>
                 <% end %>
             </table>
         </div>
     </div>
-    <%= button_to("申請","/ranking/newrecord",method: :get) %>
-    <h4 class="font-italic"><%= @dungeonname %>過去ランキング</h4>
-    <% if @archives != nil %>
-    <ul style="list-style:none;">
-        <li><%= link_to "歴代ランキング", "/ranking/#{@dungeonurl}" %></li>
-        <% @archives.each do |yyyymm, count| %>
-        <li><%= link_to ymconv(yyyymm, count.to_s), "/ranking/#{@dungeonurl}/#{yyyymm}" %></li>
-        <% end %>
-    </ul>
-    <% end %>
 </div>

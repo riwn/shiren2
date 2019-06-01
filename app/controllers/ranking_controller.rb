@@ -86,6 +86,11 @@ class RankingController < ApplicationController
 
     ######################################################メソッド終わり######################################################
 
+    PER = 10
+
+    def rankingtop
+    end
+
     #URLからダンジョンと日付を取得してデータベースから記録も取得
     def dungeon
         #URLからダンジョンを取得
@@ -133,7 +138,7 @@ class RankingController < ApplicationController
         else
             @datetitle = " 歴代"
         end
-        @ranks = @ranks.order(:result)
+        @ranks = @ranks.order(:result).page(params[:page]).per(PER)
         render 'ranking'
     end
 

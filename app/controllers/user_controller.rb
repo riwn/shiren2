@@ -6,6 +6,8 @@ class UserController < ApplicationController
             redirect_to "/"
             return
         end
+        @ranks = @user.ranks
+        @ranks = @ranks.where(permission: true)
         @title = @user.name + "のプロフィール"
         #if user_signed_in?
             #数値以外が入れられているとき

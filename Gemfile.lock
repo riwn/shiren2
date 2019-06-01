@@ -275,6 +275,7 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
+  kaminari
   puma (~> 3.11)
   rails (~> 5.2.0)
   rails-i18n (~> 5.1)

@@ -75,3 +75,6 @@ gem 'rails-i18n', '~> 5.1'
 
 #デザイン
 gem 'bootstrap', '~> 4.3.1'
+
+#ページネーション
+gem 'kaminari'

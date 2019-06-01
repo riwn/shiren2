@@ -31,10 +31,10 @@
       <div class="collapse navbar-collapse" id="headerData">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/search">放送検索<span class="sr-only">(current)</span></a>
+            <%= link_to "放送検索", search_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/ta">タイムアタック</a>
+            <%= link_to "解説", ta_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="/" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
@@ -49,6 +49,9 @@
           </li>
         </ul>
         <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to "記録申請", newrecord_path,class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <% if user_signed_in?%>
             <%= link_to "マイページ", "/user/#{current_user.id}",class: "nav-link" %>
