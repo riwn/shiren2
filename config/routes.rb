@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get "/ta/saihate/chapter5" =>"saihateta#chapter5"
   get "/ta/saihate/chapter6" =>"saihateta#chapter6"
 ####################ランキング####################
-  get "/ranking" => "ranking#rankingtop", as: "ranking"
+  get "/ranking" => redirect {"/"}, as: "ranking"
   post "/ranking" => "ranking#create"
   get "/ranking/newrecord" => "ranking#newrecord", as: "newrecord"
   post "/ranking/newrecord" => "ranking#recordconfirm"
