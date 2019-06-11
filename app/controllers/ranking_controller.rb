@@ -22,6 +22,22 @@ class RankingController < ApplicationController
         end
     end
 
+    def getDungeonColor(dungeonURLStr)
+        if dungeonURLStr == "saihate"
+            return "bg-primary"
+        elsif dungeonURLStr== "well"
+            return "bg-warning"
+        elsif dungeonURLStr == "onigashima"
+            return "bg-danger"
+        elsif dungeonURLStr == "shrine"
+            return "bg-dark"
+        elsif dungeonURLStr == "story"
+            return "bg-success"
+        else
+            return ""
+        end
+    end
+
     def SendDiscordWebHook(rank)
         #PostまたはGet先のURL
         uri = URI("https://discordapp.com/api/webhooks/582545571777085440/l9fDV34Sogsje__V1Nz-lt5W4LaHoIy109iQyGguh4LgLm_OAaxkd36-xb_eYnosn-tR")
@@ -106,16 +122,16 @@ class RankingController < ApplicationController
                 month = @yyyymm[4,2].to_i
                 season = ""
                 if(month == 3 || month == 4|| month == 5)
-                    season = "春期"
+                    season = " 春期"
                     @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}03' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}04' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}05'")
                 elsif(month == 6 || month == 7 || month == 8)
-                    season = "夏期"
+                    season = " 夏期"
                     @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}06' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}07' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}08'")
                 elsif(month == 9 || month == 10|| month == 11)
-                    season = "秋期"
+                    season = " 秋期"
                     @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}09' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}10' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}11'")
                 elsif(month == 12 || month == 1|| month == 2)
-                    season = "冬期"
+                    season = " 冬期"
                     if(month == 1|| month == 2)
                         year = year - 1
                     end
@@ -131,6 +147,8 @@ class RankingController < ApplicationController
         else
             @datetitle = " 歴代"
         end
+        @color = getDungeonColor(@dungeonurl)
+        @num = 0
         @ranks = @ranks.order(:result).page(params[:page]).per(PER)
         render 'ranking'
     end

@@ -33,7 +33,9 @@
   <div class="card-deck">
     <div class="row">
       <% for num in 0.. @dungeons.size - 1 %>
-      <%= render 'top_ranking', { topranking: @topranks[num] , bgcolor: @colors[num],dungeon:@dungeons[num] ,link: @links[num]} %>
+      <div class="col-sm-12 col-md-6 mb-3">
+        <%= render 'top_ranking', { topranking: @topranks[num] , bgcolor: @colors[num],dungeon:@dungeons[num] ,link: @links[num]} %>
+      </div>
       <% end %>
     </div>
   </div>

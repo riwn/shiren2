@@ -1,32 +1,37 @@
-<div class="col-sm-12 col-md-6 mb-3">
-    <div class="card">
-        <div class="card-header <%= bgcolor %> text-center">
-            <%= link_to "/ranking/#{link}/#{@nowyyyymm}" do %>
-            <h2 class="card-title float-left text-white"><%= dungeon %></h2>
-            <% end %>
-            <a href="/ta">
-                <button type="button"
-                    class="btn btn-outline-light float-right"><%= fa_icon("chevron-right") %>解説</button>
-            </a>
-        </div>
-        <div class="card-body bg-light">
-            <div class="card-text">
-                <% num = 0 %>
-                <% topranking.each do |rank| %>
-                <% num = num + 1 %>
-                <div class="border border-dark">
-                    <p class="h2 <%= RankColor(num) %>"> <%= num %>位</p>
-                    <p class="h2">
-                        <% if rank.user_id != nil then %>
-                        <%= link_to rank.name, "/user/#{rank.user_id}"%>
-                        <% else %>
-                        <%= rank.name %>
-                        <% end %>
-                    </p>
-                    <p class="h2"><%= GetResultTime(rank.result) %></p>
+<div class="card">
+    <div class="card-header <%= bgcolor %> text-center">
+        <%= link_to "/ranking/#{link}/#{@nowyyyymm}" do %>
+        <h3 class="card-title float-left text-white"><%= dungeon %></h3>
+        <% end %>
+        <a href="/ta/<%= link %>">
+            <button type="button" class="btn btn-outline-light float-right"><%= fa_icon("chevron-right") %>解説</button>
+        </a>
+    </div>
+    <div class="card-body bg-light">
+        <div class="card-text">
+            <% num = 0 %>
+            <% topranking.each do |rank| %>
+            <% num = num + 1 %>
+            <div class="border border-dark">
+                <div class="row text-center">
+                    <div class="col-6 border-right border-bottom">
+                        <p class="h4 m-3 <%= RankColor(num) %>"> <%= num %>位</p>
+                    </div>
+                    <div class="col-6 border-left border-bottom">
+                        <p class="rankname h4 m-3">
+                            <% if rank.user_id != nil then %>
+                            <%= link_to rank.name, "/user/#{rank.user_id}"%>
+                            <% else %>
+                            <%= rank.name %>
+                            <% end %>
+                        </p>
+                    </div>
+                    <div class="col-10">
+                        <p class="h3 m-3"><%= GetResultTime(rank.result) %></p>
+                    </div>
                 </div>
-                <% end %>
             </div>
+            <% end %>
         </div>
     </div>
 </div>
