@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   get "/user/:id/edit" => "user#edit"
   post "/user/:id/update" => "user#update"
 #######################解説#######################
-  get "/ta" => "home#ta", as: "ta"
+  get "/ta/saihate" => "ta#saihateta", as: "saihateta"
+  get "/ta/well" => "ta#wellta", as: "wellta"
+  get "/ta/onigashima" => "ta#onigashimata", as: "onigashimata"
+  get "/ta/story" => "ta#storyta", as: "storyta"
+  get "/ta/shrine" => "ta#shrineta", as: "shrineta"
   get "/ta/saihate/chapter1" =>"saihateta#chapter1"
   get "/ta/saihate/chapter2" =>"saihateta#chapter2"
   get "/ta/saihate/chapter3" =>"saihateta#chapter3"

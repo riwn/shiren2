@@ -15,8 +15,16 @@
             <li class="nav-item">
                 <%= link_to "放送検索", search_path, class: "nav-link" %>
             </li>
-            <li class="nav-item">
-                <%= link_to "解説", ta_path, class: "nav-link" %>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/" id="dropdown_desc" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">解説</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown_desc">
+                    <%= link_to "最果てへの道99FTA",saihateta_path , class: "dropdown-item"%>
+                    <%= link_to "カラクロTA", wellta_path , class: "dropdown-item"%>
+                    <%= link_to "鬼ヶ島ありありTA", onigashimata_path , class: "dropdown-item"%>
+                    <%= link_to "ストーリーTA", storyta_path , class: "dropdown-item"%>
+                    <%= link_to "女王グモ捕獲TA", shrineta_path , class: "dropdown-item"%>
+                </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="/" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"

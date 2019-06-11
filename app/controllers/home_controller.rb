@@ -31,8 +31,4 @@ class HomeController < ApplicationController
         #@storyRank = @ranks.RankDungeonChoose("ストーリーTA").limit(3)
         #@shrineRank = @ranks.RankDungeonChoose("女王グモ捕獲TA").limit(3)
     end
-
-    def ta
-
-    end
 end

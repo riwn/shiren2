@@ -3,15 +3,19 @@ class TaController < ApplicationController
   def saihateta
 
   end
-  def karakuro
-  
+  def wellta
+
   end
 
   def storyta
 
   end
 
-  def onigashima
+  def onigashimata
+
+  end
+
+  def shrineta
 
   end
 end
