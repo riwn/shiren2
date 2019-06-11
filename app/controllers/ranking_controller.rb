@@ -78,18 +78,11 @@ class RankingController < ApplicationController
 
         #レスポンスデータの受け取り
         result = http.request(req)
-
-        #デバッグ
-        puts result
-        puts req
     end
 
     ######################################################メソッド終わり######################################################
 
     PER = 10
-
-    def rankingtop
-    end
 
     #URLからダンジョンと日付を取得してデータベースから記録も取得
     def dungeon

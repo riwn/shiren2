@@ -3,12 +3,12 @@
 <% end %>
 <% content_for :mosttop do %>
 
-<div class="container-fluid">
+<div class="container">
     <h1><%= @title %></h1>
 </div>
 
 <% end %>
-<div class="container-fluid">
+<div class="container">
     <% if current_user.try(:admin?) && current_user.id == @uid.to_i %>
     <%= button_to("管理者画面","/admin",method: :get) %>
     <%end%>
@@ -35,14 +35,14 @@
             <% if @user.youtube == "" || @user.youtube.nil?%>
             <%=fa_icon("youtube 3x", class: "youtubeicon")%>
             <% else %>
-            <%= link_to fa_icon("youtube 3x", class: "youtubeicon"),@user.youtube  %>
+            <%= link_to fa_icon("youtube 3x", class: "youtubeicon fa-red"),@user.youtube  %>
             <% end %>
         </div>
         <div class="col-sm-3 text-center">
             <% if @user.twitch == "" || @user.twitch.nil?%>
-            <%=  fa_icon("twitch 3x", class: "twitchicon")  %>
+            <%=  fa_icon("twitch 3x", class: "twitchicon  fa-blue")  %>
             <% else %>
-            <%= link_to fa_icon("twitch 3x", class: "twitchicon"),@user.twitch  %>
+            <%= link_to fa_icon("twitch 3x", class: "twitchicon fa-blue"),@user.twitch  %>
             <% end %>
         </div>
         <div class="col-sm-3 text-center">

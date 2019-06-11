@@ -29,14 +29,14 @@
 </div>
 <% end %>
 
-<div class="container-fluid">
-  <a href="/ta">
-    <p>タイムアタック</p>
-  </a>
-  <%=
-  d = Date.today
-  yyyymm = d.year.to_s + ("%02d" % d.month).to_s
-  link_to "ランキング", "/ranking/saihate/#{yyyymm}" %>
+<div class="container">
+  <div class="card-deck">
+    <div class="row">
+      <% for num in 0.. @dungeons.size - 1 %>
+      <%= render 'top_ranking', { topranking: @topranks[num] , bgcolor: @colors[num],dungeon:@dungeons[num] ,link: @links[num]} %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <script>

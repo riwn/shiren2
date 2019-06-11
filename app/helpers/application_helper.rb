@@ -18,4 +18,28 @@ module ApplicationHelper
         return year.to_s + "年" + season
         #return year.to_s + "年" + month + "月 (" + cnt + ")"
     end
+
+    def GetResultTime(result)
+        time = ""
+            if result >= 3600 then
+                time = (result.div(3600).to_s + "時間" + ((result.modulo(3600)).div(60)).to_s + "分" + ((result.modulo(3600)).modulo(60)).to_s + "秒")
+            else
+                time = ((result.div(60)).to_s + "分" + (result.modulo(60)).to_s + "秒")
+            end
+            return time
+    end
+
+    def RankColor(num)
+        color = ""
+        if(num == 1)
+            color = "text-warning"
+        elsif(num == 2)
+            color = "text-success"
+        elsif(num == 3)
+            color = "text-info"
+        else
+            color = "text-dark"
+        end
+        return color
+    end
 end

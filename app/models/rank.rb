@@ -13,6 +13,6 @@ class Rank < ApplicationRecord
 
     #データベースからダンジョンに応じたデータを取得
     def self.RankDungeonChoose(dungname)
-        return Rank.where(dungeon: dungname).where(permission: true)
+        return self.where(dungeon: dungname).where(permission: true)
     end
 end

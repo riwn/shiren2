@@ -9,13 +9,7 @@
         end
         %></td>
     <td><%= rank.dungeon %></td>
-    <td><%=
-            if rank.result >= 3600 then
-                (rank.result.div(3600).to_s + "時間" + ((rank.result.modulo(3600)).div(60)).to_s + "分" + ((rank.result.modulo(3600)).modulo(60)).to_s + "秒")
-            else
-                ((rank.result.div(60)).to_s + "分" + (rank.result.modulo(60)).to_s + "秒")
-            end
-        %></td>
+    <td><%= GetResultTime(rank.result) %></td>
     <td>
         <% if rank.movie == "" then %>
         なし

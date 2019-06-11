@@ -1,0 +1,32 @@
+<div class="col-sm-12 col-md-6 mb-3">
+    <div class="card">
+        <div class="card-header <%= bgcolor %> text-center">
+            <%= link_to "/ranking/#{link}/#{@nowyyyymm}" do %>
+            <h2 class="card-title float-left text-white"><%= dungeon %></h2>
+            <% end %>
+            <a href="/ta">
+                <button type="button"
+                    class="btn btn-outline-light float-right"><%= fa_icon("chevron-right") %>解説</button>
+            </a>
+        </div>
+        <div class="card-body bg-light">
+            <div class="card-text">
+                <% num = 0 %>
+                <% topranking.each do |rank| %>
+                <% num = num + 1 %>
+                <div class="border border-dark">
+                    <p class="h2 <%= RankColor(num) %>"> <%= num %>位</p>
+                    <p class="h2">
+                        <% if rank.user_id != nil then %>
+                        <%= link_to rank.name, "/user/#{rank.user_id}"%>
+                        <% else %>
+                        <%= rank.name %>
+                        <% end %>
+                    </p>
+                    <p class="h2"><%= GetResultTime(rank.result) %></p>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
