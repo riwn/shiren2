@@ -148,7 +148,6 @@ class RankingController < ApplicationController
             @datetitle = " 歴代"
         end
         @color = getDungeonColor(@dungeonurl)
-        @num = 0
         @ranks = @ranks.order(:result).page(params[:page]).per(PER)
         render 'ranking'
     end
