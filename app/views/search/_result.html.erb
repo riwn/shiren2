@@ -1,0 +1,62 @@
+<div class="card">
+    <div class="card-header bg-success text-center">
+        <h3 class="card-title float-left text-white">シレン2放送</h3>
+    </div>
+    <div class="card-body bg-light">
+        <div class="card-text">
+            <% if niconicoresult != nil  %>
+            <% niconicoresult.each do |data| %>
+            <div class="border border-dark">
+                <div class="row text-center">
+                    <div class="col-3">
+                        <div class="col-12 p-3 border-bottom border-right border-dark">
+                            <%= image_tag(data["communityIcon"], :class => "liveicon") %>
+                        </div>
+                        <div class="col-12 p-3 border-right border-dark">
+                            <img class="niconicoicon" src="/images/niconico.png">
+                        </div>
+                        <div class="col-12 p-3 border-right border-dark">
+                            <p class="viewer"><%= fa_icon("eye") %> <%= data["viewCounter"] %></p>
+                        </div>
+                    </div>
+                    <div class="col-9 border-bottom d-flex align-items-center">
+                        <p class="rankname h4 p-3">
+                            <%= link_to "#{data["title"]}", "https://nico.ms/#{data["contentId"]}" %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+            <% end %>
+            <% if youtuberesult != nil  %>
+            <% youtuberesult.each do |data| %>
+            <div class=" border border-dark">
+                <div class="row text-center">
+                    <div class="col-3">
+                        <div class="col-12 p-3 border-bottom border-right border-dark">
+                            <%=
+                        channel = getYoutubeChannelJson(data["snippet"]["channelId"])
+                        image_tag(channel["items"][0]["snippet"]["thumbnails"]["default"]["url"], :class => "liveicon m-3") %>
+                        </div>
+                        <div class="col-12 p-3 border-right border-dark">
+                            <%= fa_icon("youtube 3x", class: "youtubeicon") %>
+                        </div>
+                        <div class="col-12 p-3 border-right border-dark">
+                            <p class="viewer"><%= fa_icon("eye") %>
+                                <%=
+                        live = getYoutubeLiveJson(data["id"]["videoId"])
+                        live["items"][0]["liveStreamingDetails"]["concurrentViewers"]%></p>
+                        </div>
+                    </div>
+                    <div class="col-9 border-bottom align-middle d-flex align-items-center">
+                        <p class="rankname h4 m-3">
+                            <%= link_to "#{data["snippet"]["title"]}", "https://www.youtube.com/watch?v=#{data["id"]["videoId"]}" %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>

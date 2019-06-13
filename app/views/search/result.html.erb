@@ -3,47 +3,8 @@
 <% end %>
 
 <% content_for :mosttop do %>
-<div class="container-fluid">
-    <h1>シレン2放送検索</h1>
-</div>
 <% end %>
 
-<div class="container-fluid">
-    <table class="searchresult" align="center" border="1" width="50%">
-        <% if @result != nil  %>
-        <% @result.each do |data| %>
-        <tr>
-            <td>
-                <div class="contents">
-                    <%= image_tag(data["communityIcon"], :class => "liveicon") %>
-                    <p class="title"><%= link_to "#{data["title"]}", "https://nico.ms/#{data["contentId"]}" %></p>
-                    <img class="niconicoicon" src="/images/niconico.png">
-                    <p class="viewer"><%= fa_icon("eye") %> <%= data["viewCounter"] %></p>
-            </td>
-</div>
-</tr>
-<% end %>
-<% end %>
-<% if @result2 != nil  %>
-<% @result2.each do |data| %>
-<tr>
-    <td>
-        <div class="contents">
-            <%=
-                        channel = getYoutubeChannelJson(data["snippet"]["channelId"])
-                        image_tag(channel["items"][0]["snippet"]["thumbnails"]["default"]["url"], :class => "liveicon") %>
-            <p class="title">
-                <%= link_to "#{data["snippet"]["title"]}", "https://www.youtube.com/watch?v=#{data["id"]["videoId"]}" %>
-            </p>
-            <%= fa_icon("youtube 3x", class: "youtubeicon") %>
-            <p class="viewer"><%= fa_icon("eye") %>
-                <%=
-                        live = getYoutubeLiveJson(data["id"]["videoId"])
-                        live["items"][0]["liveStreamingDetails"]["concurrentViewers"]%></p>
-        </div>
-    </td>
-</tr>
-<% end %>
-<% end %>
-</table>
+<div class="container">
+    <%= render 'result', { niconicoresult:  @result, youtuberesult: @result2} %>
 </div>
