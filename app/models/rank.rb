@@ -2,7 +2,7 @@ class Rank < ApplicationRecord
     #カラムの名前をmount_uploaderに指定
     mount_uploader :recordimage, RecordimageUploader
     #名前が入力されていること
-    validates :name, presence: true
+    validates :name, presence: true, length: {maximum: 15}
     validates :result, presence: true
     validates :dungeon, presence: true
 
@@ -13,6 +13,6 @@ class Rank < ApplicationRecord
 
     #データベースからダンジョンに応じたデータを取得
     def self.RankDungeonChoose(dungname)
-        return self.where(dungeon: dungname)#.where(permission: true)
+        return self.where(dungeon: dungname).where(permission: true)
     end
 end

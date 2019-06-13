@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "/user/:id/edit" => "user#edit"
   post "/user/:id/update" => "user#update"
 #######################解説#######################
-get "/ta" => redirect {"/ta/saihate"}
+  get "/ta" => redirect {"/ta/saihate"}
   get "/ta/saihate" => "ta#saihateta", as: "saihateta"
   get "/ta/well" => "ta#wellta", as: "wellta"
   get "/ta/onigashima" => "ta#onigashimata", as: "onigashimata"

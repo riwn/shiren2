@@ -5,8 +5,9 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.label :name %>
+    <em>　　(10 文字以内)</em><br />
+    <%= f.text_field :name, autofocus: true, maxlength: 15,size: 30 %>
   </div>
 
   <div class="field">
@@ -14,12 +15,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password" ,size: 30 %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",size: 30  %>
   </div>
 
   <div class="actions">
