@@ -1,13 +1,19 @@
-<% @num = @ranks.offset_value %>
-<% @ranks.each do |rank| %>
+<% if ranks.offset_value.nil? %>
+<% @num = 0 %>
+<%else%>
+<% @num = ranks.offset_value %>
+<%end%>
+<% ranks.each do |rank| %>
 <% @num = @num + 1 %>
 <div class="border border-dark">
-    <div class="row text-center">
-        <div class="col-6 border-right border-bottom">
-            <p class="h4 m-3 <%= RankColor(@num) %>"> <%= @num %>位</p>
+    <div class="row">
+        <div class="col-4 <%= RankColor(@num) %> border-bottom d-flex align-items-center">
+            <p class="h3 p-3 mx-auto">
+                <%= @num %>位
+            </p>
         </div>
-        <div class="col-6 border-left border-bottom">
-            <p class="rankname h4 m-3">
+        <div class="col-8 rankname border-bottom d-flex align-items-center">
+            <p class="h5 p-3 mx-auto">
                 <% if rank.user_id != nil then %>
                 <%= link_to rank.name, "/user/#{rank.user_id}"%>
                 <% else %>
@@ -15,8 +21,8 @@
                 <% end %>
             </p>
         </div>
-        <div class="col-10">
-            <p class="h3 m-3"><%= GetResultTime(rank.result) %></p>
+        <div class="col-10 d-flex align-items-center">
+            <p class="h3 p-3 mx-auto"><%= GetResultTime(rank.result) %></p>
         </div>
     </div>
 </div>

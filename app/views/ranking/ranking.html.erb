@@ -4,13 +4,38 @@
 <% content_for :mosttop do %>
 
 <div class="container-fluid">
-    <h1><%= "#{@datetitle}ランキング" %></h1>
+    <h1><%= "" %></h1>
 </div>
 
 <% end %>
 
 <div class="container">
     <div class="row">
+        <div class="col-md-9 col-md-auto text-center">
+            <% if @ranks != nil %>
+            <div class="card">
+                <div class="card-header <%= @color %> text-center">
+                    <%= link_to "/ranking/#{@dungeonurl}/#{@nowyyyymm}" do %>
+                    <h3 class="card-title float-left text-white">
+                        <%= @datetitle%> <span class="h2"><%=@dungeonname  %></span>
+                    </h3>
+                    <% end %>
+                    <a href="/ta/<%= @dungeonurl %>">
+                        <button type="button"
+                            class="btn btn-outline-light float-right"><%= fa_icon("chevron-right") %>解説</button>
+                    </a>
+                </div>
+                <div class="card-body bg-light">
+                    <div class="card-text">
+                        <div id="ranking_lists"><%= render 'ranking_list', {ranks: @ranks} %></div>
+                        <div class="more">
+                            <%= link_to_next_page @ranks, 'もっと見る', remote: true, id: 'view_more' %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        </div>
         <div class="col-md-3 text-center center-block dungeontitle">
             <h4 class="font-italic">過去ランキング</h4>
             <% if @archives != nil %>
@@ -20,29 +45,6 @@
                 <li><%= link_to ymconv(yyyymm, count.to_s), "/ranking/#{@dungeonurl}/#{yyyymm}" %></li>
                 <% end %>
             </ul>
-            <% end %>
-        </div>
-        <div class="col-md-9 col-md-auto text-center">
-            <% if @ranks != nil %>
-            <div class="card">
-                <div class="card-header <%= @color %> text-center">
-                    <%= link_to "/ranking/#{@dungeonurl}/#{@nowyyyymm}" do %>
-                    <h3 class="card-title float-left text-white"><%= @dungeonname %></h3>
-                    <% end %>
-                    <a href="/ta/<%= @dungeonurl %>">
-                        <button type="button"
-                            class="btn btn-outline-light float-right"><%= fa_icon("chevron-right") %>解説</button>
-                    </a>
-                </div>
-                <div class="card-body bg-light">
-                    <div class="card-text">
-                        <div id="ranking_lists"><%= render 'ranking_list' %></div>
-                        <div class="more">
-                            <%= link_to_next_page @ranks, 'もっと見る', remote: true, id: 'view_more' %>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <% end %>
         </div>
     </div>
