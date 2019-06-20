@@ -1,4 +1,7 @@
 class UserController < ApplicationController
+
+    PER = 10
+
     def profile
         @uid = params[:id]
         @user = User.find_by_id(@uid)
@@ -6,14 +9,24 @@ class UserController < ApplicationController
             redirect_to "/"
             return
         end
-        @ranks = @user.ranks
-        @ranks = @ranks.where(permission: true)
         @title = @user.name + "のプロフィール"
-        #if user_signed_in?
-            #数値以外が入れられているとき
-          #  redirect_to "/"
-         #   return
-        #end
+        @ranks = @user.ranks
+        @dungeons = ["最果てへの道99FTA","カラクロTA","鬼ヶ島ありありTA","ストーリーTA","女王グモ捕獲TA"]
+        @links = ["saihate","well","onigashima","story","shrine"]
+        @colors = ["bg-primary","bg-warning","bg-danger","bg-success","bg-dark"]
+        @ranks = @ranks.order(:result)
+        @myranks = []
+        @dungeons.each do |dungeon|
+            @myranks.push(@ranks.RankDungeonChoose(dungeon).page(params[:page]).per(PER))
+        end
+
+        # これ以下はAjax通信の場合のみ通過
+        return unless request.xhr?
+
+        case params[:type]
+        when 'saihate', 'well','onigashima','story','shrine'
+            render "user/#{params[:type]}"
+        end
     end
 
     def edit

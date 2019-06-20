@@ -55,50 +55,36 @@
             <% end %>
         </div>
     </div>
-
+</div>
+<div class="container-fluid">
     <% if @ranks.count != 0 %>
     <div class="row">
         <div class="col-sm-12 text-center">
             <h2>記録</h2>
         </div>
-        <div class="col-sm-12 text-center">
-            <table border="1" class="mx-auto">
-                <tr>
-                    <td>ダンジョン</td>
-                    <td>記録</td>
-                    <td>URL</td>
-                    <td>申請日</td>
-                    <td>画像</td>
-                </tr>
-                <% @ranks.each do |rank| %>
-                <tr>
-                    <td><%= rank.dungeon %></td>
-                    <td><%=
-                if rank.result >= 3600 then
-                    (rank.result.div(3600).to_s + "時間" + ((rank.result.modulo(3600)).div(60)).to_s + "分" + ((rank.result.modulo(3600)).modulo(60)).to_s + "秒")
-                else
-                    ((rank.result.div(60)).to_s + "分" + (rank.result.modulo(60)).to_s + "秒")
-                end
-            %></td>
-                    <td>
-                        <% if rank.movie == "" then %>
-                        なし
-                        <% else %>
-                        <%= link_to "動画", rank.movie %>
-                        <% end %>
-                    </td>
-                    <td><%= rank.created_at.year %>/<%= rank.created_at.month %>/<%= rank.created_at.day %></td>
-                    <td>なし
-                        <!--<% if rank.recordimage == "" then %>
-                なし
-            <% else %>
-               <%= image_tag rank.recordimage.url %>
-            <% end %>-->
-                    </td>
-                </tr>
-                <% end %>
-            </table>
+        <div class="offset-lg-1">
         </div>
+        <% for num in 0.. @dungeons.size - 1 %>
+        <div class="col-md-12 col-lg-2 mb-3">
+            <div class="card">
+                <div class="card-header <%= @colors[num] %> text-center">
+                    <%= link_to "/ranking/#{@links[num]}/#{@nowyyyymm}" do %>
+                    <h3 class="card-title float-left text-white h4"><%= @dungeons[num] %></h3>
+                    <% end %>
+                </div>
+                <div class="card-body bg-light">
+                    <div class="card-text">
+                        <div id="<%=@links[num] %>_ranking_lists">
+                            <%= render 'user_ranking', { ranks: @myranks[num]} %>
+                        </div>
+                        <div class="more">
+                            <%= link_to_next_page @myranks[num], 'もっと見る', params: { type: @links[num] }, remote: true,class: "btn btn-light w-100" , id: "view_#{@links[num]}" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
         <% else %>
         <h2>記録はありません</h2>
         <% end %>

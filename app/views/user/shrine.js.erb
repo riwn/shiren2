@@ -1,0 +1,2 @@
+$('#shrine_ranking_lists').append("<%= escape_javascript(render 'user_ranking',{ranks: @myranks[4]}) %>");
+$("#view_shrine").replaceWith("<%= escape_javascript(link_to_next_page(@myranks[4], 'もっと見る', params: { type: :shrine }, remote: true, class: "btn btn-light w-100", id: 'view_shrine')) %>");

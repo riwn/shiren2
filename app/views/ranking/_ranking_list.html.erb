@@ -6,7 +6,7 @@
 <% ranks.each do |rank| %>
 <% @num = @num + 1 %>
 <div class="border border-dark">
-    <div class="row">
+    <div class="row m-0">
         <div class="col-4 <%= RankColor(@num) %> border-bottom d-flex align-items-center">
             <p class="h3 p-3 mx-auto">
                 <%= @num %>位
@@ -21,8 +21,15 @@
                 <% end %>
             </p>
         </div>
-        <div class="col-10 d-flex align-items-center">
+        <div class="col-12 d-flex align-items-center">
             <p class="h3 p-3 mx-auto"><%= GetResultTime(rank.result) %></p>
+            <div class="float-right d-flex align-items-center">
+                <button type="button" class="btn btn-secondary rounded-pill m-3">画像</button>
+                <button type="button" class="btn btn-secondary rounded-pill">動画</button>
+            </div>
+        </div>
+        <div class="col-3 d-flex align-items-center">
+
         </div>
     </div>
 </div>
