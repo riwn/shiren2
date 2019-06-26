@@ -2,15 +2,17 @@
   box-sizing: border-box;
 }
 
+
 body {
   margin: 0;
   font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo,
     メイリオ, Osaka, "MS PGothic", arial, helvetica, sans-serif;
-  background-color: #e9c298;
+  background-image: url("/images/headfoot/background_image.png");
+  background-repeat: repeat;
 }
 
 main {
-  margin-top: 100px;
+  margin-top: 94px;
   padding-bottom: 160px;
 }
 
@@ -76,6 +78,8 @@ header {
 .nataneVillage {
   height: 180px;
   position: relative;
+  background-image: url("/images/nataneVillage/natane_back.png");
+  margin-bottom: 20px;
 
   //ダンジョンの画像を描画
   .nataneDungeon {
@@ -127,6 +131,7 @@ header {
       left: 75%;
       bottom: 32px;
       max-width: 150px !important;
+      z-index: 3;
     }
 
     .shrine2 {
@@ -139,7 +144,7 @@ header {
       width: 100% !important;
       height: 25%;
       top: 115px;
-      z-index: -10;
+      z-index: 0;
     }
   }
 
@@ -157,6 +162,7 @@ header {
       height: 17px;
       background-image: url("/images/nataneVillage/shiren_Walk.png");
       background-position: 21px top;
+      z-index: 1;
     }
 
     .mamlwalk {
@@ -166,6 +172,7 @@ header {
       height: 12px;
       background-image: url("/images/nataneVillage/Maml_Walk.png");
       background-position: 12px top;
+      z-index: 1;
     }
 
     .cloud {

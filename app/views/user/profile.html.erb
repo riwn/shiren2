@@ -19,10 +19,10 @@
     <%end%>
     <%end%>
     <div class="row">
-        <div class="col-sm-12 text-center">
+        <div class="col-12 text-center">
             <h2>リンク</h2>
         </div>
-        <div class="col-sm-3 text-center">
+        <div class="col-3 text-center">
             <% if @user.niconico == "" || @user.niconico.nil?%>
             <%= image_tag("/images/niconico.png",class: "niconicoicon") %>
             <% else %>
@@ -31,21 +31,21 @@
             <% end %>
             <% end %>
         </div>
-        <div class="col-sm-3 text-center">
+        <div class="col-3 text-center">
             <% if @user.youtube == "" || @user.youtube.nil?%>
             <%=fa_icon("youtube 3x", class: "youtubeicon")%>
             <% else %>
             <%= link_to fa_icon("youtube 3x", class: "youtubeicon fa-red"),@user.youtube  %>
             <% end %>
         </div>
-        <div class="col-sm-3 text-center">
+        <div class="col-3 text-center">
             <% if @user.twitch == "" || @user.twitch.nil?%>
             <%=  fa_icon("twitch 3x", class: "twitchicon  fa-blue")  %>
             <% else %>
             <%= link_to fa_icon("twitch 3x", class: "twitchicon fa-blue"),@user.twitch  %>
             <% end %>
         </div>
-        <div class="col-sm-3 text-center">
+        <div class="col-3 text-center">
             <% if @user.cavetube == "" || @user.cavetube.nil?%>
             <%= image_tag("/images/cavetube.png",class: "cavetubeicon") %>
             <% else %>
@@ -65,7 +65,7 @@
         <div class="offset-lg-1">
         </div>
         <% for num in 0.. @dungeons.size - 1 %>
-        <div class="col-md-12 col-lg-2 mb-3">
+        <div class="col-sm-12 col-md-6 col-lg-2 mb-3">
             <div class="card">
                 <div class="card-header <%= @colors[num] %> text-center">
                     <%= link_to "/ranking/#{@links[num]}/#{@nowyyyymm}" do %>
