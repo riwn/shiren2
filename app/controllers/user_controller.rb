@@ -11,9 +11,9 @@ class UserController < ApplicationController
         end
         @title = @user.name + "のプロフィール"
         @ranks = @user.ranks
-        @dungeons = ["最果てへの道99FTA","カラクロTA","鬼ヶ島ありありTA","ストーリーTA","女王グモ捕獲TA"]
-        @links = ["saihate","well","onigashima","story","shrine"]
-        @colors = ["bg-primary","bg-warning","bg-danger","bg-success","bg-dark"]
+        @dungeons = Constants::DUNGEON_NAME
+        @links = Constants::DUNGEON_LINK
+        @colors = Constants::DUNGEON_COLOR
         @ranks = @ranks.order(:result)
         @myranks = []
         @dungeons.each do |dungeon|

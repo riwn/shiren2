@@ -7,35 +7,22 @@ class RankingController < ApplicationController
 
     #URLからダンジョンの名前を取得
     def getDungeonName(dungeonURLStr)
-        if dungeonURLStr == "saihate"
-            return "最果てへの道99FTA"
-        elsif dungeonURLStr== "well"
-            return "カラクロTA"
-        elsif dungeonURLStr == "onigashima"
-            return "鬼ヶ島ありありTA"
-        elsif dungeonURLStr == "shrine"
-            return "女王グモ捕獲TA"
-        elsif dungeonURLStr == "story"
-            return "ストーリーTA"
-        else
-            return ""
-        end
+
+        Constants::DUNGEON_LINK.each_with_index{|value, index|
+            if dungeonURLStr == value
+                return Constants::DUNGEON_NAME[index]
+            end
+        }
+        return ""
     end
 
     def getDungeonColor(dungeonURLStr)
-        if dungeonURLStr == "saihate"
-            return "bg-primary"
-        elsif dungeonURLStr== "well"
-            return "bg-warning"
-        elsif dungeonURLStr == "onigashima"
-            return "bg-danger"
-        elsif dungeonURLStr == "shrine"
-            return "bg-dark"
-        elsif dungeonURLStr == "story"
-            return "bg-success"
-        else
-            return ""
-        end
+        Constants::DUNGEON_LINK.each_with_index{|value, index|
+            if dungeonURLStr == value
+                return Constants::DUNGEON_COLOR[index]
+            end
+        }
+        return ""
     end
 
     def SendDiscordWebHook(rank)

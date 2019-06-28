@@ -17,18 +17,13 @@ class HomeController < ApplicationController
             end
             @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@nowyyyymm[0,4]}01' or strftime('%Y%m', created_at) = '#{@nowyyyymm[0,4]}02' or strftime('%Y%m', created_at) = '#{@nowyyyymm[0,4]}12'")
         end
-        @dungeons = ["最果てへの道99FTA","カラクロTA","鬼ヶ島ありありTA","ストーリーTA","女王グモ捕獲TA"]
-        @links = ["saihate","well","onigashima","story","shrine"]
-        @colors = ["bg-primary","bg-warning","bg-danger","bg-success","bg-dark"]
+        @dungeons = Constants::DUNGEON_NAME
+        @links = Constants::DUNGEON_LINK
+        @colors = Constants::DUNGEON_COLOR
         @ranks = @ranks.order(:result)
         @topranks = []
         @dungeons.each do |dungeon|
             @topranks.push(@ranks.RankDungeonChoose(dungeon).limit(3))
         end
-        #@saihateRank = @ranks.RankDungeonChoose("最果てへの道99FTA").limit(3)
-        #@wellRank = @ranks.RankDungeonChoose("カラクロTA").limit(3)
-        #@onigashimaRank = @ranks.RankDungeonChoose("鬼ヶ島ありありTA").limit(3)
-        #@storyRank = @ranks.RankDungeonChoose("ストーリーTA").limit(3)
-        #@shrineRank = @ranks.RankDungeonChoose("女王グモ捕獲TA").limit(3)
     end
 end
