@@ -5,6 +5,9 @@ class Rank < ApplicationRecord
     validates :name, presence: true, length: {maximum: 15}
     validates :result, presence: true
     validates :dungeon, presence: true
+    validates :movie_or_image, presence: true
+    #validates_presence_of :movie, :unless => :recordimage?
+    #validates_presence_of :recordimage, :unless =>:movie?
 
     #アーカイブのデータを取得する
     def self.GetArchive
@@ -15,4 +18,9 @@ class Rank < ApplicationRecord
     def self.RankDungeonChoose(dungname)
         return self.where(dungeon: dungname).where(permission: true)
     end
+
+    private
+        def movie_or_image
+            recordimage.presence or movie.presence
+        end
 end

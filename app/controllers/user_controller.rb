@@ -44,6 +44,7 @@ class UserController < ApplicationController
         @user.youtube = params[:youtube]
         @user.twitch = params[:twitch]
         @user.cavetube = params[:cavetube]
+        @user.introduction = params[:text]
         @user.save
         redirect_to "/user/#{params[:id]}"
     end

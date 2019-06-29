@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 // require_tree .
+//= require trix
 //= require jquery
 //= require jquery_ujs
 //= require jquery3

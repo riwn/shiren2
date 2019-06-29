@@ -42,6 +42,7 @@
                         <% if @user.introduction.nil? || @user.introduction == ""%>
                         <p>プロフィールが設定されていません</p>
                         <%else%>
+                        <%= @user.introduction.html_safe %>
                         <%end%>
                     </div>
                     <div class="col-12 text-center h-auto">

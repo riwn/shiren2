@@ -11,7 +11,7 @@
                     <div class="card-text">
                         <% @rank.errors.full_messages.each do |message| %>
 
-                        <%= message %>
+                        <p class="text-danger"><%= message %></p>
 
                         <% end %>
                         <%= form_with(model: @rank,local: true,url:{action:'recordconfirm'}) do |r|%>
@@ -39,7 +39,7 @@
                                     </td>
                                 </tr>
                                 <tr class="table-primary">
-                                    <td><%= r.label :movie, "URL" %></td>
+                                    <td><%= r.label :movie, "動画URL" %></td>
                                     <td><%= r.text_field(:movie) %></td>
                                 </tr>
                                 <tr class="table-primary">
