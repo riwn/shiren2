@@ -161,8 +161,8 @@ class RankingController < ApplicationController
         if user_signed_in?
             @rank.user_id = current_user.id
         end
-        if params[:cache][:image] != ""
-            @rank.recordimage.retrieve_from_cache! params[:cache][:image]
+        if params[:cache][:recordimage] != nil
+            @rank.recordimage.retrieve_from_cache! params[:cache][:recordimage]
         end
         if params[:back]
             render 'newrecord'

@@ -41,14 +41,14 @@ class RecordimageUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-   def filename
-    time = Time.now
-    name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
-    name.downcase
-   end
-  # def filename
-  #  "#{secure_token}.#{file.extension}" if original_filename.present?
-  # end
+  #  def filename
+  #   time = Time.now
+  #   name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
+  #   name.downcase
+  #  end
+  def filename
+   "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
 
   protected
   def secure_token

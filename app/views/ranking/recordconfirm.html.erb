@@ -45,15 +45,14 @@
                             </tr>
                             <tr>
                                 <td>画像</td>
-                                <td><%=
-                                if @rank.recordimage.file.nil? then
-                                    "なし"
-                                else
-                                    image_tag @rank.recordimage.url,{:class => "img-fluid"}
-                                end %>
+                                <td>
+                                    <%if @rank.recordimage.file.nil? then%>
+                                    なし
+                                    <%else%>
+                                    <%= image_tag @rank.recordimage.url,{:class => "img-fluid"} %>
+                                    <%= hidden_field_tag :"cache[recordimage]", @rank.recordimage.cache_name %>
+                                    <%end %>
                                 </td>
-                                <%= r.hidden_field :recordimage %>
-                                <%= r.hidden_field :recordimage_cache %>
                             </tr>
                         </table>
                         <div class="actions">

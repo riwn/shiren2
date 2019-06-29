@@ -24,8 +24,22 @@
         <div class="col-12 d-flex align-items-center">
             <p class="h3 p-3 mx-auto"><%= GetResultTime(rank.result) %></p>
             <div class="float-right d-flex align-items-center">
-                <button type="button" class="btn btn-secondary rounded-pill m-3">画像</button>
+                <% if rank.movie != nil && rank.movie != "" then %>
+                <%= link_to rank.movie, target: "_blank" do %>
                 <button type="button" class="btn btn-secondary rounded-pill">動画</button>
+                <% end %>
+                <% else %>
+                <button type="button" class="btn btn-secondary rounded-pill" disabled>動画</button>
+                <% end %>
+
+                <% if rank.recordimage != nil && rank.recordimage != "" then %>
+                <%= link_to "#", params: { type: "modal" }, remote: true, target: "_blank" do %>
+                <%=# image_tag rank.recordimage.to_s,{:class => "img-fluid"} %>
+                <button type="button" class="btn btn-secondary rounded-pill m-3">画像</button>
+                <% end %>
+                <% else %>
+                <button type="button" class="btn btn-secondary rounded-pill m-3" disabled>画像</button>
+                <% end %>
             </div>
         </div>
         <div class="col-3 d-flex align-items-center">
