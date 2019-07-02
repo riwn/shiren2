@@ -103,7 +103,7 @@
                 <div class="card-body bg-light">
                     <div class="card-text">
                         <div id="<%=@links[num] %>_ranking_lists">
-                            <%= render 'user_ranking', { ranks: @myranks[num]} %>
+                            <%= render 'user_ranking', { ranks: @myranks[num],dungeonname:@links[num]} %>
                         </div>
                         <div class="more">
                             <%= link_to_next_page @myranks[num], 'もっと見る', params: { type: @links[num] }, remote: true,class: "btn btn-light w-100" , id: "view_#{@links[num]}" %>

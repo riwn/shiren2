@@ -3,7 +3,29 @@
 <% end %>
 <div class="container">
     <div class="row">
-        <div class="col-md-9 col-md-auto text-center">
+        <nav class="navbar d-md-none navbar-expand-md col-md-12 navbar-dark bg-info ml-3 mr-3 mb-3">
+            <h4 class="navbar-brand float-left">ランキングアーカイブ</h4>
+            <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#archiveData"
+                aria-controls="archiveData" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="archiveData">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <%= link_to "歴代ランキング", "/ranking/#{@dungeonurl}",class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <% if @archives != nil %>
+                        <% @archives.each do |yyyymm, count| %>
+                        <%= link_to ymconv(yyyymm, count.to_s), "/ranking/#{@dungeonurl}/#{yyyymm}",class:"nav-link"  %>
+                        <% end %>
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="col-md-9 col-md-auto">
             <% if @ranks != nil %>
             <div class="card">
                 <div class="card-header <%= @color %> text-center">
@@ -19,7 +41,8 @@
                 </div>
                 <div class="card-body bg-light">
                     <div class="card-text">
-                        <div id="ranking_lists"><%= render 'ranking_list', {ranks: @ranks} %></div>
+                        <div id="ranking_lists"><%= render 'ranking_list', {ranks: @ranks,dungeonname:@dungeonurl } %>
+                        </div>
                         <div class="more">
                             <%= link_to_next_page @ranks, 'もっと見る', remote: true, id: 'view_more' %>
                         </div>
@@ -28,16 +51,24 @@
             </div>
             <% end %>
         </div>
-        <div class="col-md-3 text-center center-block dungeontitle">
-            <h4 class="font-italic">過去ランキング</h4>
-            <% if @archives != nil %>
-            <ul style="list-style:none;">
-                <li><%= link_to "歴代ランキング", "/ranking/#{@dungeonurl}" %></li>
-                <% @archives.each do |yyyymm, count| %>
-                <li><%= link_to ymconv(yyyymm, count.to_s), "/ranking/#{@dungeonurl}/#{yyyymm}" %></li>
-                <% end %>
-            </ul>
-            <% end %>
+        <div class="d-none d-md-inline col-md-3">
+            <div class="card">
+                <div class="card-header <%= @color %> text-center">
+                    <h5 class="font-italic text-white">ランキングアーカイブ</h5>
+                </div>
+                <div class="card-body bg-light">
+                    <div class="card-text">
+                        <% if @archives != nil %>
+                        <ul style="list-style:none;">
+                            <li><%= link_to "歴代ランキング", "/ranking/#{@dungeonurl}" %></li>
+                            <% @archives.each do |yyyymm, count| %>
+                            <li><%= link_to ymconv(yyyymm, count.to_s), "/ranking/#{@dungeonurl}/#{yyyymm}" %></li>
+                            <% end %>
+                        </ul>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
