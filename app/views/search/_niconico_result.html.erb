@@ -1,0 +1,20 @@
+<% if niconicoresult != nil  %>
+<% niconicoresult.each do |data| %>
+<div class="border border-dark">
+    <div class="row text-center">
+        <div class="col-3 p-3 border-right d-flex align-items-center">
+            <p class="viewer">
+                <img class="niconicoicon" src="/images/niconico.png">
+                <%= fa_icon("eye") %><%= data["viewCounter"] %>
+            </p>
+        </div>
+        <div class="col-9 border-bottom d-flex align-items-center">
+            <p class="rankname h4 p-3">
+                <%= image_tag(data["communityIcon"], :class => "liveicon m-3") %>
+                <%= link_to "#{data["title"]}", "https://nico.ms/#{data["contentId"]}" %>
+            </p>
+        </div>
+    </div>
+</div>
+<% end %>
+<% end %>

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :ranks
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :name, presence: true, uniqueness: true, length: {maximum: 50}
+  validates :name, presence: true, uniqueness: true, length: {maximum: 15}
 
   #登録時にメールアドレスを不要とする
   def email_required?

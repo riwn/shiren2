@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_14_115105) do
+ActiveRecord::Schema.define(version: 2019_06_28_082603) do
 
   create_table "items", force: :cascade do |t|
     t.text "name"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_115105) do
     t.string "cavetube"
     t.string "twitch"
     t.boolean "admin", default: false
+    t.text "introduction"
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

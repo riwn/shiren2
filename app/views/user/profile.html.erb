@@ -1,102 +1,124 @@
 <% content_for :title do %>
 <%=@title%>
 <% end %>
-<% content_for :mosttop do %>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="container">
 
-<div class="container-fluid">
-    <h1><%= @title %></h1>
-</div>
-
-<% end %>
-<div class="container-fluid">
-    <% if current_user.try(:admin?) && current_user.id == @uid.to_i %>
-    <%= button_to("管理者画面","/admin",method: :get) %>
-    <%end%>
-    <h2>リンク</h2>
-    <div class="row">
-        <div class="col-sm-2 text-center">
-            <% if @user.niconico == "" || @user.niconico.nil?%>
-
-            <% else %>
-            <%= link_to @user.niconico, target: "_blank" do %>
-            <%= image_tag("/images/niconico.png",class: "niconicoicon") %>
-            <% end %>
-            <% end %>
+    <div class="card mt-3 pb-5">
+        <div class="card-header text-center pt-3">
+            <h2><%= @title %></h2>
         </div>
-        <div class="col-sm-2 text-center">
-            <% if @user.youtube == "" || @user.youtube.nil?%>
+        <div class="card-body bg-light">
+            <div class="row">
+                <div class="col-md-12 col-lg-4">
+                    <div class="col-12 text-center mb-3">
+                        <% if @user.icon.nil? || @user.icon =="" %>
+                        <%= image_tag("/images/user/NoImage.png",class: "img-fluid border") %>
+                        <%end%>
+                    </div>
 
-            <% else %>
-            <%= link_to fa_icon("youtube 3x", class: "youtubeicon"),@user.youtube  %>
-            <% end %>
-        </div>
-        <div class="col-sm-2 text-center">
-            <% if @user.twitch == "" || @user.twitch.nil?%>
+                    <% if current_user.try(:admin?) && current_user.id == @uid.to_i %>
+                    <div class="col-12 text-center mb-3">
+                        <%= button_to("管理者画面","/admin",class:"btn btn-secondary" ,method: :get) %>
+                    </div>
+                    <%end%>
 
-            <% else %>
-            <%= link_to fa_icon("twitch 3x", class: "twitchicon"),@user.twitch  %>
-            <% end %>
-        </div>
-        <div class="col-sm-2 text-center">
-            <% if @user.cavetube == "" || @user.cavetube.nil?%>
 
-            <% else %>
-            <%= link_to @user.cavetube, target: "_blank" do %>
-            <%= image_tag("/images/cavetube.png",class: "cavetubeicon") %>
-            <% end %>
+                    <% if current_user.try(:id)%>
+                    <% if current_user.id == @uid.to_i %>
+                    <div class="col-12 text-center mb-3">
+                        <%= button_to("マイデータ編集","/user/#{@uid}/edit",class:"btn btn-secondary",method: :get) %>
+                    </div>
+                    <%end%>
+                    <%end%>
+
+                    <div class="col-12 text-center mb-3">
+                        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
+                            data-show-count="false"></a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-8">
+                    <div class="col-12 h-75">
+                        <% if @user.introduction.nil? || @user.introduction == ""%>
+                        <p>プロフィールが設定されていません</p>
+                        <%else%>
+                        <%= @user.introduction.html_safe %>
+                        <%end%>
+                    </div>
+                    <div class="col-12 text-center h-auto">
+                        <div class="row">
+                            <div class="offset-5 offset-md-6 offset-lg-1"></div>
+                            <div class="col-3 col-lg-2 mb-3 text-center">
+                                <% if @user.niconico == "" || @user.niconico.nil?%>
+                                <%= image_tag("/images/niconico.png",class: "niconicoicon" ,style:"filter: gray;filter: grayscale(1);") %>
+                                <% else %>
+                                <%= link_to @user.niconico, target: "_blank" do %>
+                                <%= image_tag("/images/niconico.png",class: "niconicoicon") %>
+                                <% end %>
+                                <% end %>
+                            </div>
+                            <div class="col-3 col-lg-2 mb-3 text-center">
+                                <% if @user.youtube == "" || @user.youtube.nil? %>
+                                <%= fa_icon("youtube 3x", class: "youtubeicon",style:"color:gray;") %>
+                                <% else %>
+                                <%= link_to fa_icon("youtube 3x", class: "youtubeicon"),@user.youtube  %>
+                                <% end %>
+                            </div>
+                            <div class="offset-6 offset-lg-0 col-3 col-lg-2 mb-3 text-center">
+                                <% if @user.twitch == "" || @user.twitch.nil?%>
+                                <%= fa_icon("twitch 3x", class: "twitchicon",style:"color:gray;") %>
+                                <% else %>
+                                <%= link_to fa_icon("twitch 3x", class: "twitchicon",style:"color:blue;"),@user.twitch  %>
+                                <% end %>
+                            </div>
+                            <div class="col-3 col-lg-2 mb-3 text-center">
+                                <% if @user.cavetube == "" || @user.cavetube.nil?%>
+                                <%= image_tag("/images/cavetube.png",class: "cavetubeicon",style:"filter: gray;filter: grayscale(1);") %>
+                                <% else %>
+                                <%= link_to @user.cavetube, target: "_blank" do %>
+                                <%= image_tag("/images/cavetube.png",class: "cavetubeicon") %>
+                                <% end %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <% end %>
-
-    <% if current_user.try(:id) %>
-    <% if current_user.id == @uid.to_i %>
-    <%= button_to("マイデータ編集","/user/#{@uid}/edit",method: :get) %>
-    <%end%>
-    <%end%>
-    <% if @user.ranks.count != 0 %>
-    <h2>記録</h2>
-    <table border="1">
-        <tr>
-            <td>ダンジョン</td>
-            <td>記録</td>
-            <td>URL</td>
-            <td>申請日</td>
-            <td>画像</td>
-        </tr>
-        <% @user.ranks.each do |rank| %>
-        <tr>
-            <td><%= rank.dungeon %></td>
-            <td><%=
-                if rank.result >= 3600 then
-                    (rank.result.div(3600).to_s + "時間" + ((rank.result.modulo(3600)).div(60)).to_s + "分" + ((rank.result.modulo(3600)).modulo(60)).to_s + "秒")
-                else
-                    ((rank.result.div(60)).to_s + "分" + (rank.result.modulo(60)).to_s + "秒")
-                end
-            %></td>
-            <td>
-                <% if rank.movie == "" then %>
-                なし
-                <% else %>
-                <%= link_to "動画", rank.movie %>
-                <% end %>
-            </td>
-            <td><%= rank.created_at.year %>/<%= rank.created_at.month %>/<%= rank.created_at.day %></td>
-            <td>なし
-                <!--<% if rank.recordimage == "" then %>
-                なし
-            <% else %>
-               <%= image_tag rank.recordimage.url %>
-            <% end %>-->
-            </td>
-        </tr>
-        <% end %>
-    </table>
-    <% else %>
-    <h2>記録はありません</h2>
-    <% end %>
 </div>
-<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="container-fluid mt-5">
+    <% if @ranks.count != 0 %>
+    <div class="row">
+        <div class="offset-lg-1">
+        </div>
+        <% for num in 0.. @dungeons.size - 1 %>
+        <div class="col-sm-12 col-md-6 col-lg-2 mb-3">
+            <div class="card">
+                <div class="card-header <%= @colors[num] %> text-center">
+                    <%= link_to "/ranking/#{@links[num]}/#{@nowyyyymm}" do %>
+                    <h3 class="card-title float-left text-white h4"><%= @dungeons[num] %></h3>
+                    <% end %>
+                </div>
+                <div class="card-body bg-light">
+                    <div class="card-text">
+                        <div id="<%=@links[num] %>_ranking_lists">
+                            <%= render 'user_ranking', { ranks: @myranks[num],dungeonname:@links[num]} %>
+                        </div>
+                        <div class="more">
+                            <%= link_to_next_page @myranks[num], 'もっと見る', params: { type: @links[num] }, remote: true,class: "btn btn-light w-100" , id: "view_#{@links[num]}" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+        <% else %>
+        <h2>記録はありません</h2>
+        <% end %>
+    </div>
+</div>
+
 
 <script>
     //ナタネ村を非表示する

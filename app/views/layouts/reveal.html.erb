@@ -1,79 +1,78 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>slide</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<%= stylesheet_link_tag "reveal/reveal", :media => "all" %>
-		<%= stylesheet_link_tag "reveal/theme/sky", :media => "all" %>
+	<title>slide</title>
+	<%= stylesheet_link_tag 'application', media: 'all' %>
+	<%= stylesheet_link_tag "reveal/reveal", :media => "all" %>
+	<%= stylesheet_link_tag "reveal/theme/sky", :media => "all" %>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<%= stylesheet_link_tag "reveal/zenburn", :media => "all" %>
-		<%= stylesheet_link_tag "ta", :media => "all" %>
-		<%= stylesheet_link_tag "canvasmenu/menu_topside", :media => "all" %>
-		<%= stylesheet_link_tag "canvasmenu/normalize", :media => "all" %>
-    	<%= javascript_include_tag 'application'%>
+	<!-- Theme used for syntax highlighting of code -->
+	<%= stylesheet_link_tag "reveal/zenburn", :media => "all" %>
+	<%= stylesheet_link_tag "ta", :media => "all" %>
+	<%= stylesheet_link_tag "canvasmenu/menu_topside", :media => "all" %>
+	<%= stylesheet_link_tag "canvasmenu/normalize", :media => "all" %>
 
-	</head>
-	<body>
-		<div class="menu-wrap">
-			<nav class="menu-top">
-				<div class="profile"><img src="/images/top-notice/shiren2a.png" alt="Matthew Greenberg"/><span>大型地雷君</span></div>
-				<div class="icon-list">
-					<a href="/search">放送検索</a>
-          			<a href="/ta">タイムアタック</a>
-					<%= link_to "ランキング","/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %>
-				</div>
-			</nav>
-			<nav class="menu-side">
-				<a href="/ta/saihate/chapter1">1.最果て99FTAとは</a>
-				<a href="/ta/saihate/chapter2">2.レベリング</a>
-				<a href="/ta/saihate/chapter3">3.レベリング</a>
-				<a href="/ta/saihate/chapter4">4.レベリング</a>
-				<a href="/ta/saihate/chapter5">5.根田安モンスター</a>
-				<a href="/ta/saihate/chapter4">6.レベリング</a>
-				<a href="/ta/saihate/chapter4">7.レベリング</a>
-				<a href="/ta/saihate/chapter4">8.レベリング</a>
-			</nav>
-		</div>
-		<button class="menu-button" id="open-button">Open Menu</button>
-		<div class="content-wrap">
-			<%= yield %>
-		</div>
-		<%= javascript_include_tag "canvasmenu/classie.js" %>
-        <%= javascript_include_tag "canvasmenu/main.js" %>
-		<%= javascript_include_tag "revealjs/head.min.js" %>
-        <%= javascript_include_tag "revealjs/reveal.js" %>
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: false,
-				center: true,
-				overview: false,
-				mouseWheel: true,
+	<%= javascript_include_tag 'application'%>
 
-				transition: 'convex', // none/fade/slide/convex/concave/zoom
+</head>
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					//{ src: '/app/assets/javascripts/revealjs/classList.js', condition: function() { return !document.body.classList; } },
-					//{ src: '/app/assets/javascripts/revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					//{ src: '/app/assets/javascripts/revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					//{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					//{ src: 'revealjs/plugin/search/search.js', async: true },
-					//{ src: 'revealjs/plugin/zoom-js/zoom.js', async: true },
-					//{ src: 'revealjs/plugin/notes/notes.js', async: true },
-					//{ src: 'revealjs/plugin/markdown/marked.js' },
-					//{ src: 'revealjs/plugin/markdown/markdown.js' },
-					//{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+<body>
+	<div class="menu-wrap">
+		<nav class="menu-top">
+			<%= render '/layouts/navbar_top' %>
+		</nav>
+		<nav class="menu-side bg-dark">
+			<a href="/ta/saihate/chapter1">1.最果て99FTAとは</a>
+			<a href="/ta/saihate/chapter2">2.レベリング</a>
+			<a href="/ta/saihate/chapter3">3.レベリング</a>
+			<a href="/ta/saihate/chapter4">4.レベリング</a>
+			<a href="/ta/saihate/chapter5">5.根田安モンスター</a>
+			<a href="/ta/saihate/chapter4">6.レベリング</a>
+			<a href="/ta/saihate/chapter4">7.レベリング</a>
+			<a href="/ta/saihate/chapter4">8.レベリング</a>
+		</nav>
+	</div>
+	<button class="menu-button" id="open-button">Open Menu</button>
+	<div class="content-wrap">
+		<%= yield %>
+	</div>
+	<%= javascript_include_tag "canvasmenu/classie.js" %>
+	<%= javascript_include_tag "canvasmenu/main.js" %>
+	<%= javascript_include_tag "revealjs/head.min.js" %>
+	<%= javascript_include_tag "revealjs/reveal.js" %>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: false,
+			center: true,
+			overview: false,
+			mouseWheel: true,
+
+			transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				//{ src: '/app/assets/javascripts/revealjs/classList.js', condition: function() { return !document.body.classList; } },
+				//{ src: '/app/assets/javascripts/revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				//{ src: '/app/assets/javascripts/revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				//{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				//{ src: 'revealjs/plugin/search/search.js', async: true },
+				//{ src: 'revealjs/plugin/zoom-js/zoom.js', async: true },
+				//{ src: 'revealjs/plugin/notes/notes.js', async: true },
+				//{ src: 'revealjs/plugin/markdown/marked.js' },
+				//{ src: 'revealjs/plugin/markdown/markdown.js' },
+				//{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
 </html>

@@ -50,7 +50,13 @@ GEM
     autoprefixer-rails (9.5.1.1)
       execjs
     bcrypt (3.1.12-x64-mingw32)
+    better_errors (2.5.1)
+      coderay (>= 1.0.0)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
     bindex (0.7.0)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
     bootstrap (4.3.1)
@@ -77,6 +83,7 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -86,6 +93,10 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
+    debase (0.2.2)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.5)
+    debug_inspector (0.0.3)
     devise (4.6.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -204,6 +215,8 @@ GEM
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
+    ruby-debug-ide (0.7.0)
+      rake (>= 0.8.1)
     rubyzip (1.2.3)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -240,6 +253,8 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
+    trix (0.10.1)
+      rails
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     tzinfo-data (1.2019.1)
@@ -263,6 +278,8 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.3.1)
   byebug
@@ -271,17 +288,21 @@ DEPENDENCIES
   carrierwave
   chromedriver-helper
   coffee-rails (~> 4.2)
+  debase
   devise
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
+  kaminari
   puma (~> 3.11)
   rails (~> 5.2.0)
-  rails-i18n (~> 5.1)
+  rails-i18n
   rails_admin (~> 1.3)
+  ruby-debug-ide
   sass-rails (~> 5.0)
   selenium-webdriver
   sqlite3
+  trix
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)

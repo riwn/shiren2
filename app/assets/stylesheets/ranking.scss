@@ -4,18 +4,9 @@
 .dungeontitle {
   position: relative;
 
-  h2 {
-    position: relative;
-    z-index: 10;
-    padding-top: 20px;
-    font-size: 4vmin;
-    max-width: 600px;
-    color: #000;
-    -webkit-text-stroke: 0.3px #fff;
-  }
+
 
   svg {
-    position: absolute;
     width: 35vmin;
     height: auto;
     top: 0;
@@ -23,16 +14,18 @@
     left: 0;
     right: 0;
     margin: auto 0;
-  }
-}
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-.rankingcontents {
-  .dungeontitle {
-    display: inline-block;
-  }
-
-  .rankingtable {
-    padding-left: 50px;
-    display: inline-block;
+    text {
+      position: relative;
+      z-index: 10;
+      padding-top: 20px;
+      font-size: 80vmin;
+      max-width: 600px;
+      color: #000;
+      -webkit-text-stroke: 0.3px #fff;
+    }
   }
 }

@@ -9,14 +9,14 @@
 <%= javascript_include_tag 'slicebox/noticeslide'%>
 
 <% content_for :mosttop do %>
+
+<% end %>
+
 <div class="sliders">
   <ul id="sb-slider" class="sb-slider">
     <li><img src="images/top-notice/making.png" title="キャプション1"></li>
-    <li><img src="images/top-notice/making2.png" title="キャプション1"></li>
     <li><img src="images/top-notice/making.png" title="キャプション1"></li>
-    <li><img src="images/top-notice/making2.png" title="キャプション1"></li>
     <li><img src="images/top-notice/making.png" title="キャプション1"></li>
-    <li><img src="images/top-notice/making2.png" title="キャプション1"></li>
   </ul>
   <div id="nav-arrows" class="nav-arrows">
     <a href="#">
@@ -27,16 +27,16 @@
     </a>
   </div>
 </div>
-<% end %>
-
-<div class="container-fluid">
-  <a href="/ta">
-    <p>タイムアタック</p>
-  </a>
-  <%=
-  d = Date.today
-  yyyymm = d.year.to_s + ("%02d" % d.month).to_s
-  link_to "ランキング", "/ranking/saihate/#{yyyymm}" %>
+<div class="container">
+  <div class="card-deck">
+    <div class="row">
+      <% for num in 0.. @dungeons.size - 1 %>
+      <div class="col-md-12 col-lg-6 mb-3">
+        <%= render 'top_ranking', { topranking: @topranks[num] , bgcolor: @colors[num],dungeon:@dungeons[num] ,link: @links[num]} %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <script>

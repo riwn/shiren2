@@ -1,38 +1,44 @@
 <% content_for :title do %>
 マイデータ編集
 <% end %>
-<% content_for :mosttop do %>
-
-<div class="container-fluid">
-    <h1><%= @user.name %>のデータ編集</h1>
-</div>
-
-<% end %>
-<div class="container-fluid">
-    <%= form_tag("/user/#{@user.id}/update") do %>
-    <table border="1">
-        <tr>
-            <td>ニコニココミュ</td>
-            <td><textarea name="niconico"><%= @user.niconico %></textarea></td>
-        </tr>
-        <tr>
-            <td>Youtubeチャンネル</td>
-            <td><textarea name="youtube"><%= @user.youtube %></textarea></td>
-        </tr>
-        <tr>
-            <td>Twitchチャンネル</td>
-            <td><textarea name="twitch"><%= @user.twitch %></textarea></td>
-        </tr>
-        <tr>
-            <td>CaveTubeチャンネル</td>
-            <td><textarea name="cavetube"><%= @user.cavetube %></textarea></td>
-        </tr>
-    </table>
-    <input type="submit" value="編集">
-    <% end %>
-</div>
-
-<script>
-    //ナタネ村を非表示する
-    document.getElementById("nataneVillage").style.display = "none";
-</script>
+<div class="container">
+    <div class="row">
+        <div class="offset-lg-3"></div>
+        <div class="col-auto">
+            <div class="card bg-light mt-5">
+                <h2 class="card-title float-left pt-3 pl-3"><%= @user.name %>のデータ編集</h2>
+                <div class="card-body">
+                    <div class="card-text">
+                        <%= form_tag("/user/#{@user.id}/update") do %>
+                        <div class="field">
+                            <%= label_tag "ニコニココミュ"%>
+                            <%= text_field_tag 'niconico' , @user.niconico ,{class: "float-right"} %>
+                        </div>
+                        <div class="field">
+                            <%= label_tag "Youtubeチャンネル"%>
+                            <%= text_field_tag 'youtube' , @user.youtube,{class: "float-right"} %>
+                        </div>
+                        <div class="field">
+                            <%= label_tag "Twitchチャンネル"%>
+                            <%= text_field_tag 'twitch' , @user.niconico,{class: "float-right"} %>
+                        </div>
+                        <div class="field mb-2">
+                            <%= label_tag "CaveTubeチャンネル"%>
+                            <%= text_field_tag 'cavetube' , @user.niconico,{class: "float-right"} %>
+                        </div>
+                        <div class="field mb-2">
+                            <%= label_tag "プロフィール"%>
+                            <%= hidden_field_tag "text", @user.introduction, id: :introduction_text %>
+                            <trix-editor input="introduction_text"></trix-editor>
+                        </div>
+                        <input type="submit" value="編集" class="float-right btn btn-primary">
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //ナタネ村を非表示する
+        document.getElementById("nataneVillage").style.display = "none";
+    </script>

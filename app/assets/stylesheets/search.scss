@@ -4,23 +4,25 @@
 .searchresult {
   width: 50%;
 }
-.contents {
-  position: relative;
-  text-align: left;
 
-  .liveicon {
-    width: 30px;
-    height: auto;
-    position: absolute;
-  }
-  .title {
-    padding-left: 40px;
-    text-align: center;
-  }
-  .niconicoicon {
-    width: 30px;
-  }
-  .youtubeicon {
-    color: red;
-  }
+.liveicon {
+  width: 50px;
+  height: auto;
+}
+
+.title {
+  padding-left: 40px;
+  text-align: center;
+}
+
+.niconicoicon {
+  width: 30px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+.youtubeicon {
+  color: red;
+  padding-right: 40px;
+  margin-left: 40px;
 }

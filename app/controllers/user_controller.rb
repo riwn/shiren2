@@ -1,4 +1,7 @@
 class UserController < ApplicationController
+
+    PER = 10
+
     def profile
         @uid = params[:id]
         @user = User.find_by_id(@uid)
@@ -7,11 +10,23 @@ class UserController < ApplicationController
             return
         end
         @title = @user.name + "のプロフィール"
-        #if user_signed_in?
-            #数値以外が入れられているとき
-          #  redirect_to "/"
-         #   return
-        #end
+        @ranks = @user.ranks
+        @dungeons = Constants::DUNGEON_NAME
+        @links = Constants::DUNGEON_LINK
+        @colors = Constants::DUNGEON_COLOR
+        @ranks = @ranks.order(:result)
+        @myranks = []
+        @dungeons.each do |dungeon|
+            @myranks.push(@ranks.RankDungeonChoose(dungeon).page(params[:page]).per(PER))
+        end
+
+        # これ以下はAjax通信の場合のみ通過
+        return unless request.xhr?
+
+        case params[:type]
+        when 'saihate', 'well','onigashima','story','shrine'
+            render "user/#{params[:type]}"
+        end
     end
 
     def edit
@@ -29,6 +44,7 @@ class UserController < ApplicationController
         @user.youtube = params[:youtube]
         @user.twitch = params[:twitch]
         @user.cavetube = params[:cavetube]
+        @user.introduction = params[:text]
         @user.save
         redirect_to "/user/#{params[:id]}"
     end

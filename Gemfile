@@ -71,7 +71,19 @@ gem 'devise'
 gem 'cancancan'
 
 #日本語化
-gem 'rails-i18n', '~> 5.1'
+gem 'rails-i18n'
 
 #デザイン
 gem 'bootstrap', '~> 4.3.1'
+
+#ページネーション
+gem 'kaminari'
+
+#デバッグ用
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'ruby-debug-ide'
+gem 'debase'
+
+#WYSIWYGエディタ
+gem 'trix'

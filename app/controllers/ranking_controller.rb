@@ -1,36 +1,38 @@
 class RankingController < ApplicationController
 
-    require 'net/http'
+    require 'net/https'
     require 'net/https'
     require 'uri'
     ######################################################メソッド########################################################
 
     #URLからダンジョンの名前を取得
     def getDungeonName(dungeonURLStr)
-        if dungeonURLStr == "saihate"
-            return "最果てへの道99FTA"
-        elsif dungeonURLStr== "well"
-            return "カラクロTA"
-        elsif dungeonURLStr == "onigashima"
-            return "鬼ヶ島ありありTA"
-        elsif dungeonURLStr == "shrine"
-            return "女王グモ捕獲TA"
-        elsif dungeonURLStr == "story"
-            return "ストーリーTA"
-        else
-            return ""
-        end
+
+        Constants::DUNGEON_LINK.each_with_index{|value, index|
+            if dungeonURLStr == value
+                return Constants::DUNGEON_NAME[index]
+            end
+        }
+        return ""
+    end
+
+    def getDungeonColor(dungeonURLStr)
+        Constants::DUNGEON_LINK.each_with_index{|value, index|
+            if dungeonURLStr == value
+                return Constants::DUNGEON_COLOR[index]
+            end
+        }
+        return ""
     end
 
     def SendDiscordWebHook(rank)
         #PostまたはGet先のURL
-        uri = URI("https://discordapp.com/api/webhooks/582545571777085440/l9fDV34Sogsje__V1Nz-lt5W4LaHoIy109iQyGguh4LgLm_OAaxkd36-xb_eYnosn-tR")
+        uri = URI("https://discordapp.com/api/webhooks/591567156739833856/elYIKw1LA60J0KoA45jkytNEPTXPo4YEMQtwyg_TPFu2xK8nb3qaQ7TTPKQAa0V__wbR")
         #Net::HTTPのインスタンスを生成
-        http = Net::HTTP.new(uri.host, uri.port)
-
+        https = Net::HTTP.new(uri.host, uri.port)
         #ssl(https)を利用する場合はtrueに
-        http.use_ssl = true
-        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        https.use_ssl = true
+        https.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
         req = Net::HTTP::Post.new(uri.path)
 
@@ -38,7 +40,7 @@ class RankingController < ApplicationController
         req['Content-Type'] = 'application/json'
 
         #送りたいデータを格納
-        topurl = "http://localhost:3000"
+        topurl = "https://localhost:3000"
         botname = "記録通知くん"
         boticon = "https://cdn.discordapp.com/icons/565179762084151296/dcc15d11a9cbbd059d5ad8875953bb91.png?size=128"
         auther = {"name": rank.name}
@@ -77,14 +79,12 @@ class RankingController < ApplicationController
         req.body = sendjson.to_json
 
         #レスポンスデータの受け取り
-        result = http.request(req)
-
-        #デバッグ
-        puts result
-        puts req
+        result = https.request(req)
     end
 
     ######################################################メソッド終わり######################################################
+
+    PER = 10
 
     #URLからダンジョンと日付を取得してデータベースから記録も取得
     def dungeon
@@ -108,16 +108,16 @@ class RankingController < ApplicationController
                 month = @yyyymm[4,2].to_i
                 season = ""
                 if(month == 3 || month == 4|| month == 5)
-                    season = "春期"
+                    season = " 春期"
                     @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}03' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}04' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}05'")
                 elsif(month == 6 || month == 7 || month == 8)
-                    season = "夏期"
+                    season = " 夏期"
                     @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}06' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}07' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}08'")
                 elsif(month == 9 || month == 10|| month == 11)
-                    season = "秋期"
+                    season = " 秋期"
                     @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}09' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}10' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}11'")
                 elsif(month == 12 || month == 1|| month == 2)
-                    season = "冬期"
+                    season = " 冬期"
                     if(month == 1|| month == 2)
                         year = year - 1
                     end
@@ -133,7 +133,8 @@ class RankingController < ApplicationController
         else
             @datetitle = " 歴代"
         end
-        @ranks = @ranks.order(:result)
+        @color = getDungeonColor(@dungeonurl)
+        @ranks = @ranks.order(:result).page(params[:page]).per(PER)
         render 'ranking'
     end
 
@@ -160,8 +161,8 @@ class RankingController < ApplicationController
         if user_signed_in?
             @rank.user_id = current_user.id
         end
-        if params[:cache][:image] != ""
-            @rank.recordimage.retrieve_from_cache! params[:cache][:image]
+        if params[:cache][:recordimage] != nil
+            @rank.recordimage.retrieve_from_cache! params[:cache][:recordimage]
         end
         if params[:back]
             render 'newrecord'
