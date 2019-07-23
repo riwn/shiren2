@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_06_28_082603) do
 
-  create_table "items", force: :cascade do |t|
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.text "name"
     t.text "type"
     t.integer "buy"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_06_28_082603) do
     t.text "kind"
   end
 
-  create_table "ranks", force: :cascade do |t|
+  create_table "ranks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.text "name"
     t.text "dungeon"
     t.integer "result"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_06_28_082603) do
     t.integer "user_id"
   end
 
-  create_table "tournaments", force: :cascade do |t|
+  create_table "tournaments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.text "name"
     t.text "eventdate"
     t.text "organizer"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_06_28_082603) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
