@@ -88,5 +88,7 @@ group :development do
   gem 'debase'
 end
 
+gem 'rails_12factor', group: :production
+
 #WYSIWYGエディタ
 gem 'trix'
