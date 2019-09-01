@@ -7,7 +7,6 @@
 default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
 
 development:
   <<: *default
@@ -24,11 +23,12 @@ test:
 
 production:
   <<: *default
-  adapter: mysql2
+  #adapter: mysql2
   #database: shiren2_dev
-  database: <%= ENV['DATABASE_NAME'] %>
   #username: r_iwn
-  username: <%= ENV['DATABASE_USERNAME'] %>
   #password: testPass
+  #database: app_development
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>

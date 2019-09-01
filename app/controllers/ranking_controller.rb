@@ -107,21 +107,19 @@ class RankingController < ApplicationController
                 year = @yyyymm[0,4].to_i
                 month = @yyyymm[4,2].to_i
                 season = ""
-                if(month == 3 || month == 4|| month == 5)
+                nowDate = Time.new(year,month,1,0,0,0,'+09:00')
+                @ranks = @ranks.where(created_at: (nowDate.ago(month.modulo(3)).beginning_of_month)..(nowDate.since(2 - month.modulo(3)).end_of_month))
+                if(month.div(3) == 1 )
                     season = " 春期"
-                    @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}03' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}04' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}05'")
-                elsif(month == 6 || month == 7 || month == 8)
+                elsif(month.div(3) == 2 )
                     season = " 夏期"
-                    @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}06' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}07' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}08'")
-                elsif(month == 9 || month == 10|| month == 11)
+                elsif(month.div(3) == 3 )
                     season = " 秋期"
-                    @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}09' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}10' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}11'")
-                elsif(month == 12 || month == 1|| month == 2)
+                else
                     season = " 冬期"
                     if(month == 1|| month == 2)
                         year = year - 1
                     end
-                    @ranks = @ranks.where("strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}01' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}02' or strftime('%Y%m', created_at) = '#{@yyyymm[0,4]}12'")
                 end
                 @datetitle = "#{year}年#{season}"
             else
