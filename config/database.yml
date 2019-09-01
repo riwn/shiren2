@@ -10,8 +10,12 @@ default: &default
 
 development:
   <<: *default
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: mysql2
+  database: shiren2_dev
+  username: r_iwn
+  password: testPass
+  #adapter: sqlite3
+  #database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,11 +27,6 @@ test:
 
 production:
   <<: *default
-  #adapter: mysql2
-  #database: shiren2_dev
-  #username: r_iwn
-  #password: testPass
-  #database: app_development
   database: <%= ENV['DATABASE_NAME'] %>
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>

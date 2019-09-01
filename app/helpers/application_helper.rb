@@ -1,5 +1,5 @@
 module ApplicationHelper
-    def ymconv(yyyymm,cnt)
+    def ymconv(yyyymm)
         year = yyyymm[0,4].to_i
         month = yyyymm[4,2].to_i
         season = " "

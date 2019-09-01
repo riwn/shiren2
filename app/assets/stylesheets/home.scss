@@ -78,7 +78,8 @@ header {
 .nataneVillage {
   height: 180px;
   position: relative;
-  background-image: url("/images/nataneVillage/natane_back.png");
+  //background-image: url("/images/nataneVillage/natane_back.png");
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
 
   //ダンジョンの画像を描画

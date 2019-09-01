@@ -11,7 +11,7 @@ class Rank < ApplicationRecord
 
     #アーカイブのデータを取得する
     def self.GetArchive
-        self.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
+        self.group("DATE_FORMAT(created_at, '%Y%m')").order("DATE_FORMAT(created_at, '%Y%m') desc").count
     end
 
     #データベースからダンジョンに応じたデータを取得
