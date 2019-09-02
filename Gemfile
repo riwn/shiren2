@@ -96,3 +96,6 @@ gem 'dotenv-rails'
 
 #WYSIWYGエディタ
 gem 'trix'
+
+# アナリティクス
+gem 'google-analytics-rails'

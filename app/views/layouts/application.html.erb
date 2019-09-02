@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <%= analytics_init if Rails.env.production? %>
   <%= favicon_link_tag('favicon.ico') %>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title><%= yield :title %></title>
@@ -78,6 +79,9 @@
       <div class="footer-right">
         <ul>
           <li><a href="/opinion">意見箱</a></li>
+          <li><a href="https://twitter.com/shiren2sougou">公式ツイッター</a></li>
+          <li><a href="https://discord.gg/QbNu5Ku">公式Discordサーバー</a></li>
+          <li><a href="https://com.nicovideo.jp/community/co155330">ニコニコシレン2総合コミュニティ</a></li>
         </ul>
       </div>
     </div>

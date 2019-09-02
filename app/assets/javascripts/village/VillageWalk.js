@@ -20,7 +20,7 @@ function Village_Walk() {
 
 function Move_Left(obj, time) {
   var ww = window.innerWidth
-  var ctPos = ww > 1100 ? ww : 1100;
+  var ctPos = ww;
   var leftPos = Math.floor(Math.random() * (ww - 200));
   setInterval(function () {
     if (leftPos > ctPos) {
@@ -38,7 +38,7 @@ function Move_Left(obj, time) {
 
 function Move_Right(obj, time) {
   var ww = window.innerWidth
-  var ctPos = ww > 1100 ? ww : 1100;
+  var ctPos = ww;
   var rightPos = Math.floor(Math.random() * (ww - 200));
   setInterval(function () {
     if (rightPos < -50) {
