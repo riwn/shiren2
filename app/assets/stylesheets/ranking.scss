@@ -3,9 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .dungeontitle {
   position: relative;
-
-
-
   svg {
     width: 35vmin;
     height: auto;
@@ -28,4 +25,21 @@
       -webkit-text-stroke: 0.3px #fff;
     }
   }
+}
+
+.record-table{
+  width:100%;
+}
+
+.needContent{
+  display:inline;
+  color:red;
+  font-size:13px;
+  margin-left:15px;
+}
+.selectContent{
+  display:inline;
+  color:green;
+  font-size:13px;
+  margin-left:15px;
 }
