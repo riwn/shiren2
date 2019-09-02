@@ -62,6 +62,7 @@ gem 'font-awesome-rails'
 
 # Image Upload
 gem 'carrierwave'
+gem 'fog-aws'
 
 # jQuery
 gem "jquery-rails"
@@ -89,6 +90,8 @@ group :development do
 end
 
 gem 'rails_12factor', group: :production
+
+gem 'dotenv-rails'
 
 #WYSIWYGエディタ
 gem 'trix'

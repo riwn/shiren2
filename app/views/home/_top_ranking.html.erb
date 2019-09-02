@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header <%= bgcolor %> text-center">
-        <%= link_to "/ranking/#{link}/#{@nowyyyymm}" do %>
+        <%= link_to "/ranking/#{link}/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
         <h3 class="card-title float-left text-white"><%= dungeon %></h3>
         <% end %>
         <a href="/ta/<%= link %>">

@@ -36,3 +36,5 @@ vendor/bundle
 
 # Ignore Record Image
 /public/uploads
+
+.env

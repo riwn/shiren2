@@ -11,9 +11,9 @@ default: &default
 development:
   <<: *default
   adapter: mysql2
-  database: shiren2_dev
-  username: r_iwn
-  password: testPass
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   #adapter: sqlite3
   #database: db/development.sqlite3
 
