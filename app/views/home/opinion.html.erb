@@ -1,0 +1,29 @@
+<% content_for :title do %>
+意見箱
+<% end %>
+
+<% content_for :mosttop do %>
+
+<% end %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card bg-light">
+                <h2 class="card-title float-left pt-3 pl-3">意見箱</h2>
+                <div class="card-body">
+                    <div class="card-text">
+                        <p>何か改善して欲しい点などがあれば、ご意見いただけると嬉しいです</p>
+                        <%= form_with(model: @opinion,local: true,url:{action:'sendopinion'}) do |r|%>
+                        <td><%= r.text_area(:content,class: "contents-area") %></td>
+                        <div class="float-right pt-1 pr-5">
+                            <%= r.submit("提案する",{:class =>"btn btn-primary btn-lg pt-3"}) %>
+                        </div>
+
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

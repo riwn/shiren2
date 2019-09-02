@@ -14,4 +14,23 @@ class HomeController < ApplicationController
             @topranks.push(@ranks.RankDungeonChoose(dungeon).limit(3))
         end
     end
+
+    def opinion
+        @opinion = Opinion.new
+    end
+
+    def sendopinion
+        @opinion = Opinion.new(opinion_params)
+        if @opinion.save
+            redirect_to "/"
+        else
+            render :opinion
+        end
+    end
+
+    private
+
+    def opinion_params
+        params.require(:opinion).permit(:content)
+    end
 end

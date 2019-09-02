@@ -62,6 +62,7 @@ gem 'font-awesome-rails'
 
 # Image Upload
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'fog-aws'
 
 # jQuery

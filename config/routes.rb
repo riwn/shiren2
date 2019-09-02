@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
 ######################トップ######################
   get "/" => "home#top"
+  get "/opinion" => "home#opinion"
+  post "/opinion" => "home#sendopinion"
 #####################放送検索#####################
   get "/search" => "search#result" , as: "search"
 #####################ユーザー#####################
