@@ -9,11 +9,11 @@ class UserController < ApplicationController
             redirect_to "/"
             return
         end
-        @title = @user.name + "のプロフィール"
         @ranks = @user.ranks
         @dungeons = Constants::DUNGEON_NAME
         @links = Constants::DUNGEON_LINK
         @colors = Constants::DUNGEON_COLOR
+        @ranks = @ranks.where(permission: true)
         @ranks = @ranks.order(:result)
         @myranks = []
         @dungeons.each do |dungeon|

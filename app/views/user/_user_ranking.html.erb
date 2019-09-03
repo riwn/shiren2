@@ -7,18 +7,18 @@
 <% @num = @num + 1 %>
 <div class="border border-dark">
     <div class="row m-0">
-        <div class="col-3 <%= RankColor(@num) %> border-bottom d-flex align-items-center">
-            <p class="h6 mx-auto">
+        <div class="col-5 <%= RankColor(@num) %> border-bottom d-flex align-items-center">
+            <p class="h6 pt-2 mx-auto">
                 <%= @num %>位
             </p>
         </div>
-        <div class="col-9 border-bottom d-flex align-items-center">
-            <p class="h5 p-3 mx-auto"><%= GetResultTime(rank.result) %></p>
+        <div class="col-7 border-bottom d-flex align-items-center">
+            <p class="h6 pt-2 mx-auto"><%= GetResultTime(rank.result) %></p>
             <div class="float-right d-flex align-items-center">
             </div>
         </div>
         <div class="col-12 d-flex align-items-center">
-            <p class="p-3 mx-auto">
+            <p class="h6 pt-3 mx-auto">
                 <%= rank.created_at.year.to_s + "年" + rank.created_at.month.to_s + "月" + rank.created_at.day.to_s + "日" %>
             </p>
         </div>

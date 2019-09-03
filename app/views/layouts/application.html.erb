@@ -22,7 +22,7 @@
   </header>
   <main class="mb-auto">
     <%= yield :mosttop %>
-    <div id="nataneVillage" class="nataneVillage">
+    <div id="nataneVillage" class="nataneVillage d-none d-md-block">
       <div class="nataneDungeon">
         <a href="#"><img class="fullmoon" src="/images/nataneVillage/FullMoon.png"></a>
         <%= link_to "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
