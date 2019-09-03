@@ -30,11 +30,11 @@
                                 <tr class="table-success">
                                     <td><%= r.label :result, "記録" %><p class="needContent">※必須</p></td>
                                     <td>
-                                        <%= number_field_tag("hour",params["hour"], in: 0...99, maxlength:2,size:2) %>
+                                        <%= select_tag "hour",options_for_select((0..10),class:'option',selected: params["hour"].nil? ? 10 : params["hour"]) %>
                                         時間
-                                        <%= number_field_tag("minute",params["minute"], in: 0...60, maxlength:2,size:2) %>
+                                        <%= select_tag "minute",options_for_select((0..59),class:'option',selected: params["minute"].nil? ? 59 : params["minute"]) %>
                                         分
-                                        <%= number_field_tag("second",params["second"], in: 0...60, maxlength:2,size:2) %>
+                                        <%= select_tag "second",options_for_select((0..59),class:'option',selected: params["second"].nil? ? 59 : params["second"]) %>
                                         秒
                                     </td>
                                 </tr>
