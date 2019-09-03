@@ -11,9 +11,8 @@ class Ability
         can :manage, :all
         can [:read,:new,:update,:create,:export,:import], [User,Tournament,Rank,Opinion,Item]
       else
-        can :manage, :all
-        #can [:read,:update], [Rank,Opinion]
-        #can [:read], [User]
+        can [:read,:update], [Rank,Opinion]
+        can [:read], [User]
       end
     end
     # Define abilities for the passed in user here. For example:
