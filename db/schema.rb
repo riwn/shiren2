@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_110241) do
+ActiveRecord::Schema.define(version: 2019_09_03_161706) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.text "name"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_110241) do
     t.string "twitch"
     t.boolean "admin", default: false
     t.text "introduction"
+    t.boolean "super_admin"
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
