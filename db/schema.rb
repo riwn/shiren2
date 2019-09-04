@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_161706) do
+ActiveRecord::Schema.define(version: 2019_09_04_043805) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.text "name"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2019_09_03_161706) do
     t.string "recordimage"
     t.boolean "permission", default: false
     t.integer "user_id"
+    t.boolean "rejection", default: false
+    t.text "rejectioncomment"
   end
 
   create_table "tournaments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|

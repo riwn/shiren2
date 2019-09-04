@@ -13,6 +13,40 @@ RailsAdmin.config do |config|
 
   ## == Pundit ==
   # config.authorize_with :pundit
+  config.model Rank do
+    edit do
+      # 全てのフィールドを加える
+      include_all_fields
+      # "name" field のみ readonly を設定
+      field :name do
+        read_only true
+      end
+      field :dungeon do
+        read_only true
+      end
+      field :result do
+        read_only true
+      end
+      field :movie do
+        read_only true
+      end
+      field :recordimage do
+        read_only true
+      end
+      field :user_id do
+        read_only true
+      end
+    end
+  end
+
+  if Rank.table_exists?
+    RailsAdmin.config Rank do
+      list do
+        # simply adding fields by their names (order will be maintained)
+        include_fields :id, :name, :dungeon, :permission, :rejection, :rejectioncomment, :created_at, :updated_at
+      end
+    end
+  end
 
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
