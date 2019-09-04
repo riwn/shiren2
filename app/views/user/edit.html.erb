@@ -10,6 +10,11 @@
                 <div class="card-body">
                     <div class="card-text">
                         <%= form_tag("/user/#{@user.id}/update", :multipart => true) do %>
+                        <% @user.errors.full_messages.each do |message| %>
+
+                        <p class="text-danger"><%= message %></p>
+
+                        <% end %>
                         <div class="field mb-2">
                             <%= label_tag "ニコニココミュ二ティ"%>
                             <%= text_field_tag 'niconico' , @user.niconico ,{class: "float-right"} %>
@@ -32,7 +37,7 @@
                             <p style="color:red;">※300x300にリサイズされます</p>
                         </div>
                         <div class="field mb-2">
-                            <%= label_tag "プロフィール"%>
+                            <%= label_tag "自己紹介"%>
                             <%= hidden_field_tag "text", @user.introduction, id: :introduction_text %>
                             <trix-editor input="introduction_text"></trix-editor>
                         </div>

@@ -1,6 +1,8 @@
 ja:
   activerecord:
     attributes:
+      user:
+        introduction: 自己紹介
       rank:
         name: 名前
         recordimage: 画像

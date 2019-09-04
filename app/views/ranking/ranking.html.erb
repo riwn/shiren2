@@ -41,11 +41,16 @@
                 </div>
                 <div class="card-body bg-light">
                     <div class="card-text">
-                        <div id="ranking_lists"><%= render 'ranking_list', {ranks: @ranks,dungeonname:@dungeonurl } %>
+                    <% if @ranks.count == 0 %>
+                        <h4>記録はまだありません</h2>
+                    <% else %>
+                        <div id="ranking_lists">
+                            <%= render 'ranking_list', {ranks: @ranks,dungeonname:@dungeonurl } %>
                         </div>
                         <div class="more">
                             <%= link_to_next_page @ranks, 'もっと見る', remote: true, id: 'view_more' %>
                         </div>
+                    <% end %>
                     </div>
                 </div>
             </div>

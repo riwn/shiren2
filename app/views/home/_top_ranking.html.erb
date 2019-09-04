@@ -9,7 +9,11 @@
     </div>
     <div class="card-body bg-light">
         <div class="card-text">
-            <%= render 'ranking/ranking_list', {ranks: topranking,dungeonname:link} %>
+            <% if topranking.count == 0 %>
+                <h4>記録はまだありません</h2>
+            <% else %>
+                <%= render 'ranking/ranking_list', {ranks: topranking,dungeonname:link} %>
+            <% end %>
         </div>
     </div>
 </div>
