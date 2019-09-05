@@ -20,12 +20,12 @@ Rails.application.routes.draw do
   get "/ta/onigashima" => "ta#onigashimata", as: "onigashimata"
   get "/ta/story" => "ta#storyta", as: "storyta"
   get "/ta/shrine" => "ta#shrineta", as: "shrineta"
-  get "/ta/saihate/chapter1" =>"saihateta#chapter1"
-  get "/ta/saihate/chapter2" =>"saihateta#chapter2"
-  get "/ta/saihate/chapter3" =>"saihateta#chapter3"
-  get "/ta/saihate/chapter4" =>"saihateta#chapter4"
-  get "/ta/saihate/chapter5" =>"saihateta#chapter5"
-  get "/ta/saihate/chapter6" =>"saihateta#chapter6"
+  #get "/ta/saihate/chapter1" =>"saihateta#chapter1"
+  #get "/ta/saihate/chapter2" =>"saihateta#chapter2"
+  #get "/ta/saihate/chapter3" =>"saihateta#chapter3"
+  #get "/ta/saihate/chapter4" =>"saihateta#chapter4"
+  #get "/ta/saihate/chapter5" =>"saihateta#chapter5"
+  #get "/ta/saihate/chapter6" =>"saihateta#chapter6"
 ####################ランキング####################
   get "/ranking" => redirect {"/"}, as: "ranking"
   post "/ranking" => "ranking#create"
@@ -35,8 +35,8 @@ Rails.application.routes.draw do
   get "/ranking/:dungeon" => "ranking#dungeon"
   get  "/ranking/:dungeon/:yyyymm" =>"ranking#dungeon"
 #####################過去大会#####################
-  get "/historys" => "historys#tournaments"
+  # get "/historys" => "historys#tournaments"
 ######################クイズ######################
-  get "/quiz" => "quiz#quiz"
+  # get "/quiz" => "quiz#quiz"
 
 end
