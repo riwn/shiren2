@@ -3,11 +3,11 @@
 <% end %>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <div class="container">
-    <% if @nopermitranks.count != 0 || @rejectranks.count != 0 %>
     <% if current_user.try(:id) %>
     <% if current_user.id == @uid.to_i %>
+    <% if @nopermitranks.count != 0 || @rejectioncount != 0 %>
     <div class="card mt-3 pb-5">
-        <div class="card-header text-center bg-success pt-3">
+        <div class="card-header text-white text-center bg-success pt-3">
             <h2>記録申請状況</h2>
         </div>
         <div class="card-body">
@@ -23,12 +23,14 @@
                     <% end %>
                 </div>
                 <div class="col-12 col-lg-6 mb-1">
-                    <h5 class="text-danger text-center"><u>記録拒否通知(<%= @rejectranks.count %>件)</u></h5>
-                    <% if @rejectranks.count != 0 %>
+                    <h5 class="text-danger text-center"><u>過去一週間の記録拒否通知(<%= @rejectioncount %>件)</u></h5>
+                    <% if @rejectioncount != 0 %>
                     <ul>
                     <% @rejectranks.each do |rank| %>
-                        <li><%= rank.dungeon %>(<%= GetResultTime(rank.result) %>)</li>
-                        <p>拒否理由：<%= rank.rejectioncomment %></p>
+                        <% if Time.now - rank.created_at < 604800 %>
+                            <li><%= rank.dungeon %>(<%= GetResultTime(rank.result) %>)</li>
+                            <p>拒否理由：<%= rank.rejectioncomment %></p>
+                        <% end %>
                     <% end %>
                     </ul>
                     <% end %>
@@ -41,7 +43,7 @@
     <% end %>
 
     <div class="card mt-3 pb-5">
-        <div class="card-header text-center pt-3 bg-primary">
+        <div class="card-header text-white text-center pt-3 bg-primary">
             <h2><%= @user.name + "のプロフィール" %></h2>
         </div>
         <div class="card-body">
@@ -57,7 +59,7 @@
 
                     <% if current_user.try(:admin?) && current_user.id == @uid.to_i %>
                     <div class="col-12 text-center mb-3">
-                        <%= button_to("管理者画面","/admin",class:"btn btn-primary" ,method: :get) %>
+                        <%= button_to("管理者画面","/admin",class:"btn btn-warning" ,method: :get) %>
                     </div>
                     <%end%>
 
@@ -76,7 +78,7 @@
                     </div>
                     <div class="col-12 text-center">
                         <div class="row">
-                            <div class="offset-2 offset-lg-0"></div>
+                            <div class="offset-2 offset-lg-1"></div>
                             <div class="col-2 m-3 text-center">
                                 <% if @user.niconico == "" || @user.niconico.nil?%>
                                 <%= image_tag("/images/niconico.png",class: "niconicoicon" ,style:"filter: gray;filter: grayscale(1);") %>

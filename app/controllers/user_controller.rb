@@ -12,15 +12,28 @@ class UserController < ApplicationController
         @dungeons = Constants::DUNGEON_NAME
         @links = Constants::DUNGEON_LINK
         @colors = Constants::DUNGEON_COLOR
+        # 許可済みの記録
         @allranks = @user.ranks
         @ranks = @allranks.where(permission: true)
         @ranks = @ranks.order(:result)
-        @nopermitranks = @allranks.where(permission: false).where(rejection: false)
-        @rejectranks = @user.ranks.where(rejection: true)
         @myranks = []
         @dungeons.each do |dungeon|
             @myranks.push(@ranks.RankDungeonChoose(dungeon).page(params[:page]).per(PER))
         end
+
+        # 許可前の記録
+        @nopermitranks = @allranks.where(permission: false).where(rejection: false)
+
+        # 拒否された記録
+        @rejectioncount = 0
+        @rejectranks = @user.ranks.where(rejection: true).where(permission: false)
+        @rejectranks.each do |rank|
+            puts Time.now - rank.created_at
+            if Time.now - rank.created_at < 604800
+                @rejectioncount = @rejectioncount + 1
+            end
+        end
+
 
         # これ以下はAjax通信の場合のみ通過
         return unless request.xhr?
