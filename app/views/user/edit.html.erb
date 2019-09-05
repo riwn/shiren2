@@ -28,10 +28,6 @@
                             <%= text_field_tag 'twitch' , @user.twitch,{class: "float-right"} %>
                         </div>
                         <div class="field mb-2">
-                            <%= label_tag "CaveTubeチャンネル"%>
-                            <%= text_field_tag 'cavetube' , @user.cavetube,{class: "float-right"} %>
-                        </div>
-                        <div class="field mb-2">
                             <%= label_tag "プロフィール画像"%>
                             <%= file_field_tag 'icon' ,{class: "float-right"} %>
                             <p style="color:red;">※300x300にリサイズされます</p>

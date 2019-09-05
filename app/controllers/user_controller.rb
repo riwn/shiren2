@@ -45,7 +45,6 @@ class UserController < ApplicationController
         @user.niconico = params[:niconico]
         @user.youtube = params[:youtube]
         @user.twitch = params[:twitch]
-        @user.cavetube = params[:cavetube]
         @user.introduction = params[:text]
         if params[:icon] != nil
             @user.icon = params[:icon]
