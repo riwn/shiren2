@@ -76,8 +76,26 @@
         </svg>
         </a>
       </div>
-      <div class="footer-right">
+      <div class="footer-item">
         <ul>
+          <p>ランキング</p>
+          <li><%= link_to "最果てへの道99FTA", "/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %></li>
+          <li><%= link_to "カラクロTA", "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %></li>
+          <li><%= link_to "鬼ヶ島ありありTA", "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %></li>
+          <li><%= link_to "ストーリーTA", "/ranking/story/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %></li>
+          <li><%= link_to "女王グモ捕獲TA", "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %></li>
+        </ul>
+      </div>
+      <div class="footer-item">
+        <ul>
+          <p>ヘルプ</p>
+          <li><a href="/description">このサイトについて</a></li>
+          <li><a href="/ranking/description">記録申請について</a></li>
+        </ul>
+      </div>
+      <div class="footer-item">
+        <ul>
+          <p>運営連絡</p>
           <li><a href="/opinion">意見箱</a></li>
           <li><a href="https://twitter.com/shiren2sougou">公式ツイッター</a></li>
           <li><a href="https://discord.gg/QbNu5Ku">公式Discordサーバー</a></li>

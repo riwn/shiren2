@@ -28,6 +28,10 @@ class HomeController < ApplicationController
         end
     end
 
+    def description
+
+    end
+
     private
 
     def opinion_params

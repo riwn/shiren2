@@ -206,26 +206,29 @@ header {
 //フッター
 footer {
   width: 100%;
-  height: 150px;
+  height: 190px;
   padding-top: 30px;
   z-index: 30;
-  .footer-left
-  {
-    float:left;
+  .footer-left{
+    vertical-align: middle;
+    display:inline-block;
     p {
       color: #b3aeb5;
       font-size: 12px;
     }
   }
-  .footer-right{
+  .footer-item{
+    vertical-align: top;
+    margin-top:5px;
+    display:inline-block;
+    color: #FFFFFF;
     ul{
-      margin-top:20px;
       list-style: none;
       li{
         font-size: 12px;
         a {
           padding: 0 25px;
-          color: #DDDDDD;
+          color: #b3aeb5;
         }
       }
     }

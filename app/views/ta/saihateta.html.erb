@@ -1,10 +1,22 @@
 <% content_for :title do %>
-TA解説
+<%= @dungeon %>解説
 <% end %>
 
 <div class="container">
-    <h2>最果てへの道99FTA 初心者講座</h2>
-    <p>第1章 <a href="/ta/saihate/chapter1">最果て99FTAとは</a></p>
-    <p>第2章 <a href="/ta/saihate/chapter2">レベリングについて</a></p>
-    <p>第3章 <a href="/ta/saihate/chapter3"></a></p>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header <%= @duncolor %> text-center">
+                    <h3 class="card-title float-left text-white">
+                        <%= @dungeon %>解説
+                    </h3>
+                </div>
+                <div class="card-body bg-light">
+                    <div class="card-text">
+                        <h3>Coming Soon...</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

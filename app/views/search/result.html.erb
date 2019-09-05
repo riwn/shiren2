@@ -15,8 +15,20 @@
                 <% if @result.count == 0 && @result2.count == 0 %>
                     <h2 style="text-align:center;">放送はありません</h2>
                 <% else %>
-                    <%= render 'niconico_result', { niconicoresult:  @result} %>
-                    <%= render 'youtube_result', { youtuberesult: @result2} %>
+                    <% if @result != nil  %>
+                        <% @result.each do |data| %>
+                            <%= render 'niconico_result', { niconicoresult:  data} %>
+                        <% end %>
+                    <% end %>
+                    <% if @result2 != nil  %>
+                        <% @result2.each do |data| %>
+                            <% if data["snippet"]["title"].include?("シレン2")%>
+                                <%= render 'youtube_result', { youtuberesult:data } %>
+                            <% elsif @result.count == 0 %>
+                                <h2 style="text-align:center;">放送はありません</h2>
+                            <% end %>
+                        <% end %>
+                    <% end %>
                 <% end %>
             </div>
         </div>
