@@ -6,8 +6,15 @@ class Rank < ApplicationRecord
     validates :result, presence: true
     validates :dungeon, presence: true
     validates :movie_or_image, presence: true
+    validate :both_true_vali
     #validates_presence_of :movie, :unless => :recordimage?
     #validates_presence_of :recordimage, :unless =>:movie?
+
+    def both_true_vali
+        if permission == true && rejection == true
+            errors.add(:permission, " はrejectionがTrueの時,Trueには出来ません。")
+        end
+    end
 
     #アーカイブのデータを取得する
     def self.GetArchive

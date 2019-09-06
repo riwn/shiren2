@@ -26,7 +26,7 @@ class UserController < ApplicationController
 
         # 拒否された記録
         @rejectioncount = 0
-        @rejectranks = @user.ranks.where(rejection: true).where(permission: false)
+        @rejectranks = @user.ranks.where(rejection: true)
         @rejectranks.each do |rank|
             puts Time.now - rank.created_at
             if Time.now - rank.created_at < 604800
