@@ -27,12 +27,12 @@ class RankingController < ApplicationController
 
     def SendDiscordWebHook(rank)
         #PostまたはGet先のURL
-        uri = URI("https://discordapp.com/api/webhooks/591567156739833856/elYIKw1LA60J0KoA45jkytNEPTXPo4YEMQtwyg_TPFu2xK8nb3qaQ7TTPKQAa0V__wbR")
+        uri = URI(ENV['DISCORD_WEBHOOK'])
         #Net::HTTPのインスタンスを生成
         https = Net::HTTP.new(uri.host, uri.port)
         #ssl(https)を利用する場合はtrueに
         https.use_ssl = true
-        https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        https.verify_mode = OpenSSL::SSL::VERIFY_PEER
 
         req = Net::HTTP::Post.new(uri.path)
 
@@ -40,9 +40,15 @@ class RankingController < ApplicationController
         req['Content-Type'] = 'application/json'
 
         #送りたいデータを格納
-        topurl = "https://localhost:3000"
+        topurl = "https://shiren2.herokuapp.com"
         botname = "記録通知くん"
-        boticon = "https://cdn.discordapp.com/icons/565179762084151296/dcc15d11a9cbbd059d5ad8875953bb91.png?size=128"
+        boticon = ENV['DISCORD_DEFAULTICON']
+        if rank.user_id != nil
+            user = User.find(rank.user_id)
+            if user.icon.url != nil && user.icon.url != ""
+                boticon = user.icon.url
+            end
+        end
         auther = {"name": rank.name}
         if rank.user_id != nil
             auther["url"] = "#{topurl}/user/#{rank.user_id}"

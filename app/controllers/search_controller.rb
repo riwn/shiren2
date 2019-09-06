@@ -13,7 +13,7 @@ class SearchController < ApplicationController
 
     def getLiveJson(word1)
         word = word1
-        key = "AIzaSyBSMUGQr3MrHqncwqmjNFJHTz-la052tW8"
+        key = ENV['YOUTUBE_KEY']
         fields = "items(id/videoId,snippet/title,snippet/channelId)"
         type = "video"
         url = "https://www.googleapis.com/youtube/v3/search?&q=" + word + "&type=" + type +"&fields=" + fields +"&part=snippet&eventType=live&key=" + key
