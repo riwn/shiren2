@@ -92,10 +92,14 @@ end
 
 gem 'rails_12factor', group: :production
 
+# 環境変数管理
 gem 'dotenv-rails'
 
-#WYSIWYGエディタ
+# WYSIWYGエディタ
 gem 'trix'
 
 # アナリティクス
 gem 'google-analytics-rails'
+
+# Twitter
+gem 'twitter'

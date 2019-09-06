@@ -7,8 +7,29 @@ class Rank < ApplicationRecord
     validates :dungeon, presence: true
     validates :movie_or_image, presence: true
     validate :both_true_vali
-    #validates_presence_of :movie, :unless => :recordimage?
-    #validates_presence_of :recordimage, :unless =>:movie?
+
+    # after_save :permit_change_tweet
+
+    def permit_change_tweet
+        if self.permission == true
+            topurl = "https://shiren2.herokuapp.com"
+            twitter = Twitter::REST::Client.new do |config|
+                config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
+                config.consumer_secret     = ENV['TWITTER_CONSUMER_KEY_SECRET']
+                config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
+                config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
+            end
+            time = ""
+            if self.result >= 3600 then
+                time = (self.result.div(3600).to_s + "時間" + ((self.result.modulo(3600)).div(60)).to_s + "分" + ((self.result.modulo(3600)).modulo(60)).to_s + "秒")
+            else
+                time = ((self.result.div(60)).to_s + "分" + (self.result.modulo(60)).to_s + "秒")
+            end
+            sendmessage = "【記録申請通知】\n#{self.dungeon}のランキングが更新されました。\nおめでとうございます！！\nプレイヤー：#{User.find(self.user_id).name}\n記録：#{time}\n詳しくはこちらから→ #{topurl}"
+            #twitter.update(sendmessage)
+            puts(sendmessage)
+        end
+    end
 
     def both_true_vali
         if permission == true && rejection == true

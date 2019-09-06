@@ -21,13 +21,16 @@
                         <% end %>
                     <% end %>
                     <% if @result2 != nil  %>
+                        <% counter = 0 %>
                         <% @result2.each do |data| %>
                             <% if data["snippet"]["title"].include?("シレン2")%>
                                 <%= render 'youtube_result', { youtuberesult:data } %>
-                            <% elsif @result.count == 0 %>
-                                <h2 style="text-align:center;">放送はありません</h2>
+                                <% counter = counter + 1 %>
                             <% end %>
                         <% end %>
+                        <% if counter == 0 %>
+                                <h2 style="text-align:center;">放送はありません</h2>
+                            <% end %>
                     <% end %>
                 <% end %>
             </div>
