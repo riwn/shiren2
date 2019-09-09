@@ -206,12 +206,11 @@ header {
 //フッター
 footer {
   width: 100%;
-  height: 190px;
-  padding-top: 30px;
+  height: auto;
+  padding: 30px;
   z-index: 30;
   .footer-left{
     vertical-align: middle;
-    display:inline-block;
     p {
       color: #b3aeb5;
       font-size: 12px;
@@ -219,8 +218,6 @@ footer {
   }
   .footer-item{
     vertical-align: top;
-    margin-top:5px;
-    display:inline-block;
     color: #FFFFFF;
     ul{
       list-style: none;

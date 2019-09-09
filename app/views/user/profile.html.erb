@@ -12,8 +12,8 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-12 col-lg-6 mb-1">
-                    <h5 class="text-primary text-center"><u>記録申請中(<%= @nopermitranks.count %>件)</u></h5>
+                <div class="col-12 col-lg-6 mb-1 text-center wait-record">
+                    <h5 class="text-primary"><u>記録申請中(<%= @nopermitranks.count %>件)</u></h5>
                     <% if @nopermitranks.count != 0 %>
                     <ul>
                     <% @nopermitranks.each do |rank| %>
@@ -22,7 +22,7 @@
                     </ul>
                     <% end %>
                 </div>
-                <div class="col-12 col-lg-6 mb-1">
+                <div class="col-12 col-lg-6 mb-1 text-center wait-record">
                     <h5 class="text-danger text-center"><u>過去一週間の記録拒否通知(<%= @rejectioncount %>件)</u></h5>
                     <% if @rejectioncount != 0 %>
                     <ul>
