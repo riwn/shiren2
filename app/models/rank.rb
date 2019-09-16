@@ -9,11 +9,11 @@ class Rank < ApplicationRecord
     validate :both_true_vali
     validate :no_reject_message
 
-    #after_save :permit_change
+    after_save :permit_change
 
     def permit_change
         if self.permission == true
-            TweetNewRecord
+            #TweetNewRecord
             SendDiscordWebHook(self,ENV['DISCORD_WEBHOOK_ALL'],"ランキングが更新されました！！")
         end
     end
