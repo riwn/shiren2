@@ -9,7 +9,7 @@
             <p class="rankname h4 m-3">
                 <%= channel = getYoutubeChannelJson(youtuberesult["snippet"]["channelId"])
                 image_tag(channel["items"][0]["snippet"]["thumbnails"]["default"]["url"], :class => "liveicon m-3") %>
-                <%= link_to "#{youtuberesult["snippet"]["title"]}", "https://www.youtube.com/watch?v=#{youtuberesult["id"]["videoId"]}" %>
+                <%= link_to "#{youtuberesult["snippet"]["title"]}", "https://www.youtube.com/watch?v=#{youtuberesult["id"]["videoId"]}", target:"_blank", rel:"noopener noreferrer"%>
             </p>
         </div>
     </div>

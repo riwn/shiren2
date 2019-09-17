@@ -24,7 +24,7 @@
         </div>
         <div class="col-6 d-flex align-items-center p-3">
             <% if rank.movie != nil && rank.movie != "" then %>
-            <%= link_to rank.movie, target: "_blank",class: "mx-auto" do %>
+            <%= link_to rank.movie, target:"_blank", rel:"noopener noreferrer", class: "mx-auto" do %>
             <button type="button" class="btn btn-info rounded-pill mx-auto">動画</button>
             <% end %>
             <% else %>

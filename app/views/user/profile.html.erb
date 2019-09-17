@@ -83,7 +83,7 @@
                                 <% if @user.niconico == "" || @user.niconico.nil?%>
                                 <%= image_tag("/images/niconico.png",class: "niconicoicon" ,style:"filter: gray;filter: grayscale(1);") %>
                                 <% else %>
-                                <%= link_to @user.niconico do %>
+                                <%= link_to @user.niconico, target:"_blank", rel:"noopener noreferrer" do %>
                                 <%= image_tag("/images/niconico.png",class: "niconicoicon") %>
                                 <% end %>
                                 <% end %>
@@ -92,14 +92,14 @@
                                 <% if @user.youtube == "" || @user.youtube.nil? %>
                                 <%= fa_icon("youtube 3x", class: "youtubeicon",style:"color:gray;") %>
                                 <% else %>
-                                <%= link_to fa_icon("youtube 3x", class: "youtubeicon"),@user.youtube  %>
+                                <%= link_to fa_icon("youtube 3x", class: "youtubeicon"),@user.youtube, target:"_blank", rel:"noopener noreferrer"  %>
                                 <% end %>
                             </div>
                             <div class="col-2 m-3 text-center">
                                 <% if @user.twitch == "" || @user.twitch.nil?%>
                                 <%= fa_icon("twitch 3x", class: "twitchicon",style:"color:gray;") %>
                                 <% else %>
-                                <%= link_to fa_icon("twitch 3x", class: "twitchicon",style:"color:blue;"),@user.twitch  %>
+                                <%= link_to fa_icon("twitch 3x", class: "twitchicon",style:"color:blue;"),@user.twitch, target:"_blank", rel:"noopener noreferrer"  %>
                                 <% end %>
                             </div>
                         </div>

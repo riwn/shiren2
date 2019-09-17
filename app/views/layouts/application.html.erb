@@ -5,6 +5,7 @@
   <%= analytics_init if Rails.env.production? %>
   <%= favicon_link_tag('favicon.ico') %>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="ようこそ！このサイトは風来のシレン2のTA番付サイトです！TAの解説や大会のお知らせ、オンライン上のシレン2のコミュニティの管理等もしています。シレン2が大好きなそこの君！ぜひ立ち寄ってね！！">
   <title><%= yield :title %></title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -24,27 +25,27 @@
     <%= yield :mosttop %>
     <div id="nataneVillage" class="nataneVillage d-none d-md-block">
       <div class="nataneDungeon">
-        <a href="#"><img class="fullmoon" src="/images/nataneVillage/FullMoon.png"></a>
+        <a href="https://com.nicovideo.jp/community/co155330" target="_blank" rel="noopener noreferrer"><img class="fullmoon" src="/images/nataneVillage/FullMoon.png"></a>
         <%= link_to "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Onigashima.png", { :class => "onigashima" } %>
+        <%= image_tag "/images/nataneVillage/Onigashima.png", { :class => "onigashima",:alt => "鬼ヶ島ありありTA",:title => "鬼ヶ島ありありTA" } %>
         <% end %>
         <%= link_to "/ranking/story/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Story.png", { :class => "story" } %>
+        <%= image_tag "/images/nataneVillage/Story.png", { :class => "story",:alt => "ストーリーTA",:title => "ストーリーTA" } %>
         <% end %>
         <%= link_to "/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Mumyu.png", { :class => "mumyu" } %>
+        <%= image_tag "/images/nataneVillage/Mumyu.png", { :class => "mumyu",:alt => "最果てへの道99FTA",:title => "最果てへの道99FTA" } %>
         <% end %>
         <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Well.png", { :class => "well" } %>
+        <%= image_tag "/images/nataneVillage/Well.png", { :class => "well",:alt => "カラクロTA",:title => "カラクロTA" } %>
         <% end %>
         <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Well2.png", { :class => "well2" } %>
+        <%= image_tag "/images/nataneVillage/Well2.png", { :class => "well2",:alt => "カラクロTA",:title => "カラクロTA" } %>
         <% end %>
         <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Shrine.png", { :class => "shrine" } %>
+        <%= image_tag "/images/nataneVillage/Shrine.png", { :class => "shrine",:alt => "女王グモ捕獲TA" ,:title => "女王グモ捕獲TA"} %>
         <% end %>
         <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Shrine2.png", { :class => "shrine2" } %>
+        <%= image_tag "/images/nataneVillage/Shrine2.png", { :class => "shrine2",:alt => "女王グモ捕獲TA" ,:title => "女王グモ捕獲TA" } %>
         <% end %>
         <img src="/images/nataneVillage/Road.png" class="road">
       </div>
@@ -98,9 +99,9 @@
           <ul>
             <p>運営連絡</p>
             <li><a href="/opinion">意見箱</a></li>
-            <li><a href="https://twitter.com/shiren2sougou">公式ツイッター</a></li>
-            <li><a href="https://discord.gg/QbNu5Ku">公式Discordサーバー</a></li>
-            <li><a href="https://com.nicovideo.jp/community/co155330">ニコニコシレン2総合コミュニティ</a></li>
+            <li><a href="https://twitter.com/shiren2sougou" target="_blank" rel="noopener noreferrer">公式ツイッター</a></li>
+            <li><a href="https://discord.gg/QbNu5Ku" target="_blank" rel="noopener noreferrer">公式Discordサーバー</a></li>
+            <li><a href="https://com.nicovideo.jp/community/co155330" target="_blank" rel="noopener noreferrer">ニコニコシレン2総合コミュニティ</a></li>
           </ul>
         </div>
       </div>
