@@ -47,7 +47,7 @@
                         <div id="ranking_lists">
                             <%= render 'ranking_list', {ranks: @ranks,dungeonname:@dungeonurl } %>
                         </div>
-                        <div class="more">
+                        <div class="more w-100 text-center border-bottom border-right border-left border-dark p-3">
                             <%= link_to_next_page @ranks, 'もっと見る', remote: true, id: 'view_more' %>
                         </div>
                     <% end %>

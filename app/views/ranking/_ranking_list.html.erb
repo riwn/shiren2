@@ -13,7 +13,15 @@
                 <%= @num %>位
             </p>
         </div>
-        <div class="col-8 rankname border-bottom d-flex align-items-center">
+        <div class="col-3 border-bottom d-flex align-items-center">
+            <% user = User.find(rank.user_id) %>
+            <% if user.icon.url == nil || user.icon.url =="" %>
+                <%= image_tag("/images/user/NoImage.png",class: "img-fluid border") %>
+            <% else %>
+                <%= image_tag user.icon.to_s,{:class => "img-fluid border"} %>
+            <% end %>
+        </div>
+        <div class="col-5 rankname border-bottom d-flex align-items-center">
             <p class="h5 p-3 mx-auto">
                 <% if rank.user_id != nil then %>
                 <%= link_to rank.name, "/user/#{rank.user_id}"%>
