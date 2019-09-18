@@ -7,9 +7,14 @@ function Slide_Notice() {
                         $navArrows.show();
                     },
                     orientation: 'r',
+                    perspective : 1500,
                     cuboidsRandom: true,
-                    disperseFactor: 30,
-                    autoplay: true
+                    disperseFactor: 20,
+                    easing : 'ease',
+                    speed : 1000,
+                    interval: 5000,
+                    autoplay: true,
+                    fallbackFadeSpeed : 300,
                 }),
                 init = function () {
                     initEvents();
