@@ -25,6 +25,9 @@ module ApplicationHelper
         twitter: {
             card: 'summary',
             site: '@shiren2sougou',
+            title: :title,
+            description: :description,
+            image: image_url('ogimage.png'),
         }
     }
     end
