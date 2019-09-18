@@ -103,3 +103,8 @@ gem 'google-analytics-rails'
 
 # Twitter
 gem 'twitter'
+
+# SEO対策
+gem 'meta-tags'
+gem 'sitemap_generator'
+gem 'aws-sdk'

@@ -1,6 +1,5 @@
-<% content_for :title do %>
-<%= @user.name + "のプロフィール" %>
-<% end %>
+<% set_meta_tags title: "#{@user.name}のプロフィール",description:"シレン2 タイムアタック番付サイトの#{@user.name}さんのプロフィールページです", og: { title: "#{@user.name}のプロフィール",description:"シレン2 タイムアタック番付サイトの#{@user.name}さんのプロフィールページです"} %>
+
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <div class="container">
     <% if current_user.try(:id) %>
@@ -44,7 +43,7 @@
 
     <div class="card mt-3 pb-5">
         <div class="card-header text-white text-center pt-3 bg-primary">
-            <h2><%= @user.name + "のプロフィール" %></h2>
+            <h2><%= "#{@user.name}のプロフィール" %></h2>
         </div>
         <div class="card-body">
             <div class="row">

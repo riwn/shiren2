@@ -1,4 +1,33 @@
 module ApplicationHelper
+    def default_meta_tags
+    {
+        site: '風来のシレン2 タイムアタック番付',
+        title: 'トップページ',
+        reverse: true,
+        charset: 'utf-8',
+        description: 'ようこそ！このサイトは風来のシレン2のタイムアタック番付サイトです！タイムアタックの解説や大会のお知らせ、オンライン上のシレン2のコミュニティの管理等もしています。シレン2が大好きなそこの君！ぜひ立ち寄ってね！！',
+        keywords: '風来のシレン,風来のシレン2,タイムアタック,TA,RTA,シレン2番付,最果てへの道,最果てへの道99FTA',
+        canonical: request.original_url,
+        separator: '|',
+        icon: [
+            { href: image_url('favicon.ico') },
+            { href: image_url('icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
+        ],
+        og: {
+            site_name: '風来のシレン2 タイムアタック番付', # もしくは site_name: :site
+            title: 'トップページ', # もしくは title: :title
+            description: 'ようこそ！このサイトは風来のシレン2のタイムアタック番付サイトです！タイムアタックの解説や大会のお知らせ、オンライン上のシレン2のコミュニティの管理等もしています。シレン2が大好きなそこの君！ぜひ立ち寄ってね！！', # もしくは description: :description
+            type: 'website',
+            url: request.original_url,
+            locale: 'ja_JP',
+        },
+        twitter: {
+            card: 'summary',
+            site: '@shiren2sougou',
+        }
+    }
+    end
+
     def ymconv(yyyymm)
         year = yyyymm[0,4].to_i
         month = yyyymm[4,2].to_i
