@@ -39,6 +39,6 @@ Rails.application.routes.draw do
 ######################クイズ######################
   # get "/quiz" => "quiz#quiz"
 ######################サイトマップ######################
-  get 'sitemap.xml', to: redirect('https://s3-ap-northeast-1.amazonaws.com/BUCKET_NAME/sitemaps/sitemap.xml.gz')
+  get 'sitemap.xml', to: redirect('https://s3-ap-northeast-1.amazonaws.com/shiren2records/sitemaps/sitemap.xml.gz')
 
 end
