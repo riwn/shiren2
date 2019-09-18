@@ -32,17 +32,10 @@ header {
   top: 0;
   z-index: 30;
 
-  .header-left {
-    float: left;
-
-    .logo {
-      line-height: 65px;
-      padding: 0 25px;
-
-      path {
-        z-index: 15;
-      }
-    }
+  .logo
+  {
+    height: auto;
+    width:120px;
   }
 
   .header-right {
@@ -214,6 +207,12 @@ footer {
     p {
       color: #b3aeb5;
       font-size: 12px;
+    }
+    .logo
+    {
+      padding-top:50px;
+      width: 70%;
+      height:auto;
     }
   }
   .footer-item{

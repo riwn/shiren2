@@ -18,6 +18,7 @@ module ApplicationHelper
             title: 'トップページ', # もしくは title: :title
             description: 'ようこそ！このサイトは風来のシレン2のタイムアタック番付サイトです！タイムアタックの解説や大会のお知らせ、オンライン上のシレン2のコミュニティの管理等もしています。シレン2が大好きなそこの君！ぜひ立ち寄ってね！！', # もしくは description: :description
             type: 'website',
+            image: image_url('ogimage.png'),
             url: request.original_url,
             locale: 'ja_JP',
         },
