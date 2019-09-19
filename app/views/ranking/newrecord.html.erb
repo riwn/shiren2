@@ -36,20 +36,20 @@
                                     <td><%= r.label :result, "記録" %><p class="needContent">※必須</p></td>
                                     <td>
                                     <div class="recordform-part">
-                                        <%= select_tag "hour",options_for_select((0..10),class:'option',selected: params["hour"].nil? ? 10 : params["hour"]) %>
+                                        <%= select_tag "hour",options_for_select((0..19),class:'option',selected: params["hour"].nil? ? 10 : params["hour"]) %>
                                         時間
-                                        <%= select_tag "minute",options_for_select((0..59),class:'option',selected: params["minute"].nil? ? 59 : params["minute"]) %>
+                                        <%= select_tag "minute",options_for_select((0..59),class:'option',selected: params["minute"].nil? ? 0 : params["minute"]) %>
                                         分
-                                        <%= select_tag "second",options_for_select((0..59),class:'option',selected: params["second"].nil? ? 59 : params["second"]) %>
+                                        <%= select_tag "second",options_for_select((0..59),class:'option',selected: params["second"].nil? ? 0 : params["second"]) %>
                                         秒
                                     </td>
                                 </tr>
                                 <tr class="table-primary">
-                                    <td><%= r.label :movie, "動画URL" %><p class="selectContent">※どちらか一つ</p></td>
+                                    <td><%= r.label :movie, "動画URL" %><p class="selectContent">※どちらか一つは必須</p></td>
                                     <td><%= r.text_field(:movie,class:"recordform-part") %></td>
                                 </tr>
                                 <tr class="table-primary">
-                                    <td><%= r.label :recordimage, "画像" %><p class="selectContent">※どちらか一つ</p></td>
+                                    <td><%= r.label :recordimage, "画像" %><p class="selectContent">※どちらか一つは必須</p></td>
                                     <td><%= r.file_field :recordimage,class:"recordform-part" %></td>
                                 </tr>
                             </table>

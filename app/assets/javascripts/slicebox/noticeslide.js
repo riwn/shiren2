@@ -12,7 +12,7 @@ function Slide_Notice() {
                     disperseFactor: 20,
                     easing : 'ease',
                     speed : 1000,
-                    interval: 5000,
+                    interval: 10000,
                     autoplay: true,
                     fallbackFadeSpeed : 300,
                 }),
