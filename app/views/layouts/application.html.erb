@@ -3,7 +3,7 @@
 
 <head>
   <%= analytics_init if Rails.env.production? %>
-  <%= favicon_link_tag('favicon.ico') %>
+  <%= favicon_link_tag(image_url('icons/favicon.ico')) %>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= display_meta_tags(default_meta_tags) %>
   <%= csrf_meta_tags %>
@@ -69,7 +69,7 @@
       <div class="row">
         <div class="footer-left order-last order-lg-first col-12 col-lg-3 text-center">
           <a href="/">
-          <%= image_tag "/images/headfoot/logo.png", { :class => "logo", :alt => "風来のシレン2タイムアタック番付" ,:title => "風来のシレン2タイムアタック番付" } %>
+          <%= image_tag image_url('headfoot/logo.png'), { :class => "logo", :alt => "風来のシレン2タイムアタック番付" ,:title => "風来のシレン2タイムアタック番付" } %>
           </a>
         </div>
         <div class="footer-item col-12 col-lg-3 text-center">

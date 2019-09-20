@@ -1,4 +1,4 @@
-<% set_meta_tags title: "#{@user.name}のプロフィール",description:"シレン2 タイムアタック番付サイトの#{@user.name}さんのプロフィールページです", og: { title: "#{@user.name}のプロフィール",description:"シレン2 タイムアタック番付サイトの#{@user.name}さんのプロフィールページです"} %>
+<% set_meta_tags title: "#{@user.name}のプロフィール",description:"シレン2 タイムアタック番付サイトの#{@user.name}さんのプロフィールページです" %>
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <div class="container">
@@ -50,7 +50,7 @@
                 <div class="col-md-12 col-lg-4">
                     <div class="col-12 text-center mb-3">
                         <% if @user.icon.url == nil || @user.icon.url =="" %>
-                        <%= image_tag("/images/user/NoImage.png",class: "img-fluid border") %>
+                        <%= image_tag(image_url('user/NoImage.png') ,class: "img-fluid border") %>
                         <% else %>
                         <%= image_tag @user.icon.to_s,{:class => "img-fluid border"} %>
                         <% end %>
@@ -80,10 +80,10 @@
                             <div class="offset-2 offset-lg-1"></div>
                             <div class="col-2 m-3 text-center">
                                 <% if @user.niconico == "" || @user.niconico.nil?%>
-                                <%= image_tag("/images/niconico.png",class: "niconicoicon" ,style:"filter: gray;filter: grayscale(1);") %>
+                                <%= image_tag(image_url('user/niconico.png'),class: "niconicoicon" ,style:"filter: gray;filter: grayscale(1);") %>
                                 <% else %>
                                 <%= link_to @user.niconico, target:"_blank", rel:"noopener noreferrer" do %>
-                                <%= image_tag("/images/niconico.png",class: "niconicoicon") %>
+                                <%= image_tag(image_url('user/niconico.png'),class: "niconicoicon") %>
                                 <% end %>
                                 <% end %>
                             </div>

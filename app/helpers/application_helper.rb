@@ -10,15 +10,15 @@ module ApplicationHelper
         canonical: request.original_url,
         separator: '|',
         icon: [
-            { href: image_url('favicon.ico') },
-            { href: image_url('icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
+            { href: image_url('icons/favicon.ico') },
+            { href: image_url('icons/icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
         ],
         og: {
-            site_name: '風来のシレン2 タイムアタック番付', # もしくは site_name: :site
-            title: 'トップページ', # もしくは title: :title
-            description: 'ようこそ！このサイトは風来のシレン2のタイムアタック番付サイトです！タイムアタックの解説や大会のお知らせ、オンライン上のシレン2のコミュニティの管理等もしています。シレン2が大好きなそこの君！ぜひ立ち寄ってね！！', # もしくは description: :description
+            site_name: :site,
+            title: :title,
+            description: :description,
             type: 'website',
-            image: image_url('ogimage.png'),
+            image: image_url('icons/ogimage.png'),
             url: request.original_url,
             locale: 'ja_JP',
         },
@@ -27,7 +27,7 @@ module ApplicationHelper
             site: '@shiren2sougou',
             title: :title,
             description: :description,
-            image: image_url('ogimage.png'),
+            image: image_url('icons/ogimage.png'),
         }
     }
     end
