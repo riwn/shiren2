@@ -24,7 +24,7 @@
     <%= yield :mosttop %>
     <div id="nataneVillage" class="nataneVillage d-none d-md-block">
       <div class="nataneDungeon">
-        <a href="https://com.nicovideo.jp/community/co155330" target="_blank" rel="noopener noreferrer"><img class="fullmoon" src="/images/nataneVillage/FullMoon.png"></a>
+        <a href="https://com.nicovideo.jp/community/co155330" target="_blank" rel="noopener noreferrer"><img class="fullmoon" src=<%= image_url('nataneVillage/FullMoon.png') %>></a>
         <%= link_to "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
         <%= image_tag image_url('nataneVillage/Onigashima.png'), { :class => "onigashima",:alt => "鬼ヶ島ありありTA",:title => "鬼ヶ島ありありTA" } %>
         <% end %>
