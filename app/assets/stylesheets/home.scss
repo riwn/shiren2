@@ -7,7 +7,7 @@ body {
   margin: 0;
   font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo,
     メイリオ, Osaka, "MS PGothic", arial, helvetica, sans-serif;
-  background-image: url("/images/headfoot/background_image.png");
+  background-image: url(mage_url('headfoot/background_image.png'));
   background-repeat: repeat;
 }
 
@@ -154,7 +154,7 @@ header {
       top: 116px;
       width: 21px;
       height: 17px;
-      background-image: url("/images/nataneVillage/shiren_Walk.png");
+      background-image: url(image_url('nataneVillage/shiren_Walk.png'));
       background-position: 21px top;
       z-index: 1;
     }
@@ -164,13 +164,13 @@ header {
       top: 123px;
       width: 12px;
       height: 12px;
-      background-image: url("/images/nataneVillage/Maml_Walk.png");
+      background-image: url(image_url('nataneVillage/Maml_Walk.png'));
       background-position: 12px top;
       z-index: 1;
     }
 
     .cloud {
-      background-image: url("/images/nataneVillage/cloud.png");
+      background-image: url(image_url('nataneVillage/cloud.png'));
       width: 118px;
       height: 89px;
       position: absolute;
@@ -190,7 +190,7 @@ header {
       top: 129px;
       width: 12px;
       height: 12px;
-      background-image: url("/images/nataneVillage/Maml_WalkR.png");
+      background-image: url(image_url('nataneVillage/Maml_WalkR.png'));
       background-position: 12px top;
     }
   }

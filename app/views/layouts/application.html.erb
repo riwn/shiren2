@@ -26,27 +26,27 @@
       <div class="nataneDungeon">
         <a href="https://com.nicovideo.jp/community/co155330" target="_blank" rel="noopener noreferrer"><img class="fullmoon" src="/images/nataneVillage/FullMoon.png"></a>
         <%= link_to "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Onigashima.png", { :class => "onigashima",:alt => "鬼ヶ島ありありTA",:title => "鬼ヶ島ありありTA" } %>
+        <%= image_tag image_url('nataneVillage/Onigashima.png'), { :class => "onigashima",:alt => "鬼ヶ島ありありTA",:title => "鬼ヶ島ありありTA" } %>
         <% end %>
         <%= link_to "/ranking/story/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Story.png", { :class => "story",:alt => "ストーリーTA",:title => "ストーリーTA" } %>
+        <%= image_tag image_url('nataneVillage/Story.png'), { :class => "story",:alt => "ストーリーTA",:title => "ストーリーTA" } %>
         <% end %>
         <%= link_to "/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Mumyu.png", { :class => "mumyu",:alt => "最果てへの道99FTA",:title => "最果てへの道99FTA" } %>
+        <%= image_tag image_url('nataneVillage/Mumyu.png'), { :class => "mumyu",:alt => "最果てへの道99FTA",:title => "最果てへの道99FTA" } %>
         <% end %>
         <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Well.png", { :class => "well",:alt => "カラクロTA",:title => "カラクロTA" } %>
+        <%= image_tag image_url('nataneVillage/Well.png'), { :class => "well",:alt => "カラクロTA",:title => "カラクロTA" } %>
         <% end %>
         <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Well2.png", { :class => "well2",:alt => "カラクロTA",:title => "カラクロTA" } %>
+        <%= image_tag image_url('nataneVillage/Well2.png'), { :class => "well2",:alt => "カラクロTA",:title => "カラクロTA" } %>
         <% end %>
         <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Shrine.png", { :class => "shrine",:alt => "女王グモ捕獲TA" ,:title => "女王グモ捕獲TA"} %>
+        <%= image_tag image_url('nataneVillage/Shrine.png'), { :class => "shrine",:alt => "女王グモ捕獲TA" ,:title => "女王グモ捕獲TA"} %>
         <% end %>
         <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag "/images/nataneVillage/Shrine2.png", { :class => "shrine2",:alt => "女王グモ捕獲TA" ,:title => "女王グモ捕獲TA" } %>
+        <%= image_tag image_url('nataneVillage/Shrine2.png'), { :class => "shrine2",:alt => "女王グモ捕獲TA" ,:title => "女王グモ捕獲TA" } %>
         <% end %>
-        <img src="/images/nataneVillage/Road.png" class="road">
+        <img src=<%= image_url('nataneVillage/Road.png') %> class="road">
       </div>
       <div class="fromL">
         <div class="cloud cloudL1"></div>
