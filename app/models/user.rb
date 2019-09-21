@@ -7,13 +7,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true, uniqueness: true, length: {maximum: 15}
   validates :introduction, length: {maximum: 1200}
-  validate :niconico_valid
-  validate :twitch_valid
-  validate :youtube_valid
+  after_save :niconico_valid
+  after_save :twitch_valid
+  after_save :youtube_valid
 
       # permissionとrejectionが両方Trueの時にエラーとする
   def niconico_valid
-    if niconico != ""
+    if niconico != "" && niconico != nil
       if !niconico.include?("https://com.nicovideo.jp/community")
         errors.add(:niconico, "コミュニティのURLを指定してください")
       end
@@ -21,7 +21,7 @@ class User < ApplicationRecord
   end
 
   def twitch_valid
-    if twitch != ""
+    if twitch != "" && twitch != nil
       if !twitch.include?("https://www.twitch.tv")
         errors.add(:twitch, "チャンネルのURLを指定してください")
       end
@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def youtube_valid
-    if youtube != ""
+    if youtube != "" && youtube != nil
       if !youtube.include?("https://www.youtube.com/channel")
         errors.add(:youtube, "のURLを指定してください")
       end
