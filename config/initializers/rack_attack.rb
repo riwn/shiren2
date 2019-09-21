@@ -17,12 +17,6 @@ class Rack::Attack
         end
       end
 
-      throttle('/users', :limit => 5, :period => 300.minutes) do |req|
-        if req.path == '/users' && req.post?
-          req.ip
-        end
-      end
-
       throttle('/opinion', :limit => 10, :period => 60.minutes) do |req|
         if req.path == '/opinion' && req.post?
           req.ip
