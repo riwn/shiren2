@@ -48,6 +48,15 @@ RailsAdmin.config do |config|
     end
   end
 
+  if User.table_exists?
+    RailsAdmin.config User do
+      list do
+        # simply adding fields by their names (order will be maintained)
+        include_fields :name, :niconico, :youtube, :twitch, :introduction
+      end
+    end
+  end
+
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
