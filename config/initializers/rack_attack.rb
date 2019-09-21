@@ -4,11 +4,11 @@ class Rack::Attack
       end
 
       # 例: 同一IPアドレスからの/loginsへのPOSTリクエストを5分あたり5回までに制限
-      throttle('login/ip', :limit => 5, :period => 5.minutes) do |req|
-        if req.path == '/users/sign_in' && req.post?
-          req.ip
-        end
-      end
+      #throttle('login/ip', :limit => 5, :period => 5.minutes) do |req|
+      #  if req.path == '/users/sign_in' && req.post?
+      #    req.ip
+      #  end
+      #end
 
       # 例: 同一IPアドレスからの/loginsへのPOSTリクエストを20秒あたり5回までに制限
       throttle('/ranking/newrecord', :limit => 10, :period => 10.minutes) do |req|
@@ -16,6 +16,12 @@ class Rack::Attack
           req.ip
         end
       end
+
+      #throttle('/users', :limit => 5, :period => 300.minutes) do |req|
+      #  if req.path == '/users' && req.post?
+      #    req.ip
+      #  end
+      #end
 
       throttle('/opinion', :limit => 10, :period => 60.minutes) do |req|
         if req.path == '/opinion' && req.post?
