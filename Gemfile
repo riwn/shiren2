@@ -104,6 +104,9 @@ gem 'google-analytics-rails'
 # Twitter
 gem 'twitter'
 
+# DoS攻撃対策
+gem 'rack-attack'
+
 # SEO対策
 gem 'meta-tags'
 gem 'sitemap_generator'

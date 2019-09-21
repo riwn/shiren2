@@ -21,6 +21,24 @@
     <%= render '/layouts/navbar_top' %>
   </header>
   <main class="mb-auto">
+    <% if notice %>
+    <div class="alert alert-info alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">close</span>
+      </button>
+      <%= notice %>
+    </div>
+    <% end %>
+    <% if alert %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">close</span>
+       </button>
+       <%= alert %>
+    </div>
+    <% end %>
     <%= yield :mosttop %>
     <div id="nataneVillage" class="nataneVillage d-none d-md-block">
       <div class="nataneDungeon">

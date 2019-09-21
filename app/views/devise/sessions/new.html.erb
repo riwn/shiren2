@@ -1,5 +1,9 @@
 <% set_meta_tags title: "ログイン",description:"シレン2 タイムアタック番付サイトのログインページです" %>
 
+<% content_for :mosttop do %>
+  <%= devise_error_messages %>
+<% end %>
+
 <div class="container">
   <div class="row">
     <div class="offset-lg-3"></div>

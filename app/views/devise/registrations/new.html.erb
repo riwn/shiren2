@@ -1,4 +1,9 @@
 <% set_meta_tags title: "アカウント作成",description:"シレン2 タイムアタック番付サイトのアカウント作成ページです" %>
+
+<% content_for :mosttop do %>
+  <%= devise_error_messages %>
+<% end %>
+
 <div class="container">
   <div class="row">
     <div class="offset-lg-3"></div>
@@ -7,9 +12,7 @@
         <h2 class="card-title float-left pt-3 pl-3">アカウント作成</h2>
         <div class="card-body">
           <div class="card-text">
-
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
 
             <div class="field">
               <%= f.label :name %>

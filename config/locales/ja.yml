@@ -7,6 +7,8 @@ ja:
     attributes:
       user:
         name: 名前
+        password: パスワード
+        password_confirmation: パスワード(確認)
         introduction: 自己紹介
         icon: アイコン
         admin: 記録許可権限
@@ -30,6 +32,20 @@ ja:
         updated_at: 最終更新日
   errors:
     messages:
+      already_confirmed: 'は既に登録済みです。ログインしてください。'
+      confirmation_period_expired: "の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。"
+      expired: 'の有効期限が切れました。新しくリクエストしてください。'
+      not_found: 'は見つかりませんでした。'
+      not_locked: 'は凍結されていません。'
+      not_saved:
+        one: "エラーが発生したため %{resource} は保存されませんでした:"
+        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした:"
+      taken: "は既に使用されています。"
+      blank: "が入力されていません。"
+      too_short: "は%{count}文字以上に設定して下さい。"
+      too_long: "は%{count}文字以下に設定して下さい。"
+      invalid: "は有効でありません。"
+      confirmation: "が内容とあっていません。"
       carrierwave_processing_error: は処理できませんでした。
       carrierwave_integrity_error: は許可されていないファイルタイプです。
       carrierwave_download_error: はダウンロードできません。
@@ -40,3 +56,30 @@ ja:
       rmagick_processing_error: "画像の処理に失敗しました。画像を再度確認してください。"
       min_size_error: "ファイルを%{min_size}以上のサイズに設定してください。"
       max_size_error: "ファイルを%{max_size}以下のサイズに設定してください。"
+  devise:
+    confirmations:
+      confirmed: 'アカウントを登録しました。'
+      send_instructions: 'アカウントの有効化について数分以内にメールでご連絡します。'
+      send_paranoid_instructions: "あなたのメールアドレスが登録済みの場合、本人確認用のメールが数分以内に送信されます。"
+    failure:
+      already_authenticated: 'すでにログインしています。'
+      inactive: 'アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。'
+      invalid: "%{authentication_keys} もしくはパスワードが不正です。"
+      locked: 'あなたのアカウントは凍結されています。'
+      last_attempt: 'あなたのアカウントが凍結される前に、複数回の操作がおこなわれています。'
+      not_found_in_database: "%{authentication_keys} もしくはパスワードが不正です。"
+      timeout: 'セッションがタイムアウトしました。もう一度ログインしてください。'
+      unauthenticated: 'アカウント登録もしくはログインしてください。'
+      unconfirmed: 'メールアドレスの本人確認が必要です。'
+    registrations:
+      destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
+      signed_up: 'アカウント登録が完了しました。'
+      signed_up_but_inactive: 'ログインするためには、アカウントを有効化してください。'
+      signed_up_but_locked: 'アカウントが凍結されているためログインできません。'
+      signed_up_but_unconfirmed: '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
+      update_needs_confirmation: 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
+      updated: 'アカウント情報を変更しました。'
+    sessions:
+      signed_in: 'ログインしました。'
+      signed_out: 'ログアウトしました。'
+      already_signed_out: '既にログアウト済みです。'
