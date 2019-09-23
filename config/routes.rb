@@ -33,7 +33,9 @@ Rails.application.routes.draw do
   post "/ranking/newrecord" => "ranking#recordconfirm"
   get "/ranking/description" => "ranking#description"
   get "/ranking/:dungeon" => "ranking#dungeon"
+  post "/ranking/:dungeon" =>"ranking#dungeon"
   get  "/ranking/:dungeon/:yyyymm" =>"ranking#dungeon"
+  post "/ranking/:dungeon/:yyyymm" =>"ranking#dungeon"
 #####################過去大会#####################
   # get "/historys" => "historys#tournaments"
 ######################クイズ######################

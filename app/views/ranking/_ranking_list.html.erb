@@ -17,7 +17,11 @@
             <% if rank.user_id == nil || rank.user_id =="" %>
                 <%= image_tag(image_url('user/NoImage.png'),class: "img-fluid border") %>
             <% else %>
-                <%= image_tag rank.user.icon.to_s,{:class => "img-fluid border"} %>
+                <% if rank.user.icon.to_s != nil && rank.user.icon.to_s != "" %>
+                    <%= image_tag rank.user.icon.to_s,{:class => "img-fluid border"} %>
+                <% else %>
+                    <%= image_tag(image_url('user/NoImage.png'),class: "img-fluid border") %>
+                <% end %>
             <% end %>
         </div>
         <div class="col-5 rankname border-bottom d-flex align-items-center">

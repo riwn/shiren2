@@ -140,6 +140,47 @@ class RankingController < ApplicationController
             @datetitle = " 歴代"
         end
         @color = getDungeonColor(@dungeonurl)
+        @movieonly = false
+        @useronly = false
+        @bestonly = false
+        # フィルターをかけた時の動作
+        if request.post?
+            params[:filt].each do | kind,onoff |
+                if kind.to_s == "movie_only" && onoff.to_i == 1
+                    @ranks = @ranks.RankMovieOnly
+                    @movieonly = true
+                end
+                if kind.to_s == "user_only" && onoff.to_i == 1
+                    @ranks = @ranks.RankUserOnly
+                    @useronly = true
+                end
+                if kind.to_s == "best_only" && onoff.to_i == 1
+                    # @ranks = @ranks.RankBestOnly
+                    @bestonly = true
+                end
+            end
+        # もっと見るを押した時の動作
+        elsif request.xhr?
+            puts params[:movieonly]
+            puts params[:useronly]
+            puts params[:bestonly]
+            if params[:movieonly] == "true"
+                @ranks = @ranks.RankMovieOnly
+                @movieonly = true
+            end
+            if params[:useronly] == "true"
+                @ranks = @ranks.RankUserOnly
+                @useronly = true
+            end
+            if params[:bestonly] == "true"
+                # @ranks = @ranks.RankBestOnly
+                @bestonly = true
+            end
+        # 普通のGetをした時の動作
+        else
+            @ranks = @ranks.RankMovieOnly
+            @movieonly = true
+        end
         @ranks = @ranks.order(:result).page(params[:page]).per(PER)
         render 'ranking'
     end
