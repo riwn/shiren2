@@ -40,14 +40,29 @@
                 </div>
                 <div class="card-body bg-light">
                     <div class="card-text">
+                    <%= form_tag controller: 'ranking' , action: 'dungeon' , remote:true, method: :post do %>
+                    <div class="m-3 d-inline-block">
+                        <strong> 動画付のみ:</strong>
+                        <%= check_box :filt, "movie_only" ,checked: @movieonly %>
+                    </div>
+                    <div class="m-3 d-inline-block">
+                        <strong> 登録済ユーザーのみ:</strong>
+                        <%= check_box :filt, "user_only"  ,checked: @useronly %>
+                    </div>
+                    <div class="m-3 d-none">
+                        <strong> 1ユーザー1記録表示:</strong>
+                        <%= check_box :filt, "best_only"  ,checked: @bestonly %>
+                    </div>
+                        <%= submit_tag "表示", :remote => true, :class => "btn btn-info btn-lg m-3" %>
+                    <% end %>
                     <% if @ranks.count == 0 %>
                         <h4>記録はまだありません</h2>
                     <% else %>
                         <div id="ranking_lists">
-                            <%= render 'ranking_list', {ranks: @ranks,dungeonname:@dungeonurl } %>
+                            <%= render 'ranking_list', {ranks: @ranks,dungeonname:@dungeonurl} %>
                         </div>
                         <div class="more w-100 text-center border-bottom border-right border-left border-dark p-3">
-                            <%= link_to_next_page @ranks, 'もっと見る', remote: true, id: 'view_more' %>
+                            <%= link_to_next_page @ranks, 'もっと見る' , params: { movieonly: @movieonly,useronly: @useronly, bestonly: @bestonly }, remote: true, id: 'view_more' %>
                         </div>
                     <% end %>
                     </div>

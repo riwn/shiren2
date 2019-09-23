@@ -124,6 +124,17 @@ class Rank < ApplicationRecord
         return self.where(dungeon: dungname).where(permission: true)
     end
 
+    # 動画が付いているランキングを取得
+    def self.RankMovieOnly
+        ranks = self.where.not(movie: nil)
+        return ranks.where.not(movie: "")
+    end
+
+    # ユーザーのみのランキングを取得
+    def self.RankUserOnly
+        return self.where.not(user_id: nil)
+    end
+
     private
         def movie_or_image
             recordimage.presence or movie.presence
