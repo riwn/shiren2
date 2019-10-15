@@ -29,6 +29,6 @@ class Rack::Attack
         end
       end
       Rack::Attack.throttled_response = lambda do |env|
-        [ 500, {}, [File.read(Rails.public_path.join('500.html'))]]
+        [ 503, {}, [File.read(Rails.public_path.join('503.html'))]]
       end
   end
