@@ -4,7 +4,7 @@ class User < ApplicationRecord
   mount_uploader :icon, IconUploader
   has_many :ranks
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :timeoutable
   validates :name, presence: true, uniqueness: true, length: {maximum: 15}
   validates :introduction, length: {maximum: 1200}
   after_save :niconico_valid
