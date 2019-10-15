@@ -3,7 +3,9 @@ class HomeController < ApplicationController
         #選択されたダンジョンの記録のみを抽出
         @ranks = Rank.all
         nowDate = Time.now
-        @ranks = @ranks.where(ranks:{created_at: (nowDate.ago(nowDate.month.modulo(3)).beginning_of_month)..(nowDate.since(2 - nowDate.month.modulo(3)).end_of_month)})
+        year = nowDate.year
+        month = nowDate.month
+        season, @ranks = @ranks.GetSeasonRecord(year,month)
         @ranks = @ranks.order(:result)
         @dungeons = Constants::DUNGEON_NAME
         @links = Constants::DUNGEON_LINK

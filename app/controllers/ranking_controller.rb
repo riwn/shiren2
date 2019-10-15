@@ -112,23 +112,7 @@ class RankingController < ApplicationController
                 @yyyymm = params[:yyyymm]
                 year = @yyyymm[0,4].to_i
                 month = @yyyymm[4,2].to_i
-                season = ""
-                modmonth = month.modulo(3) - 1
-                if modmonth < 0
-                    modmonth = 2
-                end
-                nowDate = Time.new(year, month, 1, 0, 0, 0, '+09:00')
-                @ranks = @ranks.where(created_at: (nowDate.ago(modmonth).beginning_of_month)..(nowDate.since(2 - modmonth).end_of_month))
-                if(month == 1 || month == 2|| month == 3)
-                    season = "冬期"
-                    year = year - 1
-                elsif(month == 4 || month == 5 || month == 6)
-                    season = "春期"
-                elsif(month == 7 || month == 8|| month == 9)
-                    season = "夏期"
-                elsif(month == 10 || month == 11 || month == 12)
-                    season = "秋期"
-                end
+                season, @ranks = @ranks.GetSeasonRecord(year,month)
                 @datetitle = "#{year}年度#{season}"
             else
                 #数値以外が入れられているとき
