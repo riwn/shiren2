@@ -119,6 +119,26 @@ class Rank < ApplicationRecord
         self.group("DATE_FORMAT(created_at, '%Y%m')").order("DATE_FORMAT(created_at, '%Y%m') desc").count
     end
 
+    def self.GetSeasonRecord(year,month)
+        season = ""
+        rank = self
+        if(month == 1 || month == 2|| month == 3)
+            season = "冬期"
+            year = year - 1
+            rank = self.where("DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}01' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}02' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}03'")
+        elsif(month == 4 || month == 5 || month == 6)
+            season = "春期"
+            rank = self.where("DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}04' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}05' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}06'")
+        elsif(month == 7 || month == 8|| month == 9)
+            season = "夏期"
+            rank = self.where("DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}07' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}08' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}09'")
+        elsif(month == 10 || month == 11 || month == 12)
+            season = "秋期"
+            rank = self.where("DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}10' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}11' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}12'")
+        end
+        return season,rank
+    end
+
     #データベースからダンジョンに応じたデータを取得
     def self.RankDungeonChoose(dungname)
         return self.where(dungeon: dungname).where(permission: true)
