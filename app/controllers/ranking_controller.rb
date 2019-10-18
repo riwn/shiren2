@@ -113,7 +113,7 @@ class RankingController < ApplicationController
                 year = @yyyymm[0,4].to_i
                 month = @yyyymm[4,2].to_i
                 season, @ranks = @ranks.GetSeasonRecord(year,month)
-                @datetitle = "#{year}年度#{season}"
+                @datetitle = "#{year}年#{season}"
             else
                 #数値以外が入れられているとき
                 redirect_to "/"

@@ -38,7 +38,6 @@ module ApplicationHelper
         season = " "
         if(month == 1 || month == 2|| month == 3)
             season = "冬期"
-            year = year - 1
         elsif(month == 4 || month == 5 || month == 6)
             season = "春期"
         elsif(month == 7 || month == 8|| month == 9)
@@ -46,7 +45,7 @@ module ApplicationHelper
         elsif(month == 10 || month == 11 || month == 12)
             season = "秋期"
         end
-        return year.to_s + "年度" + season
+        return year.to_s + "年" + season
         #return year.to_s + "年" + month + "月 (" + cnt + ")"
     end
 
