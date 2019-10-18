@@ -124,7 +124,6 @@ class Rank < ApplicationRecord
         rank = self
         if(month == 1 || month == 2|| month == 3)
             season = "冬期"
-            year = year - 1
             rank = self.where("DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}01' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}02' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}03'")
         elsif(month == 4 || month == 5 || month == 6)
             season = "春期"

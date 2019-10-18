@@ -1,0 +1,13 @@
+<div class="border border-dark">
+    <div class="row text-center">
+        <div class="col-3 p-3 border-right  d-flex align-items-center">
+            <p class="viewer"> <%= fa_icon("twitch 2x", class: "twitchicon") %><%= fa_icon("eye") %><%= twitchresult["viewer_count"] %></p>
+        </div>
+        <div class="col-9 border-bottom align-middle d-flex align-items-center">
+            <p class="rankname h4 m-3">
+                <%= image_tag(GetTwitchUserThumbnail(twitchresult["user_id"])["data"][0]["profile_image_url"], :class => "liveicon m-3") %>
+                <%= link_to twitchresult["title"], "https://www.twitch.tv/#{twitchresult["user_name"]}" , target:"_blank", rel:"noopener noreferrer" %>
+            </p>
+        </div>
+    </div>
+</div>
