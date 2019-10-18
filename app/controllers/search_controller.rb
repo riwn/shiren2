@@ -9,6 +9,8 @@ class SearchController < ApplicationController
         @result = @result["data"]
         @result2 = getLiveJson("シレン2")
         @result2 = @result2["items"]
+        @result3 = getTwitchLiveJson(26133)
+        @result3 = @result3["data"]
     end
 
     def getLiveJson(word1)
@@ -29,5 +31,17 @@ class SearchController < ApplicationController
         uri = URI.parse(URI.encode(url))
         json = Net::HTTP.get(uri)
         return JSON.parse(json)
+    end
+
+    def getTwitchLiveJson(game_id)
+        shiren2_id = game_id.to_s
+        url = "https://api.twitch.tv/helix/streams?game_id=" + shiren2_id
+        uri = URI.parse(URI.encode(url))
+        req = Net::HTTP.new(uri.host,uri.port)
+        req.use_ssl = uri.scheme === "https"
+
+        headers = {"Client-ID" => ENV['TWITCH_CLIENT_ID']}
+        json = req.get(uri,headers)
+        return JSON.parse(json.body)
     end
 end
