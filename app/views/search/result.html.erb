@@ -12,7 +12,12 @@
             <div class="card-text">
                 <% if @result != nil  %>
                     <% @result.each do |data| %>
-                        <%= render 'niconico_result', { niconicoresult:  data} %>
+                        <%= render 'niconico_result', { niconicoresult: data} %>
+                    <% end %>
+                <% end %>
+                <% if @result3 != nil  %>
+                    <% @result3.each do |data| %>
+                        <%= render 'twitch_result', { twitchresult: data} %>
                     <% end %>
                 <% end %>
                 <% if @result2 != nil  %>
@@ -23,7 +28,7 @@
                             <% counter = counter + 1 %>
                         <% end %>
                     <% end %>
-                    <% if counter == 0 && @result.count == 0 %>
+                    <% if counter == 0 && @result.count == 0 && @result3.count == 0 %>
                         <h2 style="text-align:center;">放送はありません</h2>
                     <% end %>
                 <% end %>
