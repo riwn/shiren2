@@ -52,6 +52,10 @@
                                     <td><%= r.label :recordimage, "画像" %><p class="selectContent">※どちらか一つは必須</p></td>
                                     <td><%= r.file_field :recordimage,class:"recordform-part" %></td>
                                 </tr>
+                                <tr class="table-secondary">
+                                    <td><%= r.label :remark, "備考" %></td>
+                                    <td><%= r.text_field :remark,class:"recordform-part" %></td>
+                                </tr>
                             </table>
                         </div>
                         <div class="float-right pt-1 pr-5">
