@@ -1099,6 +1099,7 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
+    timecop (0.9.1)
     trix (0.10.1)
       rails
     twitter (6.2.0)
@@ -1170,6 +1171,7 @@ DEPENDENCIES
   selenium-webdriver
   sitemap_generator
   sqlite3
+  timecop
   trix
   twitter
   tzinfo-data

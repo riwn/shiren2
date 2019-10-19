@@ -124,16 +124,16 @@ class Rank < ApplicationRecord
         rank = self
         if(month == 1 || month == 2|| month == 3)
             season = "冬期"
-            rank = self.where("DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}01' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}02' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}03'")
+            rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}01' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}02' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}03' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}04' and beforeseason = TRUE)"))
         elsif(month == 4 || month == 5 || month == 6)
             season = "春期"
-            rank = self.where("DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}04' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}05' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}06'")
+            rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}04' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}05' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}06' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}07' and beforeseason = TRUE)"))
         elsif(month == 7 || month == 8|| month == 9)
             season = "夏期"
-            rank = self.where("DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}07' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}08' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}09'")
+            rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}07' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}08' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}09' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}10' and beforeseason = TRUE)"))
         elsif(month == 10 || month == 11 || month == 12)
             season = "秋期"
-            rank = self.where("DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}10' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}11' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}12'")
+            rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}10' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}11' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}12' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{(year + 1).to_s}01' and beforeseason = TRUE)"))
         end
         return season,rank
     end

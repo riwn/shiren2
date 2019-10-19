@@ -8,7 +8,7 @@
                     <h2 class="d-inline">記録申請</h2>
                     <div class="d-inline pl-3">
                     <%= link_to "/ranking/description" do %>
-                        <button type="button" class="btn btn-secondary">申請について</button>
+                        <button type="button" class="btn btn-warning">申請について</button>
                     <% end %>
                     </div>
                 </div>
@@ -49,12 +49,21 @@
                                     <td><%= r.text_field(:movie,class:"recordform-part") %></td>
                                 </tr>
                                 <tr class="table-primary">
-                                    <td><%= r.label :recordimage, "画像" %><p class="selectContent">※どちらか一つは必須</p></td>
+                                <td><%= r.label :recordimage, "画像" %><p class="selectContent">※どちらか一つは必須</p></td>
                                     <td><%= r.file_field :recordimage,class:"recordform-part" %></td>
                                 </tr>
+                                <% now = Time.current %>
+                                <% nowmonth = now.month %>
+                                <% nowday = now.day %>
+                                <% if (nowmonth == 1 || nowmonth == 4 || nowmonth == 7 || nowmonth == 10) && (nowday <= 5) %>
+                                <tr class="table-secondary">
+                                    <td><%= r.label :beforeseason, "前シーズン記録" %></td>
+                                    <td><%= r.check_box :beforeseason,class:"recordform-part" %></td>
+                                </tr>
+                                <% end %>
                                 <tr class="table-secondary">
                                     <td><%= r.label :remark, "備考" %></td>
-                                    <td><%= r.text_field :remark,class:"recordform-part" %></td>
+                                    <td><%= r.text_field :remark, class:"recordform-part" %></td>
                                 </tr>
                             </table>
                         </div>
