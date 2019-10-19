@@ -52,6 +52,22 @@
                                     <%end %>
                                 </td>
                             </tr>
+                            <% now = Time.current %>
+                            <% nowmonth = now.month %>
+                            <% nowday = now.day %>
+                            <% if (nowmonth == 1 || nowmonth == 4 || nowmonth == 7 || nowmonth == 10) && (nowday <= 5) %>
+                            <tr>
+                                <td>前シーズン記録</td>
+                                <td>
+                                    <% if @rank.beforeseason then %>
+                                    前シーズン申請
+                                    <% else %>
+                                    今シーズン申請
+                                    <% end %>
+                                    <%= r.hidden_field :beforeseason %>
+                                </td>
+                            </tr>
+                            <% end %>
                             <tr>
                                 <td>備考</td>
                                 <td>
