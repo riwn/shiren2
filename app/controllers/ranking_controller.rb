@@ -213,6 +213,6 @@ class RankingController < ApplicationController
 
     ############################################################Strong Parameter############################################################
     def rank_params
-        params.require(:rank).permit(:name,:dungeon,:result,:movie,:resultdate,:recordimage)
+        params.require(:rank).permit(:name,:dungeon,:result,:movie,:resultdate,:recordimage,:remark)
     end
 end

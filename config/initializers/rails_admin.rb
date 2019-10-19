@@ -36,6 +36,9 @@ RailsAdmin.config do |config|
       field :user_id do
         read_only true
       end
+      field :remark do
+        read_only true
+      end
     end
   end
 
