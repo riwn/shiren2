@@ -26,6 +26,8 @@ ja:
         user_id: 申請者ID
         created_at: 申請日
         updated_at: 最終更新日
+        remark: 備考
+        beforeseason: 前シーズン記録
       opinion:
         content: 意見コメント
         created_at: 投稿日
