@@ -39,6 +39,9 @@ RailsAdmin.config do |config|
       field :remark do
         read_only true
       end
+      field :beforeseason do
+        read_only true
+      end
     end
   end
 
