@@ -52,6 +52,13 @@
                                     <%end %>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>備考</td>
+                                <td>
+                                    <%= @rank.remark %>
+                                    <%= r.hidden_field :remark %>
+                                </td>
+                            </tr>
                         </table>
                         <div class="actions">
                             <%= r.submit '投稿画面に戻る', name: 'back' ,class: "btn btn-warning btn-lg float-left" %>
