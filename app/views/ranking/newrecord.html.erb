@@ -36,7 +36,7 @@
                                     <td><%= r.label :result, "記録" %><p class="needContent">※必須</p></td>
                                     <td>
                                     <div class="recordform-part">
-                                        <%= select_tag "hour",options_for_select((0..19),class:'option',selected: params["hour"].nil? ? 10 : params["hour"]) %>
+                                        <%= select_tag "hour",options_for_select((0..7),class:'option',selected: params["hour"].nil? ? 10 : params["hour"]) %>
                                         時間
                                         <%= select_tag "minute",options_for_select((0..59),class:'option',selected: params["minute"].nil? ? 0 : params["minute"]) %>
                                         分
