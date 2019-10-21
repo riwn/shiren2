@@ -69,7 +69,7 @@ class Rank < ApplicationRecord
         end
         auther = {"name": rank.name}
         if rank.user_id != nil
-            auther["url"] = "#{topurl}/user/#{rank.user_id}"
+            auther["url"] = "#{topurl}"
         end
         auther["icon_url"] = boticon
 
@@ -79,7 +79,6 @@ class Rank < ApplicationRecord
             'content': message,
             "embeds": [
             {
-                "url": "#{topurl}/admin",
                 "color": 5620992,
                 "author": auther,
                 "fields": [
