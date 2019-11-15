@@ -6,7 +6,7 @@ module ApplicationHelper
         reverse: true,
         charset: 'utf-8',
         description: 'ようこそ！このサイトは風来のシレン2のタイムアタック番付サイトです！タイムアタックの解説や大会のお知らせ、オンライン上のシレン2のコミュニティの管理等もしています。シレン2が大好きなそこの君！ぜひ立ち寄ってね！！',
-        keywords: '風来のシレン,風来のシレン2,タイムアタック,TA,RTA,シレン2番付,最果てへの道,最果てへの道99FTA,シレン2,最果て,最果てTA'
+        keywords: '風来のシレン,風来のシレン2,タイムアタック,TA,RTA,シレン2番付,最果てへの道,最果てへの道99FTA,シレン2,最果て,最果てTA',
         canonical: request.original_url,
         separator: '|',
         icon: [
