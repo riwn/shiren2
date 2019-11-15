@@ -38,3 +38,5 @@ vendor/bundle
 /public/uploads
 
 .env
+
+public/sitemaps/sitemap.xml.gz   

@@ -112,3 +112,6 @@ gem 'rack-attack'
 gem 'meta-tags'
 gem 'sitemap_generator'
 gem 'aws-sdk'
+
+#　定時処理
+gem 'whenever', require: false
