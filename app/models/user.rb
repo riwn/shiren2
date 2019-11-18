@@ -7,9 +7,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :timeoutable
   validates :name, presence: true, uniqueness: true, length: {maximum: 15}
   validates :introduction, length: {maximum: 1200}
-  after_save :niconico_valid
-  after_save :twitch_valid
-  after_save :youtube_valid
+  validate :niconico_valid
+  validate :twitch_valid
+  validate :youtube_valid
 
       # permissionとrejectionが両方Trueの時にエラーとする
   def niconico_valid

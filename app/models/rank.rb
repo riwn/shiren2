@@ -9,8 +9,17 @@ class Rank < ApplicationRecord
     validates :movie_or_image, presence: true
     validate :both_true_vali
     validate :no_reject_message
+    validate :movie_valid
 
     after_save :permit_change
+
+    def movie_valid
+        if movie != "" && movie != nil
+            unless movie.start_with?("https://","http://")
+                errors.add(:movie, "を指定してください")
+            end
+        end
+    end
 
     def permit_change
         if self.permission == true
