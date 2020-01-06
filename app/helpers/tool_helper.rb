@@ -1,4 +1,4 @@
-module SearchHelper
+module ToolHelper
 require 'net/http'
 require 'uri'
 require 'json'

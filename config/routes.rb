@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get "/opinion" => "home#opinion"
   post "/opinion" => "home#sendopinion"
 #####################放送検索#####################
-  get "/search" => "search#result" , as: "search"
+  get "/tool/search" => "tool#search" , as: "search"
+  #get "/tool/counter" => "tool#counter" , as: "castlecounter"
 #####################ユーザー#####################
   get "/user/:id" => "user#profile"
   get "/user/:id/edit" => "user#edit"
