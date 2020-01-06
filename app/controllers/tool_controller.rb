@@ -3,14 +3,18 @@ require 'uri'
 require "open-uri"
 require 'json'
 
-class SearchController < ApplicationController
-    def result
+class ToolController < ApplicationController
+    def search
         @result = getNicoLiveJson("風来のシレン2","シレン2")
         @result = @result["data"]
         @result2 = getLiveJson("シレン2")
         @result2 = @result2["items"]
         @result3 = getTwitchLiveJson(26133)
         @result3 = @result3["data"]
+    end
+
+    def counter
+
     end
 
     def getLiveJson(word1)
