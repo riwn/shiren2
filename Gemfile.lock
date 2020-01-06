@@ -994,7 +994,7 @@ GEM
     orm_adapter (0.5.0)
     popper_js (1.14.5)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (3.12.2)
     rack (2.0.8)
     rack-attack (6.2.0)
       rack (>= 1.0, < 3)
@@ -1162,7 +1162,7 @@ DEPENDENCIES
   meta-tags
   mini_magick
   mysql2
-  puma (~> 3.11)
+  puma (~> 3.12)
   rack-attack
   rails (~> 5.2.0)
   rails-i18n
