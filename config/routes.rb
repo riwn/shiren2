@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post "/opinion" => "home#sendopinion"
 #####################放送検索#####################
   get "/tool/search" => "tool#search" , as: "search"
-  get "/tool/counter" => "tool#counter" , as: "castlecounter"
+  get "/tool/counter" => "tool#counter" , as: "counter"
 #####################ユーザー#####################
   get "/user/:id" => "user#profile"
   get "/user/:id/edit" => "user#edit"
