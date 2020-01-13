@@ -115,3 +115,4 @@ gem 'aws-sdk'
 
 #　定時処理
 gem 'whenever', require: false
+# dev作成用
