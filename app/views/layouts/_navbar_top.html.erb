@@ -9,8 +9,13 @@
 
     <div class="collapse navbar-collapse" id="headerData">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <%= link_to "放送検索", search_path, class: "nav-link" %>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/" id="dropdown_tool" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">ツール</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown_tool">
+                    <%= link_to "放送検索", search_path , class: "dropdown-item" %>
+                    <%= link_to "お城素材カウンター", counter_path , class: "dropdown-item" %>
+                </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="/" id="dropdown_desc" data-toggle="dropdown"
@@ -24,9 +29,9 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">シレン2番付</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="nav-link dropdown-toggle" href="/" id="dropdown-ranking" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">シレン2番付</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown-ranking">
                     <%= link_to "最果てへの道99FTA","/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" , class: "dropdown-item"%>
                     <%= link_to "カラクロTA","/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" , class: "dropdown-item"%>
                     <%= link_to "鬼ヶ島ありありTA","/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" , class: "dropdown-item"%>
