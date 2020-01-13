@@ -1,6 +1,101 @@
 <div class="container">
-    <h1>カウントテスト</h1>
-    <button class="btn btn-success" id="minus">-</button>
-    <button class="btn btn-warning" id="plus">+</button>
-    <h3><span class="odometer" id="counter">0000</span>個</h3>
+    <div class="card">
+        <div class="card-header bg-success text-center">
+            <h1 class="card-title float-left text-white">城素材カウンター</h1>
+        </div>
+        <div class="card-body bg-light">
+            <div class="card-text">
+                <div class="row">
+                    <div class="col-12 col-lg-2 offset-lg-1 border mr-2">
+                        <h3 class="m-2 text-center">
+                            土
+                            <%= image_tag image_url('counter/Soil.png'), { :class => "castle-material", :alt => "土" } %>
+                        </h3>
+                        <div class="row mt-3 mb-3 no-gutters">
+                            <div class="col-4">
+                                <button class="btn-lg btn-danger minus mx-auto d-block" id="minus1" disabled>-</button>
+                            </div>
+                            <div class="col-4 text-center">
+                                <h3><span class="odometer counter" id="counter1">0000</span></h3>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn-lg btn-primary plus mx-auto d-block" id="plus1">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2 border mr-2">
+                        <h3 class="m-2 text-center">
+                            水
+                            <%= image_tag image_url('counter/Water.png'), { :class => "castle-material", :alt => "鬼よけ水" } %>
+                        </h3>
+                        <div class="row mt-3 mb-3 no-gutters">
+                            <div class="col-4">
+                                <button class="btn-lg btn-danger minus mx-auto d-block" id="minus2" disabled>-</button>
+                            </div>
+                            <div class="col-4 text-center">
+                                <h3><span class="odometer counter" id="counter2">0000</span></h3>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn-lg btn-primary plus mx-auto d-block" id="plus2">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2  border mr-2">
+                        <h3 class="m-2 text-center">
+                            木
+                            <%= image_tag image_url('counter/Wood.png'), { :class => "castle-material", :alt => "木" } %>
+                        </h3>
+
+                        <div class="row mt-3 mb-3 no-gutters">
+                            <div class="col-4">
+                                <button class="btn-lg btn-danger minus mx-auto d-block" id="minus3" disabled>-</button>
+                            </div>
+                            <div class="col-4 text-center">
+                                <h3><span class="odometer counter" id="counter3">0000</span></h3>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn-lg btn-primary plus mx-auto d-block" id="plus3">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2  border mr-2">
+                        <h3 class="m-2 text-center">
+                            岩
+                            <%= image_tag image_url('counter/Rock.png'), { :class => "castle-material", :alt => "岩" } %>
+                        </h3>
+                        <div class="row mt-3 mb-3 no-gutters">
+                            <div class="col-4">
+                                <button class="btn-lg btn-danger minus mx-auto d-block" id="minus4" disabled>-</button>
+                            </div>
+                            <div class="col-4 text-center">
+                                <h3><span class="odometer counter" id="counter4">0000</span></h3>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn-lg btn-primary plus mx-auto d-block" id="plus4">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2  border mr-2">
+                        <h3 class="m-2 text-center">砂鉄
+                            <%= image_tag image_url('counter/IronSand.png'), { :class => "castle-material", :alt => "砂鉄" } %>
+                        </h3>
+                        <div class="row mt-3 mb-3 no-gutters">
+                            <div class="col-4">
+                                <button class="btn-lg btn-danger minus mx-auto d-block" id="minus5" disabled>-</button>
+                            </div>
+                            <div class="col-4 text-center">
+                                <h3><span class="odometer counter" id="counter5">0000</span></h3>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn-lg btn-primary plus mx-auto d-block" id="plus5">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<%= javascript_include_tag "counter/counter" %>
+<%= javascript_include_tag "counter/odometer.min" %>
+<%= stylesheet_link_tag    'counter/themes/odometer-theme-default.css'%>
