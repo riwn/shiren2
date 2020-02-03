@@ -9,11 +9,13 @@
 
     <div class="collapse navbar-collapse" id="headerData">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <%= link_to "放送検索", search_path, class: "nav-link" %>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="/" id="dropdown_tool" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">ツール</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown_tool">
-                    <%= link_to "放送検索", search_path , class: "dropdown-item" %>
                     <%= link_to "お城素材カウンター", counter_path , class: "dropdown-item" %>
                 </div>
             </li>
