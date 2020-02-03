@@ -1,127 +1,137 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <%= analytics_init if Rails.env.production? %>
-  <%= favicon_link_tag(image_url('icons/favicon.ico')) %>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= display_meta_tags(default_meta_tags) %>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <head>
+    <%= analytics_init if Rails.env.production? %>
+    <%= favicon_link_tag(image_url('icons/favicon.ico')) %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= display_meta_tags(default_meta_tags) %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application'%>
-  <%= javascript_include_tag "village/VillageWalk"%>
-  <%= javascript_include_tag "animejs/anime.min"%>
-</head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application'%>
+    <%= javascript_include_tag "village/VillageWalk"%>
+    <%= javascript_include_tag "animejs/anime.min"%>
+  </head>
 
-<body class="d-flex flex-column" style="min-height: 100vh">
-  <header>
-    <%= render '/layouts/navbar_top' %>
-  </header>
-  <main class="mb-auto">
-    <% if notice %>
-    <div class="alert alert-info alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-        <span class="sr-only">close</span>
-      </button>
-      <%= notice %>
-    </div>
-    <% end %>
-    <% if alert %>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-        <span class="sr-only">close</span>
-       </button>
-       <%= alert %>
-    </div>
-    <% end %>
-    <%= yield :mosttop %>
-    <div id="nataneVillage" class="nataneVillage d-none d-md-block">
-      <div class="nataneDungeon">
-        <a href="https://com.nicovideo.jp/community/co155330" target="_blank" rel="noopener noreferrer"><img class="fullmoon" src=<%= image_url('nataneVillage/FullMoon.png') %>></a>
-        <%= link_to "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag image_url('nataneVillage/Onigashima.png'), { :class => "onigashima",:alt => "鬼ヶ島ありありTA",:title => "鬼ヶ島ありありTA" } %>
-        <% end %>
-        <%= link_to "/ranking/story/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag image_url('nataneVillage/Story.png'), { :class => "story",:alt => "ストーリーTA",:title => "ストーリーTA" } %>
-        <% end %>
-        <%= link_to "/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag image_url('nataneVillage/Mumyu.png'), { :class => "mumyu",:alt => "最果てへの道99FTA",:title => "最果てへの道99FTA" } %>
-        <% end %>
-        <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag image_url('nataneVillage/Well.png'), { :class => "well",:alt => "カラクロTA",:title => "カラクロTA" } %>
-        <% end %>
-        <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag image_url('nataneVillage/Well2.png'), { :class => "well2",:alt => "カラクロTA",:title => "カラクロTA" } %>
-        <% end %>
-        <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag image_url('nataneVillage/Shrine.png'), { :class => "shrine",:alt => "女王グモ捕獲TA" ,:title => "女王グモ捕獲TA"} %>
-        <% end %>
-        <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
-        <%= image_tag image_url('nataneVillage/Shrine2.png'), { :class => "shrine2",:alt => "女王グモ捕獲TA" ,:title => "女王グモ捕獲TA" } %>
-        <% end %>
-        <img src=<%= image_url('nataneVillage/Road.png') %> class="road">
+  <body class="d-flex flex-column" style="min-height: 100vh">
+    <header>
+      <%= render '/layouts/navbar_top' %>
+    </header>
+    <main class="mb-auto">
+      <% if notice %>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">close</span>
+        </button>
+        <%= notice %>
       </div>
-      <div class="fromL">
-        <div class="cloud cloudL1"></div>
-        <div class="cloud cloudL2"></div>
-        <div class="cloud cloudL3"></div>
-        <a href="/search">
+      <% end %>
+      <% if alert %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">close</span>
+        </button>
+        <%= alert %>
+      </div>
+      <% end %>
+      <%= yield :mosttop %>
+      <div id="nataneVillage" class="nataneVillage d-none d-md-block">
+        <div class="nataneDungeon">
+          <a href="https://com.nicovideo.jp/community/co155330" target="_blank" rel="noopener noreferrer"><img
+              class="fullmoon" src=<%= image_url('nataneVillage/FullMoon.png') %>></a>
+          <%= link_to "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
+          <%= image_tag image_url('nataneVillage/Onigashima.png'), { :class => "onigashima",:alt => "鬼ヶ島ありありTA",:title => "鬼ヶ島ありありTA" } %>
+          <% end %>
+          <%= link_to "/ranking/story/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
+          <%= image_tag image_url('nataneVillage/Story.png'), { :class => "story",:alt => "ストーリーTA",:title => "ストーリーTA" } %>
+          <% end %>
+          <%= link_to "/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
+          <%= image_tag image_url('nataneVillage/Mumyu.png'), { :class => "mumyu",:alt => "最果てへの道99FTA",:title => "最果てへの道99FTA" } %>
+          <% end %>
+          <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
+          <%= image_tag image_url('nataneVillage/Well.png'), { :class => "well",:alt => "カラクロTA",:title => "カラクロTA" } %>
+          <% end %>
+          <%= link_to "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
+          <%= image_tag image_url('nataneVillage/Well2.png'), { :class => "well2",:alt => "カラクロTA",:title => "カラクロTA" } %>
+          <% end %>
+          <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
+          <%= image_tag image_url('nataneVillage/Shrine.png'), { :class => "shrine",:alt => "女王グモ捕獲TA" ,:title => "女王グモ捕獲TA"} %>
+          <% end %>
+          <%= link_to "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
+          <%= image_tag image_url('nataneVillage/Shrine2.png'), { :class => "shrine2",:alt => "女王グモ捕獲TA" ,:title => "女王グモ捕獲TA" } %>
+          <% end %>
+          <img src=<%= image_url('nataneVillage/Road.png') %> class="road">
+        </div>
+        <div class="fromL">
+          <div class="cloud cloudL1"></div>
+          <div class="cloud cloudL2"></div>
+          <div class="cloud cloudL3"></div>
+          <%= link_to search_path do %>
           <div class="shirenwalk shirenL1"></div>
-        </a>
-        <div class="mamlwalk mamlL1"></div>
+          <% end %>
+          <div class="mamlwalk mamlL1"></div>
+        </div>
+        <div class="fromR">
+          <div class="mamlwalk mamlR1"></div>
+        </div>
       </div>
-      <div class="fromR">
-        <div class="mamlwalk mamlR1"></div>
-      </div>
-    </div>
-    <%= yield %>
+      <%= yield %>
 
-  </main>
-  <footer class="bg-dark">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="footer-left order-last order-lg-first col-12 col-lg-3 text-center">
-          <a href="/">
-          <%= image_tag image_url('headfoot/logo.png'), { :class => "logo", :alt => "風来のシレン2タイムアタック番付" ,:title => "風来のシレン2タイムアタック番付" } %>
-          </a>
-        </div>
-        <div class="footer-item col-12 col-lg-3 text-center">
-          <ul>
-            <p>ランキング</p>
-            <li><%= link_to "最果てへの道99FTA", "/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %></li>
-            <li><%= link_to "カラクロTA", "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %></li>
-            <li><%= link_to "鬼ヶ島ありありTA", "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %></li>
-            <li><%= link_to "ストーリーTA", "/ranking/story/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %></li>
-            <li><%= link_to "女王グモ捕獲TA", "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %></li>
-          </ul>
-        </div>
-        <div class="footer-item col-12 col-lg-3 text-center">
-          <ul>
-            <p>ヘルプ</p>
-            <li><a href="/description">このサイトについて</a></li>
-            <li><a href="/ranking/description">記録申請について</a></li>
-          </ul>
-        </div>
-        <div class="footer-item col-12 col-lg-3 text-center">
-          <ul>
-            <p>運営連絡</p>
-            <li><a href="/opinion">意見箱</a></li>
-            <li><a href="https://twitter.com/shiren2sougou" target="_blank" rel="noopener noreferrer">公式ツイッター</a></li>
-            <li><a href="https://discord.gg/QbNu5Ku" target="_blank" rel="noopener noreferrer">公式Discordサーバー</a></li>
-            <li><a href="https://com.nicovideo.jp/community/co155330" target="_blank" rel="noopener noreferrer">ニコニコシレン2総合コミュニティ</a></li>
-          </ul>
+    </main>
+    <footer class="bg-dark">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="footer-left order-last order-lg-first col-12 col-lg-3 text-center">
+            <a href="/">
+              <%= image_tag image_url('headfoot/logo.png'), { :class => "logo", :alt => "風来のシレン2タイムアタック番付" ,:title => "風来のシレン2タイムアタック番付" } %>
+            </a>
+          </div>
+          <div class="footer-item col-12 col-lg-3 text-center">
+            <ul>
+              <p>ランキング</p>
+              <li>
+                <%= link_to "最果てへの道99FTA", "/ranking/saihate/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %>
+              </li>
+              <li><%= link_to "カラクロTA", "/ranking/well/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %>
+              </li>
+              <li>
+                <%= link_to "鬼ヶ島ありありTA", "/ranking/onigashima/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %>
+              </li>
+              <li><%= link_to "ストーリーTA", "/ranking/story/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %>
+              </li>
+              <li>
+                <%= link_to "女王グモ捕獲TA", "/ranking/shrine/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" %>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-item col-12 col-lg-3 text-center">
+            <ul>
+              <p>ヘルプ</p>
+              <li><a href="/description">このサイトについて</a></li>
+              <li><a href="/ranking/description">記録申請について</a></li>
+            </ul>
+          </div>
+          <div class="footer-item col-12 col-lg-3 text-center">
+            <ul>
+              <p>運営連絡</p>
+              <li><a href="/opinion">意見箱</a></li>
+              <li><a href="https://twitter.com/shiren2sougou" target="_blank" rel="noopener noreferrer">公式ツイッター</a></li>
+              <li><a href="https://discord.gg/QbNu5Ku" target="_blank" rel="noopener noreferrer">公式Discordサーバー</a></li>
+              <li><a href="https://com.nicovideo.jp/community/co155330" target="_blank"
+                  rel="noopener noreferrer">ニコニコシレン2総合コミュニティ</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-  <script>
-    Village_Walk();
-  </script>
-</body>
+    </footer>
+    <script>
+      Village_Walk();
+    </script>
+  </body>
 
 </html>
