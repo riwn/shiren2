@@ -124,7 +124,36 @@ class Rank < ApplicationRecord
 
     #アーカイブのデータを取得する
     def self.GetArchive
-        self.group("DATE_FORMAT(created_at, '%Y%m')").order("DATE_FORMAT(created_at, '%Y%m') desc").count
+        archive = self.group("DATE_FORMAT(created_at, '%Y%m')").order("DATE_FORMAT(created_at, '%Y%m') desc").count
+        beforeYear = 0
+        beforeMonth = 0
+        archive.each do |yyyymm, count|
+            year = yyyymm[0,4].to_i
+            month = yyyymm[4,2].to_i
+            # 前のデータと同じ年だった時
+            if year == beforeYear
+                case month
+                when 1,2,3
+                    if beforeMonth == 1 || beforeMonth == 2 || beforeMonth == 3
+                        archive.delete(yyyymm)
+                    end
+                when 4,5,6
+                    if beforeMonth == 4 || beforeMonth == 5 || beforeMonth == 6
+                        archive.delete(yyyymm)
+                    end
+                when 7,8,9
+                    if beforeMonth == 7 || beforeMonth == 8 || beforeMonth == 9
+                        archive.delete(yyyymm)
+                    end
+                when 10,11,12
+                    if beforeMonth == 10 || beforeMonth == 11 || beforeMonth == 12
+                        archive.delete(yyyymm)
+                    end
+                end
+            end
+            beforeYear = year
+            beforeMonth = month
+        end
     end
 
     def self.GetSeasonRecord(year,month)
