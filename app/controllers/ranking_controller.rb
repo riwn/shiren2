@@ -44,7 +44,10 @@ class RankingController < ApplicationController
         @ranks = Rank.RankDungeonChoose(@dungeonname)
         #アーカイブを取得(各日付と記録数を取得)
         @archives = @ranks.GetArchive
+
+        #日付指定のnil判定
         if params[:yyyymm] != nil
+            #日付指定の数字以外を省くための判定
             if(params[:yyyymm]=~ /^[0-9]+$/)
                 @yyyymm = params[:yyyymm]
                 year = @yyyymm[0,4].to_i
