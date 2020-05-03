@@ -124,7 +124,11 @@ class Rank < ApplicationRecord
 
     #アーカイブのデータを取得する
     def self.GetArchive
-        archive = self.group("DATE_FORMAT(created_at, '%Y%m')").order("DATE_FORMAT(created_at, '%Y%m') desc").count
+        if Rails.env.production?
+            archive = self.group("DATE_FORMAT(created_at, '%Y%m')").order("DATE_FORMAT(created_at, '%Y%m') desc").count
+        else
+            archive = self.group("strftime('%Y%m',created_at)").order("strftime('%Y%m',created_at) desc").count
+        end
         beforeYear = 0
         beforeMonth = 0
         archive.each do |yyyymm, count|
@@ -161,16 +165,32 @@ class Rank < ApplicationRecord
         rank = self
         if(month == 1 || month == 2|| month == 3)
             season = "冬期"
-            rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}01' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}02' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}03' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}04' and beforeseason = TRUE)"))
+            if Rails.env.production?
+                rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}01' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}02' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}03' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}04' and beforeseason = TRUE)"))
+            else
+                rank = self.where("(strftime('%Y%m',created_at) = '#{year.to_s}01' or strftime('%Y%m',created_at) = '#{year.to_s}02' or strftime('%Y%m',created_at) = '#{year.to_s}03' and beforeseason = FALSE)").or(self.where("(strftime('%Y%m',created_at) = '#{year.to_s}04' and beforeseason = TRUE)"))
+            end
         elsif(month == 4 || month == 5 || month == 6)
             season = "春期"
-            rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}04' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}05' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}06' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}07' and beforeseason = TRUE)"))
+            if Rails.env.production?
+                rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}04' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}05' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}06' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}07' and beforeseason = TRUE)"))
+            else
+                rank = self.where("(strftime('%Y%m',created_at) = '#{year.to_s}04' or strftime('%Y%m',created_at) = '#{year.to_s}05' or strftime('%Y%m',created_at) = '#{year.to_s}06' and beforeseason = FALSE)").or(self.where("(strftime('%Y%m',created_at) = '#{year.to_s}07' and beforeseason = TRUE)"))
+            end
         elsif(month == 7 || month == 8|| month == 9)
             season = "夏期"
-            rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}07' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}08' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}09' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}10' and beforeseason = TRUE)"))
+            if Rails.env.production?
+                rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}07' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}08' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}09' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}10' and beforeseason = TRUE)"))
+            else
+                rank = self.where("(strftime('%Y%m',created_at) = '#{year.to_s}07' or strftime('%Y%m',created_at) = '#{year.to_s}08' or strftime('%Y%m',created_at) = '#{year.to_s}09' and beforeseason = FALSE)").or(self.where("(strftime('%Y%m',created_at) = '#{year.to_s}10' and beforeseason = TRUE)"))
+            end
         elsif(month == 10 || month == 11 || month == 12)
             season = "秋期"
-            rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}10' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}11' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}12' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{(year + 1).to_s}01' and beforeseason = TRUE)"))
+            if Rails.env.production?
+                rank = self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}10' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}11' or DATE_FORMAT(created_at, '%Y%m') = '#{year.to_s}12' and beforeseason = FALSE)").or(self.where("(DATE_FORMAT(created_at, '%Y%m') = '#{(year + 1).to_s}01' and beforeseason = TRUE)"))
+            else
+                rank = self.where("(strftime('%Y%m',created_at) = '#{year.to_s}10' or strftime('%Y%m',created_at) = '#{year.to_s}11' or strftime('%Y%m',created_at) = '#{year.to_s}12' and beforeseason = FALSE)").or(self.where("(strftime('%Y%m',created_at) = '#{(year + 1).to_s}01' and beforeseason = TRUE)"))
+            end
         end
         return season,rank
     end
