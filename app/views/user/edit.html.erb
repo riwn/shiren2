@@ -55,15 +55,15 @@
                         <% end %>
                         <div class="field mb-2">
                             <%= label_tag "古いパスワード"%>
-                            <%= text_field_tag 'old_password' , nil ,{class: "float-right"} %>
+                            <%= password_field_tag 'old_password' , nil ,{class: "float-right"} %>
                         </div>
                         <div class="field mb-2">
                             <%= label_tag "新しいパスワード"%>
-                            <%= text_field_tag 'new_password' , nil ,{class: "float-right"} %>
+                            <%= password_field_tag 'new_password' , nil ,{class: "float-right"} %>
                         </div>
                         <div class="field mb-2">
                             <%= label_tag "新しいパスワード(確認)"%>
-                            <%= text_field_tag 'new_password_confirmation' , nil ,{class: "float-right"} %>
+                            <%= password_field_tag 'new_password_confirmation' , nil ,{class: "float-right"} %>
                         </div>
                         <input type="submit" value="変更" class="float-right btn btn-primary">
                         <% end %>
