@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_19_043637) do
+ActiveRecord::Schema.define(version: 2020_05_03_090546) do
+
+  create_table "dungeons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.string "name"
+    t.integer "cuttime"
+    t.text "regulation"
+    t.string "uriname"
+    t.string "dungeoncolor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.text "name"
@@ -46,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_043637) do
     t.text "rejectioncomment"
     t.text "remark"
     t.boolean "beforeseason", default: false
+    t.integer "dungeon_id"
   end
 
   create_table "tournaments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
