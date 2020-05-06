@@ -24,7 +24,7 @@
                             <table class="table table-bordered">
                                 <tr class="table-success">
                                     <td><%= r.label :name, "名前" %><p class="needContent">※必須</p></td>
-                                    <td><%= r.text_field(:name,{:maxlength => 15,class:"recordform-part"}) %></td>
+                                    <td><%= r.text_field(:name,{:maxlength => 15,class:"recordform-part",readonly: @rank.name?})%></td>
                                 </tr>
                                 <tr class="table-success">
                                     <td><%= r.label :dungeon, "ダンジョン" %><p class="needContent">※必須</p></td>
