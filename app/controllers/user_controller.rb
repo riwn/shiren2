@@ -55,10 +55,21 @@ class UserController < ApplicationController
 
     def update
         @user = User.find_by_id(params[:id])
-        @user.niconico = params[:niconico]
-        @user.youtube = params[:youtube]
-        @user.twitch = params[:twitch]
-        @user.introduction = params[:text]
+        if @user.name != params[:name]
+            @user.name = params[:name]
+        end
+        if @user.niconico != params[:niconico]
+            @user.niconico = params[:niconico]
+        end
+        if @user.youtube != params[:youtube]
+            @user.youtube = params[:youtube]
+        end
+        if @user.twitch != params[:twitch]
+            @user.twitch = params[:twitch]
+        end
+        if @user.introduction != params[:text]
+            @user.introduction = params[:text]
+        end
         if params[:icon] != nil
             @user.icon = params[:icon]
         end
