@@ -27,7 +27,7 @@
         <div class="col-5 rankname border-bottom d-flex align-items-center">
             <p class="h5 p-3 mx-auto">
                 <% if rank.user_id != nil then %>
-                <%= link_to rank.name, "/user/#{rank.user_id}"%>
+                <%= link_to rank.user.name, "/user/#{rank.user_id}"%>
                 <% else %>
                 <%= rank.name %>
                 <% end %>
