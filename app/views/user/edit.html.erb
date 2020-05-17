@@ -13,6 +13,11 @@
 
                         <% end %>
                         <div class="field mb-2">
+                            <%= label_tag "ユーザー名変更"%>
+                            <%= text_field_tag :name , @user.name ,{class: "float-right"} %>
+                            <p style="color:red;">※ログイン時のユーザー名、ランキングの表示名も全て変更されます</p>
+                        </div>
+                        <div class="field mb-2">
                             <%= label_tag "ニコニココミュ二ティ"%>
                             <%= text_field_tag 'niconico' , @user.niconico ,{class: "float-right"} %>
                         </div>
