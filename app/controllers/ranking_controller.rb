@@ -122,6 +122,9 @@ class RankingController < ApplicationController
     #確認画面へ行くときのデータ運びとバリデーション
     def recordconfirm
         @rank = Rank.new(rank_params)
+        if user_signed_in?
+            @rank.name = current_user.name
+        end
         @rank[:result]= params["hour"].to_i * 3600 + params["minute"].to_i * 60 + params["second"].to_i
         render :newrecord if @rank.invalid?
     end
@@ -131,6 +134,7 @@ class RankingController < ApplicationController
         @rank = Rank.new(rank_params)
         if user_signed_in?
             @rank.user_id = current_user.id
+            
         end
         if params[:cache][:recordimage] != nil
             @rank.recordimage.retrieve_from_cache! params[:cache][:recordimage]
