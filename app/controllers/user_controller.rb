@@ -76,6 +76,7 @@ class UserController < ApplicationController
         if @user.save
             redirect_to "/user/#{params[:id]}"
         else
+            @user.name = User.find_by_id(params[:id]).name
             render :edit
         end
     end
