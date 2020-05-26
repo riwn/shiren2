@@ -23,7 +23,7 @@
                 <% if @result2 != nil  %>
                     <% counter = 0 %>
                     <% @result2.each do |data| %>
-                        <% if data["snippet"]["title"].include?("シレン2")%>
+                        <% if data["snippet"]["title"].tr("２", "2").include?("シレン2")%>
                             <%= render 'youtube_result', { youtuberesult:data } %>
                             <% counter = counter + 1 %>
                         <% end %>
