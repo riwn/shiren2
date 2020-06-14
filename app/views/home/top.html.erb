@@ -8,7 +8,11 @@
 
 <div class="sliders">
   <ul id="sb-slider" class="sb-slider">
-    <li><a href="/description"><img src=<%= image_url('top-notice/SiteOpen.png') %> title="タイムアタック番付サイト開設！"></a></li>
+    <% @banners.each do |banner| %>
+      <% if banner.display_by >= DateTime.now %>
+        <li><%= link_to image_tag("#{banner.image_url}", title:banner.title), banner.link %></li>
+      <% end %>
+    <% end %>
   </ul>
   <div id="nav-arrows" class="nav-arrows">
     <a href="#">

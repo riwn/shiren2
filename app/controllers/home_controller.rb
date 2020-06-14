@@ -14,6 +14,8 @@ class HomeController < ApplicationController
         @dungeons.each do |dungeon|
             @topranks.push(@ranks.RankDungeonChoose(dungeon).limit(3))
         end
+        #バナー用
+        @banners = Banner.all
     end
 
     def opinion
