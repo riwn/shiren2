@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_090546) do
+ActiveRecord::Schema.define(version: 2020_06_15_000142) do
 
-  create_table "dungeons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "dungeons", force: :cascade do |t|
     t.string "name"
     t.integer "cuttime"
     t.text "regulation"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_090546) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.text "name"
     t.text "type"
     t.integer "buy"
@@ -36,15 +36,14 @@ ActiveRecord::Schema.define(version: 2020_05_03_090546) do
     t.text "kind"
   end
 
-  create_table "opinions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "opinions", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "ranks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "ranks", force: :cascade do |t|
     t.text "name"
-    t.text "dungeon"
     t.integer "result"
     t.text "movie"
     t.datetime "created_at", null: false
@@ -59,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_090546) do
     t.integer "dungeon_id"
   end
 
-  create_table "tournaments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "tournaments", force: :cascade do |t|
     t.text "name"
     t.text "eventdate"
     t.text "organizer"
@@ -69,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_090546) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

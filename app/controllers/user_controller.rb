@@ -9,16 +9,14 @@ class UserController < ApplicationController
             redirect_to "/"
             return
         end
-        @dungeons = Constants::DUNGEON_NAME
-        @links = Constants::DUNGEON_LINK
-        @colors = Constants::DUNGEON_COLOR
+        @dungeons = Dungeon.all
         # 許可済みの記録
         @allranks = @user.ranks
         @ranks = @allranks.where(permission: true)
         @ranks = @ranks.order(:result)
         @myranks = []
         @dungeons.each do |dungeon|
-            @myranks.push(@ranks.RankDungeonChoose(dungeon).page(params[:page]).per(PER))
+            @myranks.push(@ranks.RankDungeonChoose(dungeon.id).page(params[:page]).per(PER))
         end
 
         # 許可前の記録

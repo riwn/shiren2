@@ -1,47 +1,23 @@
 class RankingController < ApplicationController
 
     require 'net/https'
-    require 'net/https'
     require 'uri'
-    ######################################################メソッド########################################################
-
-    #URLからダンジョンの名前を取得
-    def getDungeonName(dungeonURLStr)
-
-        Constants::DUNGEON_LINK.each_with_index{|value, index|
-            if dungeonURLStr == value
-                return Constants::DUNGEON_NAME[index]
-            end
-        }
-        return ""
-    end
-
-    def getDungeonColor(dungeonURLStr)
-        Constants::DUNGEON_LINK.each_with_index{|value, index|
-            if dungeonURLStr == value
-                return Constants::DUNGEON_COLOR[index]
-            end
-        }
-        return ""
-    end
-
-    ######################################################メソッド終わり######################################################
 
     PER = 10
 
     #URLからダンジョンと日付を取得してデータベースから記録も取得
     def dungeon
-        #URLからダンジョンを取得
-        @dungeonurl = params[:dungeon]
-        @dungeonname = getDungeonName(@dungeonurl)
-        #不正なURLを入れられたときにTopに戻る処理
-        if @dungeonname == ""
+        # URLが存在するかどうかチェックする
+        @dungeons = Dungeon.all.GetUriDungeon(params[:dungeon])
+        if @dungeons.count != 1
             redirect_to "/"
             return
         end
-
+        @dungeons.each do |dung|
+            @dungeon = dung
+        end
         #選択されたダンジョンの記録のみを抽出
-        @ranks = Rank.RankDungeonChoose(@dungeonname)
+        @ranks = Rank.RankDungeonChoose(@dungeon.id)
         #アーカイブを取得(各日付と記録数を取得)
         @archives = @ranks.GetArchive
 
@@ -63,7 +39,6 @@ class RankingController < ApplicationController
         else
             @datetitle = " 歴代"
         end
-        @color = getDungeonColor(@dungeonurl)
         @movieonly = false
         @useronly = false
         @bestonly = false
@@ -153,6 +128,6 @@ class RankingController < ApplicationController
 
     ############################################################Strong Parameter############################################################
     def rank_params
-        params.require(:rank).permit(:name,:dungeon,:result,:movie,:resultdate,:recordimage,:beforeseason,:remark)
+        params.require(:rank).permit(:name,:dungeon,:result,:movie,:resultdate,:recordimage,:beforeseason,:remark,:dungeon_id)
     end
 end

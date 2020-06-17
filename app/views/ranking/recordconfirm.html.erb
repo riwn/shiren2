@@ -18,8 +18,8 @@
                             </tr>
                             <tr>
                                 <td>ダンジョン</td>
-                                <td><%= @rank.dungeon %></td>
-                                <%= r.hidden_field :dungeon %>
+                                <td><%= @rank.dungeon.name %></td>
+                                <%= r.hidden_field :dungeon_id %>
                             </tr>
                             <tr>
                                 <td>記録</td>

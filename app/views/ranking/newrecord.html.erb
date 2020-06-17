@@ -7,9 +7,9 @@
                 <div class="card-title pt-3 pl-3">
                     <h2 class="d-inline">記録申請</h2>
                     <div class="d-inline pl-3">
-                    <%= link_to "/ranking/description" do %>
+                        <%= link_to "/ranking/description" do %>
                         <button type="button" class="btn btn-warning">申請について</button>
-                    <% end %>
+                        <% end %>
                     </div>
                 </div>
                 <div class="card-body">
@@ -23,33 +23,38 @@
                         <div class="record-table">
                             <table class="table table-bordered">
                                 <tr class="table-success">
-                                    <td><%= r.label :name, "名前" %><p class="needContent">※必須</p></td>
+                                    <td><%= r.label :name, "名前" %><p class="needContent">※必須</p>
+                                    </td>
                                     <td><%= r.text_field(:name,{:maxlength => 15,class:"recordform-part"}) %></td>
                                 </tr>
                                 <tr class="table-success">
-                                    <td><%= r.label :dungeon, "ダンジョン" %><p class="needContent">※必須</p></td>
+                                    <td><%= r.label :dungeon_id, "ダンジョン" %><p class="needContent">※必須</p>
+                                    </td>
                                     <td>
-                                        <%= r.select :dungeon, [["最果てへの道99FTA", "最果てへの道99FTA"], ["カラクロTA", "カラクロTA"], ["ストーリーTA", "ストーリーTA"], ["鬼ヶ島ありありTA", "鬼ヶ島ありありTA"], ["女王グモ捕獲TA", "女王グモ捕獲TA"]],class:"recordform-part"  %>
+                                        <%= r.collection_select :dungeon_id, Dungeon.all, :id, :name, include_blank: "選択して下さい", class:"recordform-part"  %>
                                     </td>
                                 </tr>
                                 <tr class="table-success">
-                                    <td><%= r.label :result, "記録" %><p class="needContent">※必須</p></td>
+                                    <td><%= r.label :result, "記録" %><p class="needContent">※必須</p>
+                                    </td>
                                     <td>
-                                    <div class="recordform-part">
-                                        <%= select_tag "hour",options_for_select((0..7),class:'option',selected: params["hour"].nil? ? 7 : params["hour"]) %>
-                                        時間
-                                        <%= select_tag "minute",options_for_select((0..59),class:'option',selected: params["minute"].nil? ? 0 : params["minute"]) %>
-                                        分
-                                        <%= select_tag "second",options_for_select((0..59),class:'option',selected: params["second"].nil? ? 0 : params["second"]) %>
-                                        秒
+                                        <div class="recordform-part">
+                                            <%= select_tag "hour",options_for_select((0..7),class:'option',selected: params["hour"].nil? ? 7 : params["hour"]) %>
+                                            時間
+                                            <%= select_tag "minute",options_for_select((0..59),class:'option',selected: params["minute"].nil? ? 0 : params["minute"]) %>
+                                            分
+                                            <%= select_tag "second",options_for_select((0..59),class:'option',selected: params["second"].nil? ? 0 : params["second"]) %>
+                                            秒
                                     </td>
                                 </tr>
                                 <tr class="table-primary">
-                                    <td><%= r.label :movie, "動画URL" %><p class="selectContent">※どちらか一つは必須</p></td>
+                                    <td><%= r.label :movie, "動画URL" %><p class="selectContent">※どちらか一つは必須</p>
+                                    </td>
                                     <td><%= r.text_field(:movie,class:"recordform-part") %></td>
                                 </tr>
                                 <tr class="table-primary">
-                                <td><%= r.label :recordimage, "画像" %><p class="selectContent">※どちらか一つは必須</p></td>
+                                    <td><%= r.label :recordimage, "画像" %><p class="selectContent">※どちらか一つは必須</p>
+                                    </td>
                                     <td><%= r.file_field :recordimage,class:"recordform-part" %></td>
                                 </tr>
                                 <% now = Time.current %>
