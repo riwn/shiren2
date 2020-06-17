@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "/user/:id" => "user#profile"
   get "/user/:id/edit" => "user#edit"
   post "/user/:id/update" => "user#update"
+  post "/user/:id/update_password" => "user#update_password"
 #######################解説#######################
   get "/ta" => redirect {"/ta/saihate"}
   get "/ta/saihate" => "ta#saihateta", as: "saihateta"

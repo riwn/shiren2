@@ -53,17 +53,49 @@ class UserController < ApplicationController
 
     def update
         @user = User.find_by_id(params[:id])
-        @user.niconico = params[:niconico]
-        @user.youtube = params[:youtube]
-        @user.twitch = params[:twitch]
-        @user.introduction = params[:text]
+        if @user.name != params[:name]
+            @user.name = params[:name]
+        end
+        if @user.niconico != params[:niconico]
+            @user.niconico = params[:niconico]
+        end
+        if @user.youtube != params[:youtube]
+            @user.youtube = params[:youtube]
+        end
+        if @user.twitch != params[:twitch]
+            @user.twitch = params[:twitch]
+        end
+        if @user.introduction != params[:text]
+            @user.introduction = params[:text]
+        end
         if params[:icon] != nil
             @user.icon = params[:icon]
         end
         if @user.save
             redirect_to "/user/#{params[:id]}"
         else
+            @user.name = User.find_by_id(params[:id]).name
             render :edit
         end
     end
+
+    def update_password
+        @uid = params[:id]
+        if current_user.id != @uid.to_i
+            redirect_to "/"
+            return
+        end
+        @user = User.find_by_id(@uid)
+        user_params = [password: params[:new_password],password_confirmation: params[:new_password_confirmation],current_password: params[:old_password]]
+        result = current_user.update_with_password(user_params[0])
+
+        if result
+            # パスワードを変更するとログアウトしてしまうので、再ログインが必要
+            redirect_to "/users/sign_in", notice: "パスワードを変更しました。再度ログインしてください。"
+        else
+            @error = "パスワードが間違っています。"
+            render :edit
+        end
+    end
+
 end

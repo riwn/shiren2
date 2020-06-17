@@ -1,8 +1,7 @@
 <% set_meta_tags title: "マイデータ編集",description:"シレン2 タイムアタック番付サイトの個人のマイデータ編集ページです" %>
 <div class="container">
     <div class="row">
-        <div class="offset-lg-3"></div>
-        <div class="col-auto">
+        <div class="col-auto mx-auto">
             <div class="card bg-light mt-5">
                 <h2 class="card-title float-left pt-3 pl-3"><%= @user.name %>のデータ編集</h2>
                 <div class="card-body">
@@ -13,6 +12,11 @@
                         <p class="text-danger"><%= message %></p>
 
                         <% end %>
+                        <div class="field mb-2">
+                            <%= label_tag "ユーザー名変更"%>
+                            <%= text_field_tag :name , @user.name ,{class: "float-right"} %>
+                            <p style="color:red;">※ログイン時のユーザー名、ランキングの表示名も全て変更されます</p>
+                        </div>
                         <div class="field mb-2">
                             <%= label_tag "ニコニココミュ二ティ"%>
                             <%= text_field_tag 'niconico' , @user.niconico ,{class: "float-right"} %>
@@ -36,6 +40,37 @@
                             <trix-editor input="introduction_text"></trix-editor>
                         </div>
                         <input type="submit" value="編集" class="float-right btn btn-primary">
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-auto mx-auto">
+            <div class="card bg-light mt-5">
+                <h5 class="card-title float-left pt-3 pl-3">パスワード変更(6文字以上)</h5>
+                <div class="card-body">
+                    <div class="card-text">
+                        <%= form_tag("/user/#{@user.id}/update_password") do %>
+                        <% if @error %>
+
+                        <p class="text-danger"><%= @error %></p>
+
+                        <% end %>
+                        <div class="field mb-2">
+                            <%= label_tag "古いパスワード"%>
+                            <%= password_field_tag 'old_password' , nil ,{class: "float-right"} %>
+                        </div>
+                        <div class="field mb-2">
+                            <%= label_tag "新しいパスワード"%>
+                            <%= password_field_tag 'new_password' , nil ,{class: "float-right"} %>
+                        </div>
+                        <div class="field mb-2">
+                            <%= label_tag "新しいパスワード(確認)"%>
+                            <%= password_field_tag 'new_password_confirmation' , nil ,{class: "float-right"} %>
+                        </div>
+                        <input type="submit" value="変更" class="float-right btn btn-primary">
                         <% end %>
                     </div>
                 </div>

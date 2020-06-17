@@ -23,12 +23,20 @@
                         <div class="record-table">
                             <table class="table table-bordered">
                                 <tr class="table-success">
-                                    <td><%= r.label :name, "名前" %><p class="needContent">※必須</p>
+                                    <td><%= r.label :name, "名前" %>
+                                        <% unless user_signed_in? %>
+                                        <p class="needContent">※必須</p>
+                                        <% end %>
                                     </td>
-                                    <td><%= r.text_field(:name,{:maxlength => 15,class:"recordform-part"}) %></td>
+                                    <% if user_signed_in? %>
+                                    <td><%= r.label :name, @rank.name %></td>
+                                    <% else %>
+                                    <td><%= r.text_field(:name,{:maxlength => 15,class:"recordform-part",readonly: @rank.name?})%>
+                                    </td>
+                                    <% end %>
                                 </tr>
                                 <tr class="table-success">
-                                    <td><%= r.label :dungeon_id, "ダンジョン" %><p class="needContent">※必須</p>
+                                    <td><%= r.label :dungeon, "ダンジョン" %><p class="needContent">※必須</p>
                                     </td>
                                     <td>
                                         <%= r.collection_select :dungeon_id, Dungeon.all, :id, :name, include_blank: "選択して下さい", class:"recordform-part"  %>
