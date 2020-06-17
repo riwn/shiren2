@@ -1,12 +1,12 @@
 class Rank < ApplicationRecord
     belongs_to :user, optional: true
-    belongs_to :dungeon, optional: true
+    belongs_to :dungeon
     #カラムの名前をmount_uploaderに指定
     mount_uploader :recordimage, RecordimageUploader
     #名前が入力されていること
     validates :name, presence: true, length: {maximum: 15}
     validates :result, presence: true
-    validates :dungeon, presence: true
+    validates :dungeon_id, presence: true
     validates :movie_or_image, presence: true
     validate :both_true_vali
     validate :no_reject_message
@@ -94,7 +94,7 @@ class Rank < ApplicationRecord
                 "fields": [
                     {
                         "name": "ダンジョン",
-                        "value": rank.dungeon,
+                        "value": rank.dungeon.name,
                     },
                     {
                         "name": "記録",
@@ -197,8 +197,8 @@ class Rank < ApplicationRecord
     end
 
     #データベースからダンジョンに応じたデータを取得
-    def self.RankDungeonChoose(dungname)
-        return self.where(dungeon: dungname).where(permission: true)
+    def self.RankDungeonChoose(dungeonID)
+        return self.where(dungeon_id: dungeonID).where(permission: true)
     end
 
     # 動画が付いているランキングを取得
