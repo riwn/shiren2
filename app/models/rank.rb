@@ -1,5 +1,6 @@
 class Rank < ApplicationRecord
     belongs_to :user, optional: true
+    belongs_to :dungeon, optional: true
     #カラムの名前をmount_uploaderに指定
     mount_uploader :recordimage, RecordimageUploader
     #名前が入力されていること
