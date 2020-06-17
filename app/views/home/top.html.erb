@@ -25,10 +25,12 @@
 <div class="container">
   <div class="card-deck">
     <div class="row">
-      <% for num in 0.. @dungeons.size - 1 %>
+      <% num = 0%>
+      <% @dungeons.each do |dungeon| %>
       <div class="col-md-12 col-lg-6 mb-3">
-        <%= render 'top_ranking', { topranking: @topranks[num] , bgcolor: @colors[num],dungeon:@dungeons[num] ,link: @links[num]} %>
+        <%= render 'top_ranking', { topranking: @topranks[num] , bgcolor: dungeon.dungeoncolor, dungeon:dungeon.name ,link: dungeon.uriname} %>
       </div>
+      <% num = num + 1 %>
       <% end %>
     </div>
   </div>

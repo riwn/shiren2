@@ -39,7 +39,7 @@
                                     <td><%= r.label :dungeon, "ダンジョン" %><p class="needContent">※必須</p>
                                     </td>
                                     <td>
-                                        <%= r.select :dungeon, [["最果てへの道99FTA", "最果てへの道99FTA"], ["カラクロTA", "カラクロTA"], ["ストーリーTA", "ストーリーTA"], ["鬼ヶ島ありありTA", "鬼ヶ島ありありTA"], ["女王グモ捕獲TA", "女王グモ捕獲TA"]],class:"recordform-part"  %>
+                                        <%= r.collection_select :dungeon_id, Dungeon.all, :id, :name, include_blank: "選択して下さい", class:"recordform-part"  %>
                                     </td>
                                 </tr>
                                 <tr class="table-success">
