@@ -15,9 +15,9 @@
                     <h5 class="text-primary"><u>記録申請中(<%= @nopermitranks.count %>件)</u></h5>
                     <% if @nopermitranks.count != 0 %>
                     <ul>
-                    <% @nopermitranks.each do |rank| %>
-                        <li><%= rank.dungeon %>(<%= GetResultTime(rank.result) %>)</li>
-                    <% end %>
+                        <% @nopermitranks.each do |rank| %>
+                        <li><%= rank.dungeon.name %>(<%= GetResultTime(rank.result) %>)</li>
+                        <% end %>
                     </ul>
                     <% end %>
                 </div>
@@ -25,12 +25,12 @@
                     <h5 class="text-danger text-center"><u>過去一週間の記録拒否通知(<%= @rejectioncount %>件)</u></h5>
                     <% if @rejectioncount != 0 %>
                     <ul>
-                    <% @rejectranks.each do |rank| %>
+                        <% @rejectranks.each do |rank| %>
                         <% if Time.now - rank.created_at < 604800 %>
-                            <li><%= rank.dungeon %>(<%= GetResultTime(rank.result) %>)</li>
-                            <p>拒否理由：<%= rank.rejectioncomment %></p>
+                        <li><%= rank.dungeon.name %>(<%= GetResultTime(rank.result) %>)</li>
+                        <p>拒否理由：<%= rank.rejectioncomment %></p>
                         <% end %>
-                    <% end %>
+                        <% end %>
                     </ul>
                     <% end %>
                 </div>
@@ -123,30 +123,36 @@
     <div class="row">
         <div class="offset-lg-1">
         </div>
-        <% for num in 0.. @dungeons.size - 1 %>
+        <% num = 0 %>
+        <% @dungeons.each do |dungeon| %>
+        <% if dungeon.id % 5 == 1 && dungeon.id > 5 %>
+        <div class="offset-lg-1">
+        </div>
+        <% end %>
         <div class="col-sm-12 col-md-6 col-lg-2 mb-3">
             <div class="card">
-                <div class="card-header <%= @colors[num] %> text-center">
-                    <%= link_to "/ranking/#{@links[num]}/#{@nowyyyymm}" do %>
-                    <h3 class="card-title float-left text-white h4"><%= @dungeons[num] %></h3>
+                <div class="card-header <%= dungeon.dungeoncolor %> text-center">
+                    <%= link_to "/ranking/#{dungeon.uriname}/#{@nowyyyymm}" do %>
+                    <h3 class="card-title float-left text-white h4"><%= dungeon.name %></h3>
                     <% end %>
                 </div>
                 <div class="card-body bg-light">
                     <div class="card-text">
-                        <div id="<%=@links[num] %>_ranking_lists">
+                        <div id="<%= dungeon.uriname %>_ranking_lists">
                             <% if @myranks[num].count == 0 %>
-                                <p style="text-align:center;">記録はまだありません</p>
+                            <p style="text-align:center;">記録はまだありません</p>
                             <% else %>
-                                <%= render 'user_ranking', { ranks: @myranks[num],dungeonname:@links[num]} %>
+                            <%= render 'user_ranking', { ranks: @myranks[num],dungeonname:dungeon.uriname} %>
                             <% end %>
                         </div>
                         <div class="more">
-                            <%= link_to_next_page @myranks[num], 'もっと見る', params: { type: @links[num] }, remote: true,class: "btn btn-light w-100" , id: "view_#{@links[num]}" %>
+                            <%= link_to_next_page @myranks[num], 'もっと見る', params: { type: dungeon.uriname, dungeonid: dungeon.id - 1 }, remote: true,class: "btn btn-light w-100" , id: "view_#{dungeon.uriname}" %>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <% num = num + 1 %>
         <% end %>
         <% else %>
         <h2 class="record-text">記録はありません</h2>

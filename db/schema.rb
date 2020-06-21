@@ -10,8 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_072009) do
 
+ActiveRecord::Schema.define(version: 2020_06_15_000142) do
+
+  create_table "dungeons", force: :cascade do |t|
+    t.string "name"
+    t.integer "cuttime"
+    t.text "regulation"
+    t.string "uriname"
+    t.string "dungeoncolor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+    
   create_table "banners", force: :cascade do |t|
     t.text "image_url"
     t.string "title"
@@ -43,7 +54,6 @@ ActiveRecord::Schema.define(version: 2020_06_14_072009) do
 
   create_table "ranks", force: :cascade do |t|
     t.text "name"
-    t.text "dungeon"
     t.integer "result"
     t.text "movie"
     t.datetime "created_at", null: false
@@ -55,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_072009) do
     t.text "rejectioncomment"
     t.text "remark"
     t.boolean "beforeseason", default: false
+    t.integer "dungeon_id"
   end
 
   create_table "tournaments", force: :cascade do |t|

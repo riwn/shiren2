@@ -7,12 +7,10 @@ class HomeController < ApplicationController
         month = nowDate.month
         season, @ranks = @ranks.GetSeasonRecord(year,month)
         @ranks = @ranks.order(:result)
-        @dungeons = Constants::DUNGEON_NAME
-        @links = Constants::DUNGEON_LINK
-        @colors = Constants::DUNGEON_COLOR
+        @dungeons = Dungeon.all
         @topranks = []
         @dungeons.each do |dungeon|
-            @topranks.push(@ranks.RankDungeonChoose(dungeon).limit(3))
+            @topranks.push(@ranks.RankDungeonChoose(dungeon.id).limit(3))
         end
         #バナー用
         @banners = Banner.all
