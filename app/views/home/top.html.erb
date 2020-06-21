@@ -6,9 +6,18 @@
 
 <% content_for :mosttop do %>
 
+<% if @banners != nil %>
 <div class="sliders">
   <ul id="sb-slider" class="sb-slider">
-    <li><a href="/description"><img src=<%= image_url('top-notice/SiteOpen.png') %> title="タイムアタック番付サイト開設！"></a></li>
+    <% @banners.each do |banner| %>
+      <% if banner.display_by == nil || banner.display_by >= DateTime.now %>
+        <% if banner.link != "" && banner.link != nil %>
+          <li><%= link_to image_tag(banner.image_url.url, title:banner.title), banner.link, target: "_blank" %></li>
+        <% else %>
+          <li><%= image_tag(image_url(banner.image_url.url), title:banner.title) %></li>
+        <% end %>
+      <% end %>
+    <% end %>
   </ul>
   <div id="nav-arrows" class="nav-arrows">
     <a href="#">
@@ -19,6 +28,7 @@
     </a>
   </div>
 </div>
+<% end %>
 
 <% end %>
 
