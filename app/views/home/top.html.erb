@@ -6,11 +6,12 @@
 
 <% content_for :mosttop do %>
 
+<% if @banners != nil %>
 <div class="sliders">
   <ul id="sb-slider" class="sb-slider">
     <% @banners.each do |banner| %>
-      <% if banner.display_by >= DateTime.now %>
-        <li><%= link_to image_tag("#{banner.image_url}", title:banner.title), banner.link %></li>
+      <% if banner.display_by == nil || banner.display_by >= DateTime.now %>
+        <li><%= link_to image_tag(banner.image_url.url, title:banner.title), banner.link, target: "_blank" %></li>
       <% end %>
     <% end %>
   </ul>
@@ -23,6 +24,7 @@
     </a>
   </div>
 </div>
+<% end %>
 
 <% end %>
 
