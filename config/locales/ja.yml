@@ -5,6 +5,7 @@ ja:
       rank: 記録
       opinion: 意見
       banner: バナー
+      dungeon: 競技
     attributes:
       user:
         name: 名前
@@ -14,6 +15,17 @@ ja:
         icon: アイコン
         admin: 記録許可権限
         super_admin: 総合権限
+        created_at: 作成日
+        updated_at: 最終更新日
+      dungeon:
+        name: 競技名
+        cuttime: 足切りタイム
+        regulation: レギュレーション
+        uriname: URL名
+        dungeoncolor: 色
+        rank: 記録
+        created_at: 作成日
+        updated_at: 最終更新日
       rank:
         name: 名前
         dungeon: 競技
@@ -38,13 +50,15 @@ ja:
         title: 画像タイトル
         link: リンク先
         display_by: 有効期限
+        created_at: 作成日
+        updated_at: 最終更新日
   errors:
     messages:
-      already_confirmed: 'は既に登録済みです。ログインしてください。'
+      already_confirmed: "は既に登録済みです。ログインしてください。"
       confirmation_period_expired: "の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。"
-      expired: 'の有効期限が切れました。新しくリクエストしてください。'
-      not_found: 'は見つかりませんでした。'
-      not_locked: 'は凍結されていません。'
+      expired: "の有効期限が切れました。新しくリクエストしてください。"
+      not_found: "は見つかりませんでした。"
+      not_locked: "は凍結されていません。"
       not_saved:
         one: "エラーが発生したため %{resource} は保存されませんでした:"
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした:"
@@ -66,28 +80,28 @@ ja:
       max_size_error: "ファイルを%{max_size}以下のサイズに設定してください。"
   devise:
     confirmations:
-      confirmed: 'アカウントを登録しました。'
-      send_instructions: 'アカウントの有効化について数分以内にメールでご連絡します。'
+      confirmed: "アカウントを登録しました。"
+      send_instructions: "アカウントの有効化について数分以内にメールでご連絡します。"
       send_paranoid_instructions: "あなたのメールアドレスが登録済みの場合、本人確認用のメールが数分以内に送信されます。"
     failure:
-      already_authenticated: 'すでにログインしています。'
-      inactive: 'アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。'
+      already_authenticated: "すでにログインしています。"
+      inactive: "アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。"
       invalid: "%{authentication_keys} もしくはパスワードが不正です。"
-      locked: 'あなたのアカウントは凍結されています。'
-      last_attempt: 'あなたのアカウントが凍結される前に、複数回の操作がおこなわれています。'
+      locked: "あなたのアカウントは凍結されています。"
+      last_attempt: "あなたのアカウントが凍結される前に、複数回の操作がおこなわれています。"
       not_found_in_database: "%{authentication_keys} もしくはパスワードが不正です。"
-      timeout: 'セッションがタイムアウトしました。もう一度ログインしてください。'
-      unauthenticated: 'アカウント登録もしくはログインしてください。'
-      unconfirmed: 'メールアドレスの本人確認が必要です。'
+      timeout: "セッションがタイムアウトしました。もう一度ログインしてください。"
+      unauthenticated: "アカウント登録もしくはログインしてください。"
+      unconfirmed: "メールアドレスの本人確認が必要です。"
     registrations:
-      destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
-      signed_up: 'アカウント登録が完了しました。'
-      signed_up_but_inactive: 'ログインするためには、アカウントを有効化してください。'
-      signed_up_but_locked: 'アカウントが凍結されているためログインできません。'
-      signed_up_but_unconfirmed: '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
-      update_needs_confirmation: 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
-      updated: 'アカウント情報を変更しました。'
+      destroyed: "アカウントを削除しました。またのご利用をお待ちしております。"
+      signed_up: "アカウント登録が完了しました。"
+      signed_up_but_inactive: "ログインするためには、アカウントを有効化してください。"
+      signed_up_but_locked: "アカウントが凍結されているためログインできません。"
+      signed_up_but_unconfirmed: "本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。"
+      update_needs_confirmation: "アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。"
+      updated: "アカウント情報を変更しました。"
     sessions:
-      signed_in: 'ログインしました。'
-      signed_out: 'ログアウトしました。'
-      already_signed_out: '既にログアウト済みです。'
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "既にログアウト済みです。"
