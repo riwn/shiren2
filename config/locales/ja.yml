@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       rank: 記録
       opinion: 意見
+      banner: バナー
     attributes:
       user:
         name: 名前
