@@ -11,7 +11,11 @@
   <ul id="sb-slider" class="sb-slider">
     <% @banners.each do |banner| %>
       <% if banner.display_by == nil || banner.display_by >= DateTime.now %>
-        <li><%= link_to image_tag(banner.image_url.url, title:banner.title), banner.link, target: "_blank" %></li>
+        <% if banner.link != "" && banner.link != nil %>
+          <li><%= link_to image_tag(banner.image_url.url, title:banner.title), banner.link, target: "_blank" %></li>
+        <% else %>
+          <li><%= image_tag(image_url(banner.image_url.url), title:banner.title) %></li>
+        <% end %>
       <% end %>
     <% end %>
   </ul>
