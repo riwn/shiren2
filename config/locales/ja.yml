@@ -33,6 +33,11 @@ ja:
         content: 意見コメント
         created_at: 投稿日
         updated_at: 最終更新日
+      banner:
+        image_url: 画像
+        title: 画像タイトル
+        link: リンク先
+        display_by: 有効期限
   errors:
     messages:
       already_confirmed: 'は既に登録済みです。ログインしてください。'
