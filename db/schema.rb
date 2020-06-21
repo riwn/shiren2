@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_06_15_000142) do
 
   create_table "dungeons", force: :cascade do |t|
@@ -20,6 +21,15 @@ ActiveRecord::Schema.define(version: 2020_06_15_000142) do
     t.string "dungeoncolor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+    
+  create_table "banners", force: :cascade do |t|
+    t.text "image_url"
+    t.string "title"
+    t.text "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "display_by"
   end
 
   create_table "items", force: :cascade do |t|

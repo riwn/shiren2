@@ -63,6 +63,23 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Banner do
+    # 全てのフィールドを加える
+    #include_all_fields
+    field :image_url do
+      help "必須, 画像を登録してください(1280×500)"
+    end
+    field :title do
+      help "カーソルを置いたときに表示される名称です"
+    end
+    field :link do
+      help "バナーをクリックしたときのリンク先URLを設定してください"
+    end
+    field :display_by do
+      help "いつまで表示するか期限を設定してください, 空の場合は常に表示されます"
+    end
+  end
+
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
