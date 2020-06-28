@@ -212,6 +212,11 @@ class Rank < ApplicationRecord
         return self.where.not(user_id: nil)
     end
 
+    # 1ユーザー1記録のランキングを取得(記録の登録名でgroup_byして最小値を取得)
+    def self.RankBestOnly
+        return self.group(:name).group(:user_id).minimum(:result)
+    end
+
     private
         def movie_or_image
             recordimage.presence or movie.presence

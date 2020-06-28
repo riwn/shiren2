@@ -54,7 +54,7 @@ class RankingController < ApplicationController
                     @useronly = true
                 end
                 if kind.to_s == "best_only" && onoff.to_i == 1
-                    # @ranks = @ranks.RankBestOnly
+                    @ranks = @ranks.RankBestOnly
                     @bestonly = true
                 end
             end

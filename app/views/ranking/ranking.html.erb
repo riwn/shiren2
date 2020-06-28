@@ -49,7 +49,7 @@
                             <strong> 登録済ユーザーのみ:</strong>
                             <%= check_box :filt, "user_only"  ,checked: @useronly %>
                         </div>
-                        <div class="m-3 d-none">
+                        <div class="m-3 d-inline-block"> <%# d-none"> %>
                             <strong> 1ユーザー1記録表示:</strong>
                             <%= check_box :filt, "best_only"  ,checked: @bestonly %>
                         </div>
