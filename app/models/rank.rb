@@ -212,9 +212,10 @@ class Rank < ApplicationRecord
         return self.where.not(user_id: nil)
     end
 
-    # 1ユーザー1記録のランキングを取得(記録の登録名でgroup_byして最小値を取得)
+    # 1ユーザー1記録のランキングを取得
     def self.RankBestOnly
-        return self.group(:name).group(:user_id).minimum(:result)
+        join_query = "left outer join ranks as r2 on (ranks.name = r2.name and ranks.result > r2.result)"
+        return self.joins(join_query).where("r2.result is null")
     end
 
     private

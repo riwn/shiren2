@@ -72,7 +72,7 @@ class RankingController < ApplicationController
                 @useronly = true
             end
             if params[:bestonly] == "true"
-                # @ranks = @ranks.RankBestOnly
+                @ranks = @ranks.RankBestOnly
                 @bestonly = true
             end
         # 普通のGetをした時の動作
