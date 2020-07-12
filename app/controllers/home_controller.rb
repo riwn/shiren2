@@ -6,11 +6,11 @@ class HomeController < ApplicationController
         year = nowDate.year
         month = nowDate.month
         season, @ranks = @ranks.GetSeasonRecord(year,month)
-        @ranks = @ranks.RankBestOnly.order(:result)
+        @ranks = @ranks.order(:result)
         @dungeons = Dungeon.all
         @topranks = []
         @dungeons.each do |dungeon|
-            @topranks.push(@ranks.RankDungeonChoose(dungeon.id).limit(3))
+            @topranks.push(@ranks.RankDungeonChoose(dungeon.id).RankBestOnly.limit(3))
         end
         #バナー用
         @banners = Banner.all
