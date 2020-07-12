@@ -214,8 +214,9 @@ class Rank < ApplicationRecord
 
     # 1ユーザー1記録のランキングを取得
     def self.RankBestOnly
-        join_query = "left outer join ranks as r2 on (ranks.name = r2.name and ranks.result > r2.result)"
-        return self.joins(join_query).where("r2.result is null")
+        query = "select id from ranks group by name having min(result)"
+        rank_ids = Rank.find_by_sql(query)
+        return self.where(id: rank_ids)
     end
 
     private
