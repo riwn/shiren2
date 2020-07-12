@@ -6,7 +6,7 @@ class HomeController < ApplicationController
         year = nowDate.year
         month = nowDate.month
         season, @ranks = @ranks.GetSeasonRecord(year,month)
-        @ranks = @ranks.order(:result)
+        @ranks = @ranks.RankBestOnly.order(:result)
         @dungeons = Dungeon.all
         @topranks = []
         @dungeons.each do |dungeon|

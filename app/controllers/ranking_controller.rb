@@ -79,6 +79,8 @@ class RankingController < ApplicationController
         else
             @ranks = @ranks.RankMovieOnly
             @movieonly = true
+            @ranks = @ranks.RankBestOnly
+            @bestonly = true
         end
         @ranks = @ranks.order(:result).page(params[:page]).per(PER)
         render 'ranking'
