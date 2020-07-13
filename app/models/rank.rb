@@ -212,6 +212,12 @@ class Rank < ApplicationRecord
         return self.where.not(user_id: nil)
     end
 
+    # 1ユーザー1記録のランキングを取得
+    def self.RankBestOnly
+        rank_ids = self.select(:id).group(:name).having("min(result)")
+        return self.where(id: rank_ids)
+    end
+
     private
         def movie_or_image
             recordimage.presence or movie.presence
