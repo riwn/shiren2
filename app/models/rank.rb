@@ -214,8 +214,7 @@ class Rank < ApplicationRecord
 
     # 1ユーザー1記録のランキングを取得
     def self.RankBestOnly
-        query = "select id from ranks group by name having min(result)"
-        rank_ids = Rank.find_by_sql(query)
+        rank_ids = self.select(:id).group(:name).having("min(result)")
         return self.where(id: rank_ids)
     end
 

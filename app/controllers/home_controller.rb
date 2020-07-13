@@ -10,8 +10,7 @@ class HomeController < ApplicationController
         @dungeons = Dungeon.all
         @topranks = []
         @dungeons.each do |dungeon|
-            @ranks = @ranks.RankDungeonChoose(dungeon.id)
-            @topranks.push(@ranks.RankBestOnly.limit(3))
+            @topranks.push(@ranks.RankDungeonChoose(dungeon.id).RankBestOnly.limit(3))
         end
         #バナー用
         @banners = Banner.all
