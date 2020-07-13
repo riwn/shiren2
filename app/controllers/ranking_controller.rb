@@ -54,7 +54,7 @@ class RankingController < ApplicationController
                     @useronly = true
                 end
                 if kind.to_s == "best_only" && onoff.to_i == 1
-                    # @ranks = @ranks.RankBestOnly
+                    @ranks = @ranks.RankBestOnly
                     @bestonly = true
                 end
             end
@@ -72,13 +72,15 @@ class RankingController < ApplicationController
                 @useronly = true
             end
             if params[:bestonly] == "true"
-                # @ranks = @ranks.RankBestOnly
+                @ranks = @ranks.RankBestOnly
                 @bestonly = true
             end
         # 普通のGetをした時の動作
         else
             @ranks = @ranks.RankMovieOnly
             @movieonly = true
+            @ranks = @ranks.RankBestOnly
+            @bestonly = true
         end
         @ranks = @ranks.order(:result).page(params[:page]).per(PER)
         render 'ranking'
