@@ -1,3 +1,18 @@
+var ww = window.innerWidth;
+var ctPos = ww;
+var timer = 0;
+
+window.onresize = function () {
+  if (timer > 0) {
+    clearTimeout(timer);
+  }
+ 
+  timer = setTimeout(function () {
+    console.log('window resized'); //ここに処理の内容が入る
+    ctPos = ww;
+  }, 200);
+};
+
 function Village_Walk() {
   var shiren_cat = 0;
   var maml_cat = 0;
@@ -19,8 +34,6 @@ function Village_Walk() {
 }
 
 function Move_Left(obj, time) {
-  var ww = window.innerWidth
-  var ctPos = ww;
   var leftPos = Math.floor(Math.random() * (ww - 200));
   setInterval(function () {
     if (leftPos > ctPos) {
@@ -37,8 +50,6 @@ function Move_Left(obj, time) {
 }
 
 function Move_Right(obj, time) {
-  var ww = window.innerWidth
-  var ctPos = ww;
   var rightPos = Math.floor(Math.random() * (ww - 200));
   setInterval(function () {
     if (rightPos < -50) {
