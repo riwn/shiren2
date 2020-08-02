@@ -56,7 +56,7 @@
                         <% end %>
                     </div>
 
-                    <% if current_user.try(:admin?) && current_user.id == @uid.to_i %>
+                    <% if (current_user.try(:admin?) || current_user.try(:super_admin?)) && current_user.id == @uid.to_i %>
                     <div class="col-12 text-center mb-3">
                         <%= button_to("管理者画面","/admin",class:"btn btn-warning" ,method: :get) %>
                     </div>

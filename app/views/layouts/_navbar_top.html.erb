@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="/">
-        <%= image_tag image_url('headfoot/logo.png'), { :class => "logo", :alt => "風来のシレン2タイムアタック番付" ,:title => "風来のシレン2タイムアタック番付" } %>
+        <%= image_tag image_url('headfoot/logo.png'), { :class => "logo", :alt => "風来のシレン2タイムアタック番付" ,:title => "風来のシレン2タイムアタック番付", :width => 120} %>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerData"
         aria-controls="headerData" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,11 +23,11 @@
                 <a class="nav-link dropdown-toggle" href="/" id="dropdown_desc" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">解説</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown_desc">
-                    <%= link_to "最果てへの道99FTA",saihateta_path , class: "dropdown-item"%>
-                    <%= link_to "カラクロTA", wellta_path , class: "dropdown-item"%>
-                    <%= link_to "鬼ヶ島ありありTA", onigashimata_path , class: "dropdown-item"%>
-                    <%= link_to "ストーリーTA", storyta_path , class: "dropdown-item"%>
-                    <%= link_to "女王グモ捕獲TA", shrineta_path , class: "dropdown-item"%>
+                    <%= link_to "最果てへの道99FTA","/explain/saihate" , class: "dropdown-item"%>
+                    <%= link_to "カラクロTA", "/explain/well" , class: "dropdown-item"%>
+                    <%= link_to "鬼ヶ島ありありTA", "/explain/onigashima" , class: "dropdown-item"%>
+                    <%= link_to "ストーリーTA", "/explain/story" , class: "dropdown-item"%>
+                    <%= link_to "女王グモ捕獲TA", "/explain/shrine" , class: "dropdown-item"%>
                 </div>
             </li>
             <li class="nav-item dropdown">

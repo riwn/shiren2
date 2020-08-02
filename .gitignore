@@ -39,4 +39,6 @@ vendor/bundle
 
 .env
 
-public/sitemaps/sitemap.xml.gz   
+public/sitemaps/sitemap.xml.gz
+
+logfile

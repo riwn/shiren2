@@ -16,18 +16,10 @@ Rails.application.routes.draw do
   post "/user/:id/update" => "user#update"
   post "/user/:id/update_password" => "user#update_password"
 #######################解説#######################
-  get "/ta" => redirect {"/ta/saihate"}
-  get "/ta/saihate" => "ta#saihateta", as: "saihateta"
-  get "/ta/well" => "ta#wellta", as: "wellta"
-  get "/ta/onigashima" => "ta#onigashimata", as: "onigashimata"
-  get "/ta/story" => "ta#storyta", as: "storyta"
-  get "/ta/shrine" => "ta#shrineta", as: "shrineta"
-  #get "/ta/saihate/chapter1" =>"saihateta#chapter1"
-  #get "/ta/saihate/chapter2" =>"saihateta#chapter2"
-  #get "/ta/saihate/chapter3" =>"saihateta#chapter3"
-  #get "/ta/saihate/chapter4" =>"saihateta#chapter4"
-  #get "/ta/saihate/chapter5" =>"saihateta#chapter5"
-  #get "/ta/saihate/chapter6" =>"saihateta#chapter6"
+  get "/explain/:dungeon" =>"explain#top"
+  get "/explain/:dungeon/:id" =>"explain#explain"
+  get "/explain/:dungeon/:id/edit" => "explain#edit"
+  get "/explain/:dungeon/:id/edit/preview" => "explain#preview"
 ####################ランキング####################
   get "/ranking" => redirect {"/"}, as: "ranking"
   post "/ranking" => "ranking#create"
@@ -44,5 +36,4 @@ Rails.application.routes.draw do
   # get "/quiz" => "quiz#quiz"
 ######################サイトマップ######################
   get 'sitemap.xml', to: redirect('https://s3-ap-northeast-1.amazonaws.com/shiren2records/sitemaps/sitemap.xml.gz')
-
 end

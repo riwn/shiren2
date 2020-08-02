@@ -9,9 +9,9 @@ class Ability
       can :dashboard, :all
       if user.super_admin?
         can :manage, :all
-        can [:read,:new,:update,:create,:export,:import], [User,Tournament,Rank,Opinion,Item]
+        can [:read,:new,:update,:create,:export,:import], [User,Tournament,Rank,Opinion,Item,Explanation]
       else
-        can [:read,:update], [Rank,Opinion]
+        can [:read,:update], [Rank,Opinion,Explanation]
         can [:read,:new,:update,:create,:destroy],[Banner]
         can [:read], [User,Dungeon]
       end

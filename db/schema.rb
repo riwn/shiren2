@@ -10,8 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2020_07_12_061445) do
 
-ActiveRecord::Schema.define(version: 2020_06_15_000142) do
+  create_table "banners", force: :cascade do |t|
+    t.text "image_url"
+    t.string "title"
+    t.text "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "display_by"
+  end
 
   create_table "dungeons", force: :cascade do |t|
     t.string "name"
@@ -22,14 +30,15 @@ ActiveRecord::Schema.define(version: 2020_06_15_000142) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-    
-  create_table "banners", force: :cascade do |t|
-    t.text "image_url"
+
+  create_table "explanations", force: :cascade do |t|
     t.string "title"
-    t.text "link"
+    t.integer "dungeon_id"
+    t.integer "section"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "display_by"
+    t.boolean "release", default: false
   end
 
   create_table "items", force: :cascade do |t|

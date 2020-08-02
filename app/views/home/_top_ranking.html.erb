@@ -3,17 +3,17 @@
         <%= link_to "/ranking/#{link}/#{ Date.today.year.to_s + ("%02d" % Date.today.month).to_s}" do %>
         <h3 class="card-title float-left text-white"><%= dungeon %></h3>
         <% end %>
-        <a href="/ta/<%= link %>">
+        <a href="/explain/<%= link %>">
             <button type="button" class="btn btn-outline-light float-right"><%= fa_icon("chevron-right") %>解説</button>
         </a>
     </div>
     <div class="card-body bg-light">
         <div class="card-text">
             <% if topranking.count == 0 %>
-                <h4>記録はまだありません</h2>
-            <% else %>
+            <h4>記録はまだありません</h2>
+                <% else %>
                 <%= render 'ranking/ranking_list', {ranks: topranking,dungeonname:link} %>
-            <% end %>
+                <% end %>
         </div>
     </div>
 </div>
