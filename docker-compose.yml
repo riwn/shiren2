@@ -1,0 +1,31 @@
+version: "3"
+services:
+  db:
+    image: mysql:8.0.19
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "4306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=shiren2_dev
+      - MYSQL_USER=r_iwn
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_USER=r_iwn
+      - MYSQL_ROOT_PASSWORD=password
+  app:
+    tty: true #コンテナ上でbinding.pryするために必要
+    stdin_open: true #コンテナ上でbinding.pryするために必要
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/shiren2 #ローカルのディレクトリをコンテナ上にマウント
+    ports:
+      - "3000:3000"
+    links:
+      - db
+volumes:
+  mysql-data:
+    driver: local

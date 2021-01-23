@@ -10,20 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_06_15_000142) do
 
-  create_table "dungeons", force: :cascade do |t|
-    t.string "name"
-    t.integer "cuttime"
-    t.text "regulation"
-    t.string "uriname"
-    t.string "dungeoncolor"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-    
-  create_table "banners", force: :cascade do |t|
+  create_table "banners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "image_url"
     t.string "title"
     t.text "link"
@@ -32,7 +21,17 @@ ActiveRecord::Schema.define(version: 2020_06_15_000142) do
     t.datetime "display_by"
   end
 
-  create_table "items", force: :cascade do |t|
+  create_table "dungeons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.integer "cuttime"
+    t.text "regulation"
+    t.string "uriname"
+    t.string "dungeoncolor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "name"
     t.text "type"
     t.integer "buy"
@@ -46,13 +45,13 @@ ActiveRecord::Schema.define(version: 2020_06_15_000142) do
     t.text "kind"
   end
 
-  create_table "opinions", force: :cascade do |t|
+  create_table "opinions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "ranks", force: :cascade do |t|
+  create_table "ranks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "name"
     t.integer "result"
     t.text "movie"
@@ -68,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_000142) do
     t.integer "dungeon_id"
   end
 
-  create_table "tournaments", force: :cascade do |t|
+  create_table "tournaments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "name"
     t.text "eventdate"
     t.text "organizer"
@@ -78,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_000142) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
